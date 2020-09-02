@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="85" id="KGk-i7-Jjw" customClass="DialogTableViewCell" customModule="EChoose" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7U-lm-dpT">
+                        <rect key="frame" x="8" y="8" width="304" height="68"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You: last message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMv-R7-pAw">
+                                <rect key="frame" x="68" y="40" width="96.5" height="16"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hBY-TD-8k4">
+                                <rect key="frame" x="8" y="8.5" width="52" height="51"/>
+                                <color key="tintColor" name="FirstColorGradient"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="Jmm-TC-M6P"/>
+                                    <constraint firstAttribute="width" constant="52" id="vkb-AP-C1N"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opponent Fullname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7f-Dt-0w7">
+                                <rect key="frame" x="68" y="8" width="161.5" height="24"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="SecondColorGradient"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oMv-R7-pAw" secondAttribute="trailing" constant="8" id="6Fu-fB-CBy"/>
+                            <constraint firstItem="u7f-Dt-0w7" firstAttribute="top" secondItem="w7U-lm-dpT" secondAttribute="top" constant="8" id="7Er-Ao-HXG"/>
+                            <constraint firstItem="oMv-R7-pAw" firstAttribute="leading" secondItem="hBY-TD-8k4" secondAttribute="trailing" constant="8" id="Gzv-Vm-bdl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="u7f-Dt-0w7" secondAttribute="trailing" constant="8" id="Zek-VY-hEh"/>
+                            <constraint firstItem="oMv-R7-pAw" firstAttribute="top" secondItem="u7f-Dt-0w7" secondAttribute="bottom" constant="8" id="dip-nF-A17"/>
+                            <constraint firstAttribute="bottom" secondItem="hBY-TD-8k4" secondAttribute="bottom" constant="8" id="pcM-3e-8wf"/>
+                            <constraint firstItem="u7f-Dt-0w7" firstAttribute="leading" secondItem="hBY-TD-8k4" secondAttribute="trailing" constant="8" id="wYf-08-mPX"/>
+                            <constraint firstItem="hBY-TD-8k4" firstAttribute="leading" secondItem="w7U-lm-dpT" secondAttribute="leading" constant="8" id="wnR-Rx-g13"/>
+                            <constraint firstItem="hBY-TD-8k4" firstAttribute="top" secondItem="w7U-lm-dpT" secondAttribute="top" constant="8" id="zl8-2U-PJ2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="MainColor"/>
+                <constraints>
+                    <constraint firstItem="w7U-lm-dpT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="90j-rw-WMK"/>
+                    <constraint firstAttribute="bottom" secondItem="w7U-lm-dpT" secondAttribute="bottom" constant="8" id="FnR-JN-lkJ"/>
+                    <constraint firstAttribute="trailing" secondItem="w7U-lm-dpT" secondAttribute="trailing" constant="8" id="es0-Gw-XTH"/>
+                    <constraint firstItem="w7U-lm-dpT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="g29-Ax-UVB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellBackgroundView" destination="w7U-lm-dpT" id="19H-DE-cDt"/>
+                <outlet property="dialogLastMessageLabel" destination="oMv-R7-pAw" id="tqh-dc-veW"/>
+                <outlet property="opponentFullnameLabel" destination="u7f-Dt-0w7" id="ZyN-rt-Nlr"/>
+                <outlet property="opponentImageView" destination="hBY-TD-8k4" id="0zP-P9-AFE"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="135.9375"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="FirstColorGradient">
+            <color red="0.96078431372549022" green="0.98431372549019602" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainColor">
+            <color red="0.63499999046325684" green="0.85500001907348633" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondColorGradient">
+            <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

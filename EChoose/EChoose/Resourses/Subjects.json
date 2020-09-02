@@ -1,0 +1,128 @@
+{
+  "subjects": [
+    {
+      "id": 0,
+      "name": "Architecture"
+    },
+    {
+      "id": 1,
+      "name": "Art & Culture"
+    },
+    {
+      "id": 2,
+      "name": "Biology & Life Sciences"
+    },
+    {
+      "id": 3,
+      "name": "Business & Management"
+    },
+    {
+      "id": 4,
+      "name": "Chemistry"
+    },
+    {
+      "id": 5,
+      "name": "Communication"
+    },
+    {
+      "id": 6,
+      "name": "Computer Science"
+    },
+    {
+      "id": 7,
+      "name": "Data Analysis & Statistics"
+    },
+    {
+      "id": 8,
+      "name": "Design"
+    },
+    {
+      "id": 9,
+      "name": "Economics & Finance"
+    },
+    {
+      "id": 10,
+      "name": "Education & Teacher Training"
+    },
+    {
+      "id": 11,
+      "name": "Electronics"
+    },
+    {
+      "id": 12,
+      "name": "Energy & Earth Sciences"
+    },
+    {
+      "id": 13,
+      "name": "Engineering"
+    },
+    {
+      "id": 14,
+      "name": "Environmental Studies"
+    },
+    {
+      "id": 15,
+      "name": "Ethics"
+    },
+    {
+      "id": 16,
+      "name": "Food & Nutrition"
+    },
+    {
+      "id": 17,
+      "name": "Health & Safety"
+    },
+    {
+      "id": 18,
+      "name": "History"
+    },
+    {
+      "id": 19,
+      "name": "Humanities"
+    },
+    {
+      "id": 20,
+      "name": "Language"
+    },
+    {
+      "id": 21,
+      "name": "Law"
+    },
+    {
+      "id": 22,
+      "name": "Literature"
+    },
+    {
+      "id": 23,
+      "name": "Math"
+    },
+    {
+      "id": 24,
+      "name": "Medicine"
+    },
+    {
+      "id": 25,
+      "name": "Music"
+    },
+    {
+      "id": 26,
+      "name": "Philanthropy"
+    },
+    {
+      "id": 27,
+      "name": "Philosophy & Ethics"
+    },
+    {
+      "id": 28,
+      "name": "Physics"
+    },
+    {
+      "id": 29,
+      "name": "Science"
+    },
+    {
+      "id": 30,
+      "name": "Social Sciences"
+    }
+  ]
+}

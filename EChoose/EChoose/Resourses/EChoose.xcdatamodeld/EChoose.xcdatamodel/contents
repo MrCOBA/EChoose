@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Dialog" representedClassName="Dialog" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="fullname" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="isBotModeON" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="dialogsToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userToDialogs" inverseEntity="User"/>
+        <relationship name="dialogToMessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Message" inverseName="messagesToDialog" inverseEntity="Message"/>
+    </entity>
+    <entity name="Message" representedClassName="Message" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isIncoming" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="messagesToDialog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dialog" inverseName="dialogToMessages" inverseEntity="Dialog"/>
+    </entity>
+    <entity name="Service" representedClassName="Service" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="hard" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isActivated" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="servicesToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userToServices" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="fullname" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="role" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="userToDialogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dialog" inverseName="dialogsToUser" inverseEntity="Dialog"/>
+        <relationship name="userToServices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Service" inverseName="servicesToUser" inverseEntity="Service"/>
+    </entity>
+    <elements>
+        <element name="Dialog" positionX="-258.94921875" positionY="-227.94921875" width="128" height="148"/>
+        <element name="Message" positionX="-31.26171875" positionY="68.640625" width="128" height="103"/>
+        <element name="Service" positionX="-234.32421875" positionY="-30.9453125" width="128" height="148"/>
+        <element name="User" positionX="-531.83203125" positionY="13.8125" width="128" height="208"/>
+    </elements>
+</model>
