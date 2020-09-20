@@ -71,7 +71,7 @@ class MessagesViewController: UIViewController {
         
         self.overrideUserInterfaceStyle = .light
         
-        messagesTableView.layer.cornerRadius = 10
+        messagesTableView.layer.cornerRadius = 20
         messagesTableView.separatorStyle = .none
         messagesTableView.rowHeight = UITableView.automaticDimension
         

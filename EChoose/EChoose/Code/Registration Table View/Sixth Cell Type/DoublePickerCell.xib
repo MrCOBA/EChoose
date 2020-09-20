@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="209" id="KGk-i7-Jjw" customClass="DoublePickerCell" customModule="EChoose" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="207"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoublePickerCell" rowHeight="244" id="KGk-i7-Jjw" customClass="DoublePickerCell" customModule="EChoose" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="242"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="207"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="242"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCx-64-BLc">
@@ -38,22 +38,49 @@
                         </constraints>
                     </view>
                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Al-bj-vmf">
-                        <rect key="frame" x="16" y="41" width="288" height="158"/>
+                        <rect key="frame" x="16" y="85" width="141" height="149"/>
                     </pickerView>
+                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQ2-jA-hNJ">
+                        <rect key="frame" x="163" y="85" width="141" height="149"/>
+                    </pickerView>
+                    <searchBar contentMode="redraw" placeholder="Search country..." translatesAutoresizingMaskIntoConstraints="NO" id="TIj-GE-Uaf">
+                        <rect key="frame" x="16" y="41" width="288" height="44"/>
+                        <color key="backgroundColor" name="MainColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="JqY-gp-8Ry"/>
+                        </constraints>
+                        <color key="tintColor" name="MainColor"/>
+                        <color key="barTintColor" name="MainColor"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </searchBar>
                 </subviews>
                 <color key="backgroundColor" name="MainColor"/>
                 <constraints>
+                    <constraint firstItem="TIj-GE-Uaf" firstAttribute="top" secondItem="PCx-64-BLc" secondAttribute="bottom" constant="8" id="0h9-Bt-2NS"/>
                     <constraint firstAttribute="bottom" secondItem="4Al-bj-vmf" secondAttribute="bottom" constant="8" id="1BU-6N-Iw2"/>
+                    <constraint firstAttribute="bottom" secondItem="PQ2-jA-hNJ" secondAttribute="bottom" constant="8" id="4Wb-nM-VV4"/>
+                    <constraint firstItem="TIj-GE-Uaf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8Sk-DU-6ds"/>
+                    <constraint firstItem="PQ2-jA-hNJ" firstAttribute="top" secondItem="TIj-GE-Uaf" secondAttribute="bottom" id="EfE-n6-3vN"/>
                     <constraint firstItem="PCx-64-BLc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="EkR-Ni-0G2"/>
+                    <constraint firstItem="4Al-bj-vmf" firstAttribute="top" secondItem="TIj-GE-Uaf" secondAttribute="bottom" id="Hda-We-FTz"/>
+                    <constraint firstItem="4Al-bj-vmf" firstAttribute="width" secondItem="PQ2-jA-hNJ" secondAttribute="width" id="Tyf-CL-sJ9"/>
                     <constraint firstItem="PCx-64-BLc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Z2L-8d-ZJI"/>
+                    <constraint firstAttribute="trailing" secondItem="TIj-GE-Uaf" secondAttribute="trailing" constant="16" id="drV-nH-XcY"/>
                     <constraint firstAttribute="trailing" secondItem="PCx-64-BLc" secondAttribute="trailing" constant="16" id="hfh-pI-Osx"/>
-                    <constraint firstItem="4Al-bj-vmf" firstAttribute="top" secondItem="PCx-64-BLc" secondAttribute="bottom" constant="8" id="jYm-Qg-b0U"/>
-                    <constraint firstAttribute="trailing" secondItem="4Al-bj-vmf" secondAttribute="trailing" constant="16" id="mgR-uu-Tmh"/>
+                    <constraint firstAttribute="trailing" secondItem="PQ2-jA-hNJ" secondAttribute="trailing" constant="16" id="nDm-rF-7fJ"/>
+                    <constraint firstItem="PQ2-jA-hNJ" firstAttribute="leading" secondItem="4Al-bj-vmf" secondAttribute="trailing" constant="6" id="sdr-0g-du2"/>
                     <constraint firstItem="4Al-bj-vmf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="vXj-Uv-CY0"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="137.68115942028987" y="179.79910714285714"/>
+            <connections>
+                <outlet property="backgroundCellView" destination="PCx-64-BLc" id="FAC-zU-fXF"/>
+                <outlet property="cellNameLabel" destination="NvS-Aa-yTx" id="mh2-m5-fQR"/>
+                <outlet property="firstPickerView" destination="4Al-bj-vmf" id="Gf9-1y-xTU"/>
+                <outlet property="searchBar" destination="TIj-GE-Uaf" id="Rre-KZ-yTR"/>
+                <outlet property="secondPickerView" destination="PQ2-jA-hNJ" id="uCA-f9-3Kp"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="191.51785714285714"/>
         </tableViewCell>
     </objects>
     <resources>

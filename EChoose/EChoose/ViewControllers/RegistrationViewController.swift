@@ -12,7 +12,7 @@ import CoreData
 struct RegistrationSectionsSizes {
     
     static var firstSection: Int = 3
-    static var secondSection: Int = 3
+    static var secondSection: Int = 4
     static var thirdSection: Int = 4
 }
 
@@ -36,6 +36,7 @@ class RegistrationViewController:UIViewController{
     @IBOutlet weak var backgroundView: UIView!
     
     var user: User!
+    var context: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,10 @@ class RegistrationViewController:UIViewController{
         registrationTableView.register(UINib(nibName: DatePickerTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: DatePickerTableViewCell.identifier)
         //Fifth cell type
         registrationTableView.register(UINib(nibName: TextViewTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: TextViewTableViewCell.identifier)
+        //Sixth cell type
+        registrationTableView.register(UINib(nibName: DoublePickerCell.identifier, bundle: nil), forCellReuseIdentifier: DoublePickerCell.identifier)
+        //Seventh cell type
+        registrationTableView.register(UINib(nibName: ButtonTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ButtonTableViewCell.identifier)
         //Header
         registrationTableView.register(UINib(nibName: SectionHeader.identifier, bundle: nil), forCellReuseIdentifier: SectionHeader.identifier)
         
@@ -64,20 +69,9 @@ class RegistrationViewController:UIViewController{
         super.viewWillAppear(animated)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        context = appDelegate.persistentContainer.viewContext
         
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        
-        var saved: [User] = []
-        do{
-            try saved = context.fetch(fetchRequest)
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        if saved.count != 0 {
-            user = saved[0]
-        }
+        loadData()
     }
     //MARK: - Setting up UI
     func setUI(){
@@ -85,16 +79,18 @@ class RegistrationViewController:UIViewController{
         
         self.overrideUserInterfaceStyle = .light
         
-        registrationTableView.layer.cornerRadius = 10
+        registrationTableView.layer.cornerRadius = 20
         registrationTableView.separatorStyle = .none
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destination = segue.destination as! UITabBarController
-        
-        destination.selectedIndex = 2
-        destination.navigationController?.setNavigationBarHidden(true, animated: true)
+        if segue.identifier == "mainViewSegue" {
+            let destination = segue.destination as! UITabBarController
+            
+            destination.selectedIndex = 2
+            destination.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
     }
     
     //MARK Actions
@@ -113,39 +109,10 @@ class RegistrationViewController:UIViewController{
             email: "oparin@edu.hse.ru",
             descript: "I am 3-d course HSE student.",
             city: "Moscow",
-            image: UIImage(named: "echooselogo")!)
+            image: UIImage(named: "exampleimage")!)
         
         saveUser(user)
         performSegue(withIdentifier: "mainViewSegue", sender: nil)
-    }
-    
-    func saveUser(_ user: UserStruct) {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        if self.user != nil {
-            context.delete(self.user)
-        }
-        
-        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
-        let taskObject = NSManagedObject(entity: entity!, insertInto: context) as! User
-        
-        taskObject.username = user.username
-        taskObject.fullname = user.fullname
-        taskObject.password = user.password
-        taskObject.age = Int16(user.age)
-        taskObject.image = user.image.pngData()
-        taskObject.city = user.city
-        taskObject.descript = user.descript
-        taskObject.email = user.email
-        
-        do{
-            try context.save()
-            self.user = taskObject
-        } catch {
-            print(error.localizedDescription)
-        }
     }
 }
 extension RegistrationViewController: UITableViewDelegate, UITableViewDataSource {
@@ -215,6 +182,12 @@ extension RegistrationViewController: UITableViewDelegate, UITableViewDataSource
                 return cell
                 
             case 2:
+                let cell = registrationTableView.dequeueReusableCell(withIdentifier: DoublePickerCell.identifier, for: indexPath) as! DoublePickerCell
+                
+                cell.setCell("City")
+                return cell
+                
+            case 3:
                 let cell = registrationTableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as! TextFieldTableViewCell
                 
                 cell.setCell("E-Mail", false, "Your E-Mail...", UIKeyboardType.emailAddress)
@@ -248,10 +221,9 @@ extension RegistrationViewController: UITableViewDelegate, UITableViewDataSource
             return cell
             
         case 3:
-            let cell = registrationTableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as! TextFieldTableViewCell
+            let cell = registrationTableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.identifier, for: indexPath) as! ButtonTableViewCell
             
-            cell.inputTextField.text = ""
-            cell.setCell("Address", false, "Your address...")
+            cell.setCell("Address", self)
             return cell
             
         default:
@@ -289,5 +261,60 @@ extension RegistrationViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
+    }
+}
+extension UITableView {
+    
+    func scrollToBottom(animated: Bool) {
+        guard let dataSource = dataSource else { return }
+        var lastSection = (dataSource.numberOfSections?(in: self) ?? 1) - 1
+        while dataSource.tableView(self, numberOfRowsInSection: lastSection) < 1 && lastSection > 0 {
+            lastSection -= 1
+        }
+        let lastRow = dataSource.tableView(self, numberOfRowsInSection: lastSection) - 1
+        guard lastSection > -1 && lastRow > -1 else { return }
+        let indexPath = IndexPath(item: lastRow, section: lastSection)
+        scrollToRow(at: indexPath, at: .bottom, animated: animated)
+    }
+}
+//MARK: - CoreData Extension Functions
+extension RegistrationViewController {
+    
+    func loadData() {
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        
+        do{
+            try user = context.fetch(fetchRequest).first
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func saveUser(_ user: UserStruct) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        if self.user == nil {
+            let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
+            let taskObject = NSManagedObject(entity: entity!, insertInto: context) as! User
+            
+            taskObject.username = user.username
+            taskObject.fullname = user.fullname
+            taskObject.password = user.password
+            taskObject.age = Int16(user.age)
+            taskObject.image = user.image.pngData()
+            taskObject.city = user.city
+            taskObject.descript = user.descript
+            taskObject.email = user.email
+            taskObject.role = user.role
+            
+            do{
+                try context.save()
+                self.user = taskObject
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 }

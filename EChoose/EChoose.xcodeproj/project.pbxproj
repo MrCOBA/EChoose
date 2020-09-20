@@ -13,15 +13,10 @@
 		31086BD324F9A81400B3839C /* ServiceEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31086BD224F9A81400B3839C /* ServiceEditorViewController.swift */; };
 		31086BDC24F9C58400B3839C /* Countries&Cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 31086BDB24F9C58400B3839C /* Countries&Cities.json */; };
 		31086BE024F9C5AB00B3839C /* Subjects.json in Resources */ = {isa = PBXBuildFile; fileRef = 31086BDF24F9C5AB00B3839C /* Subjects.json */; };
+		3110D839251184D5000096B8 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110D837251184D5000096B8 /* ButtonTableViewCell.swift */; };
+		3110D83A251184D5000096B8 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3110D838251184D5000096B8 /* ButtonTableViewCell.xib */; };
+		3110D83D25118B51000096B8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3110D83C25118B51000096B8 /* MapKit.framework */; };
 		31391BD224FEBE29007C23B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BD124FEBE29007C23B3 /* ProfileViewController.swift */; };
-		31391C0924FEDF78007C23B3 /* Dialog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BF924FEDEBA007C23B3 /* Dialog+CoreDataClass.swift */; };
-		31391C0A24FEDF78007C23B3 /* Dialog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BFA24FEDEBA007C23B3 /* Dialog+CoreDataProperties.swift */; };
-		31391C0B24FEDF78007C23B3 /* Service+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BFB24FEDEBA007C23B3 /* Service+CoreDataClass.swift */; };
-		31391C0C24FEDF78007C23B3 /* Service+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BFC24FEDEBA007C23B3 /* Service+CoreDataProperties.swift */; };
-		31391C0D24FEDF78007C23B3 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BFD24FEDEBA007C23B3 /* Message+CoreDataClass.swift */; };
-		31391C0E24FEDF78007C23B3 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BFE24FEDEBA007C23B3 /* Message+CoreDataProperties.swift */; };
-		31391C0F24FEDF78007C23B3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BFF24FEDEBA007C23B3 /* User+CoreDataClass.swift */; };
-		31391C1024FEDF78007C23B3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391C0024FEDEBA007C23B3 /* User+CoreDataProperties.swift */; };
 		31391C1824FEEE96007C23B3 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391C1624FEEE96007C23B3 /* InfoTableViewCell.swift */; };
 		31391C1924FEEE96007C23B3 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31391C1724FEEE96007C23B3 /* InfoTableViewCell.xib */; };
 		31424DE824F4077800583E72 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424DE624F4077800583E72 /* DatePickerTableViewCell.swift */; };
@@ -41,12 +36,29 @@
 		3153AEC124FABBE6008A712E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153AEC024FABBE6008A712E /* GradientView.swift */; };
 		3153AEC424FAE505008A712E /* BigServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153AEC224FAE505008A712E /* BigServiceTableViewCell.swift */; };
 		3153AEC524FAE505008A712E /* BigServiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3153AEC324FAE505008A712E /* BigServiceTableViewCell.xib */; };
+		315C19402510100200F9FEB2 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315C193F2510100200F9FEB2 /* HTTPManager.swift */; };
+		315C1944251107D000F9FEB2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315C1943251107D000F9FEB2 /* MapViewController.swift */; };
 		316115F924F2A384008B0377 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316115F724F2A384008B0377 /* TextFieldTableViewCell.swift */; };
 		316115FA24F2A384008B0377 /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316115F824F2A384008B0377 /* TextFieldTableViewCell.xib */; };
 		316115FE24F2A9B4008B0377 /* RadioButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316115FC24F2A9B4008B0377 /* RadioButtonsTableViewCell.swift */; };
 		316115FF24F2A9B4008B0377 /* RadioButtonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316115FD24F2A9B4008B0377 /* RadioButtonsTableViewCell.xib */; };
 		3161160324F2AE4A008B0377 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161160124F2AE4A008B0377 /* PickerTableViewCell.swift */; };
 		3161160424F2AE4A008B0377 /* PickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3161160224F2AE4A008B0377 /* PickerTableViewCell.xib */; };
+		316D280F250309FB00E5A648 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D2807250309FB00E5A648 /* Message+CoreDataClass.swift */; };
+		316D2810250309FB00E5A648 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D2808250309FB00E5A648 /* Message+CoreDataProperties.swift */; };
+		316D2811250309FB00E5A648 /* Service+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D2809250309FB00E5A648 /* Service+CoreDataClass.swift */; };
+		316D2812250309FB00E5A648 /* Service+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D280A250309FB00E5A648 /* Service+CoreDataProperties.swift */; };
+		316D2813250309FB00E5A648 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D280B250309FB00E5A648 /* User+CoreDataClass.swift */; };
+		316D2814250309FB00E5A648 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D280C250309FB00E5A648 /* User+CoreDataProperties.swift */; };
+		316D2815250309FB00E5A648 /* Dialog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D280D250309FB00E5A648 /* Dialog+CoreDataClass.swift */; };
+		316D2816250309FB00E5A648 /* Dialog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D280E250309FB00E5A648 /* Dialog+CoreDataProperties.swift */; };
+		316D281C250529BE00E5A648 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D281B250529BE00E5A648 /* StartViewController.swift */; };
+		316D28202505FFD500E5A648 /* DoublePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D281E2505FFD500E5A648 /* DoublePickerCell.swift */; };
+		316D28212505FFD500E5A648 /* DoublePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316D281F2505FFD500E5A648 /* DoublePickerCell.xib */; };
+		316D28242506E27C00E5A648 /* ResizeableInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D28222506E27C00E5A648 /* ResizeableInfoTableViewCell.swift */; };
+		316D28252506E27C00E5A648 /* ResizeableInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316D28232506E27C00E5A648 /* ResizeableInfoTableViewCell.xib */; };
+		316D28282506E96F00E5A648 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316D28262506E96E00E5A648 /* EditTableViewCell.swift */; };
+		316D28292506E96F00E5A648 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316D28272506E96E00E5A648 /* EditTableViewCell.xib */; };
 		31BA361F24C221D400DE0E15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BA361E24C221D400DE0E15 /* AppDelegate.swift */; };
 		31BA362124C221D400DE0E15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BA362024C221D400DE0E15 /* SceneDelegate.swift */; };
 		31BA362324C221D400DE0E15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BA362224C221D400DE0E15 /* LoginViewController.swift */; };
@@ -87,15 +99,10 @@
 		31086BD224F9A81400B3839C /* ServiceEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEditorViewController.swift; sourceTree = "<group>"; };
 		31086BDB24F9C58400B3839C /* Countries&Cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Countries&Cities.json"; sourceTree = "<group>"; };
 		31086BDF24F9C5AB00B3839C /* Subjects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Subjects.json; sourceTree = "<group>"; };
+		3110D837251184D5000096B8 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		3110D838251184D5000096B8 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
+		3110D83C25118B51000096B8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		31391BD124FEBE29007C23B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		31391BF924FEDEBA007C23B3 /* Dialog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31391BFA24FEDEBA007C23B3 /* Dialog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		31391BFB24FEDEBA007C23B3 /* Service+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31391BFC24FEDEBA007C23B3 /* Service+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		31391BFD24FEDEBA007C23B3 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31391BFE24FEDEBA007C23B3 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		31391BFF24FEDEBA007C23B3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31391C0024FEDEBA007C23B3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		31391C1624FEEE96007C23B3 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		31391C1724FEEE96007C23B3 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		31424DE624F4077800583E72 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,12 +122,29 @@
 		3153AEC024FABBE6008A712E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		3153AEC224FAE505008A712E /* BigServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigServiceTableViewCell.swift; sourceTree = "<group>"; };
 		3153AEC324FAE505008A712E /* BigServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigServiceTableViewCell.xib; sourceTree = "<group>"; };
+		315C193F2510100200F9FEB2 /* HTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
+		315C1943251107D000F9FEB2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		316115F724F2A384008B0377 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		316115F824F2A384008B0377 /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		316115FC24F2A9B4008B0377 /* RadioButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonsTableViewCell.swift; sourceTree = "<group>"; };
 		316115FD24F2A9B4008B0377 /* RadioButtonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RadioButtonsTableViewCell.xib; sourceTree = "<group>"; };
 		3161160124F2AE4A008B0377 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
 		3161160224F2AE4A008B0377 /* PickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerTableViewCell.xib; sourceTree = "<group>"; };
+		316D2807250309FB00E5A648 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
+		316D2808250309FB00E5A648 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		316D2809250309FB00E5A648 /* Service+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataClass.swift"; sourceTree = "<group>"; };
+		316D280A250309FB00E5A648 /* Service+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		316D280B250309FB00E5A648 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		316D280C250309FB00E5A648 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		316D280D250309FB00E5A648 /* Dialog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataClass.swift"; sourceTree = "<group>"; };
+		316D280E250309FB00E5A648 /* Dialog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		316D281B250529BE00E5A648 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		316D281E2505FFD500E5A648 /* DoublePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePickerCell.swift; sourceTree = "<group>"; };
+		316D281F2505FFD500E5A648 /* DoublePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoublePickerCell.xib; sourceTree = "<group>"; };
+		316D28222506E27C00E5A648 /* ResizeableInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeableInfoTableViewCell.swift; sourceTree = "<group>"; };
+		316D28232506E27C00E5A648 /* ResizeableInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResizeableInfoTableViewCell.xib; sourceTree = "<group>"; };
+		316D28262506E96E00E5A648 /* EditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
+		316D28272506E96E00E5A648 /* EditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTableViewCell.xib; sourceTree = "<group>"; };
 		31BA361B24C221D400DE0E15 /* EChoose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EChoose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BA361E24C221D400DE0E15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31BA362024C221D400DE0E15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3110D83D25118B51000096B8 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +204,23 @@
 			path = "My Services Table View";
 			sourceTree = "<group>";
 		};
+		3110D8362511849D000096B8 /* Seventh Cell Type */ = {
+			isa = PBXGroup;
+			children = (
+				3110D837251184D5000096B8 /* ButtonTableViewCell.swift */,
+				3110D838251184D5000096B8 /* ButtonTableViewCell.xib */,
+			);
+			path = "Seventh Cell Type";
+			sourceTree = "<group>";
+		};
+		3110D83B25118B51000096B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3110D83C25118B51000096B8 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3124434724EFF268008BDDA5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +235,8 @@
 				31086BD224F9A81400B3839C /* ServiceEditorViewController.swift */,
 				31EA7FEB24FD9F2000413762 /* DialogsViewController.swift */,
 				31391BD124FEBE29007C23B3 /* ProfileViewController.swift */,
+				316D281B250529BE00E5A648 /* StartViewController.swift */,
+				315C1943251107D000F9FEB2 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -216,58 +260,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		31391BE824FEDB7D007C23B3 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				31391C1124FEED46007C23B3 /* Dialog Entity */,
-				31391C1224FEED66007C23B3 /* Service Entity */,
-				31391C1324FEED74007C23B3 /* Message Entity */,
-				31391C1424FEED81007C23B3 /* User Entity */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		31391C1124FEED46007C23B3 /* Dialog Entity */ = {
-			isa = PBXGroup;
-			children = (
-				31391BF924FEDEBA007C23B3 /* Dialog+CoreDataClass.swift */,
-				31391BFA24FEDEBA007C23B3 /* Dialog+CoreDataProperties.swift */,
-			);
-			path = "Dialog Entity";
-			sourceTree = "<group>";
-		};
-		31391C1224FEED66007C23B3 /* Service Entity */ = {
-			isa = PBXGroup;
-			children = (
-				31391BFB24FEDEBA007C23B3 /* Service+CoreDataClass.swift */,
-				31391BFC24FEDEBA007C23B3 /* Service+CoreDataProperties.swift */,
-			);
-			path = "Service Entity";
-			sourceTree = "<group>";
-		};
-		31391C1324FEED74007C23B3 /* Message Entity */ = {
-			isa = PBXGroup;
-			children = (
-				31391BFD24FEDEBA007C23B3 /* Message+CoreDataClass.swift */,
-				31391BFE24FEDEBA007C23B3 /* Message+CoreDataProperties.swift */,
-			);
-			path = "Message Entity";
-			sourceTree = "<group>";
-		};
-		31391C1424FEED81007C23B3 /* User Entity */ = {
-			isa = PBXGroup;
-			children = (
-				31391BFF24FEDEBA007C23B3 /* User+CoreDataClass.swift */,
-				31391C0024FEDEBA007C23B3 /* User+CoreDataProperties.swift */,
-			);
-			path = "User Entity";
-			sourceTree = "<group>";
-		};
 		31391C1524FEEE18007C23B3 /* Profile Info Table View */ = {
 			isa = PBXGroup;
 			children = (
 				31391C1624FEEE96007C23B3 /* InfoTableViewCell.swift */,
 				31391C1724FEEE96007C23B3 /* InfoTableViewCell.xib */,
+				316D28222506E27C00E5A648 /* ResizeableInfoTableViewCell.swift */,
+				316D28232506E27C00E5A648 /* ResizeableInfoTableViewCell.xib */,
+				316D28262506E96E00E5A648 /* EditTableViewCell.swift */,
+				316D28272506E96E00E5A648 /* EditTableViewCell.xib */,
 			);
 			path = "Profile Info Table View";
 			sourceTree = "<group>";
@@ -302,7 +303,7 @@
 		316115F424F2A283008B0377 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				31391BE824FEDB7D007C23B3 /* CoreData */,
+				316D2802250176DA00E5A648 /* Core Data */,
 				31391C1524FEEE18007C23B3 /* Profile Info Table View */,
 				31EA7FE524FD9D1F00413762 /* Dialogs Table View */,
 				31EA7FE024FD032700413762 /* Messages Table View */,
@@ -311,6 +312,7 @@
 				3153AEBE24FABA24008A712E /* BackgroundView.swift */,
 				3153AEC024FABBE6008A712E /* GradientView.swift */,
 				31086BD024F9546700B3839C /* RatingController.swift */,
+				315C193F2510100200F9FEB2 /* HTTPManager.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -324,6 +326,8 @@
 				3161160024F2AD60008B0377 /* Third Cell Type */,
 				31424DE524F4071800583E72 /* Fourth Cell Type */,
 				31424DEA24F408DB00583E72 /* Fifth Cell Type */,
+				316D281D2505FFA000E5A648 /* Sixth Cell Type */,
+				3110D8362511849D000096B8 /* Seventh Cell Type */,
 			);
 			path = "Registration Table View";
 			sourceTree = "<group>";
@@ -355,6 +359,62 @@
 			path = "Third Cell Type";
 			sourceTree = "<group>";
 		};
+		316D2802250176DA00E5A648 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				316D281725030A0C00E5A648 /* Message Entity */,
+				316D281825030A1800E5A648 /* Service Entity */,
+				316D281925030A2300E5A648 /* User Entity */,
+				316D281A25030A4700E5A648 /* Dialog Entity */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		316D281725030A0C00E5A648 /* Message Entity */ = {
+			isa = PBXGroup;
+			children = (
+				316D2807250309FB00E5A648 /* Message+CoreDataClass.swift */,
+				316D2808250309FB00E5A648 /* Message+CoreDataProperties.swift */,
+			);
+			path = "Message Entity";
+			sourceTree = "<group>";
+		};
+		316D281825030A1800E5A648 /* Service Entity */ = {
+			isa = PBXGroup;
+			children = (
+				316D2809250309FB00E5A648 /* Service+CoreDataClass.swift */,
+				316D280A250309FB00E5A648 /* Service+CoreDataProperties.swift */,
+			);
+			path = "Service Entity";
+			sourceTree = "<group>";
+		};
+		316D281925030A2300E5A648 /* User Entity */ = {
+			isa = PBXGroup;
+			children = (
+				316D280B250309FB00E5A648 /* User+CoreDataClass.swift */,
+				316D280C250309FB00E5A648 /* User+CoreDataProperties.swift */,
+			);
+			path = "User Entity";
+			sourceTree = "<group>";
+		};
+		316D281A25030A4700E5A648 /* Dialog Entity */ = {
+			isa = PBXGroup;
+			children = (
+				316D280D250309FB00E5A648 /* Dialog+CoreDataClass.swift */,
+				316D280E250309FB00E5A648 /* Dialog+CoreDataProperties.swift */,
+			);
+			path = "Dialog Entity";
+			sourceTree = "<group>";
+		};
+		316D281D2505FFA000E5A648 /* Sixth Cell Type */ = {
+			isa = PBXGroup;
+			children = (
+				316D281E2505FFD500E5A648 /* DoublePickerCell.swift */,
+				316D281F2505FFD500E5A648 /* DoublePickerCell.xib */,
+			);
+			path = "Sixth Cell Type";
+			sourceTree = "<group>";
+		};
 		31BA361224C221D400DE0E15 = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +422,7 @@
 				31BA363724C221D700DE0E15 /* EChooseTests */,
 				31BA364224C221D700DE0E15 /* EChooseUITests */,
 				31BA361C24C221D400DE0E15 /* Products */,
+				3110D83B25118B51000096B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -532,14 +593,18 @@
 			files = (
 				31BA362E24C221D600DE0E15 /* LaunchScreen.storyboard in Resources */,
 				31086BE024F9C5AB00B3839C /* Subjects.json in Resources */,
+				316D28252506E27C00E5A648 /* ResizeableInfoTableViewCell.xib in Resources */,
+				316D28292506E96F00E5A648 /* EditTableViewCell.xib in Resources */,
 				3161160424F2AE4A008B0377 /* PickerTableViewCell.xib in Resources */,
 				31424DE924F4077800583E72 /* DatePickerTableViewCell.xib in Resources */,
 				31BA362B24C221D600DE0E15 /* Assets.xcassets in Resources */,
+				3110D83A251184D5000096B8 /* ButtonTableViewCell.xib in Resources */,
 				31391C1924FEEE96007C23B3 /* InfoTableViewCell.xib in Resources */,
 				31EA7FE424FD036400413762 /* MessageTableViewCell.xib in Resources */,
 				3153AEC524FAE505008A712E /* BigServiceTableViewCell.xib in Resources */,
 				31BA362624C221D400DE0E15 /* Main.storyboard in Resources */,
 				31424DFD24F4699D00583E72 /* SectionHeader.xib in Resources */,
+				316D28212505FFD500E5A648 /* DoublePickerCell.xib in Resources */,
 				31424DEE24F4092A00583E72 /* TextViewTableViewCell.xib in Resources */,
 				31086BDC24F9C58400B3839C /* Countries&Cities.json in Resources */,
 				316115FF24F2A9B4008B0377 /* RadioButtonsTableViewCell.xib in Resources */,
@@ -570,14 +635,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31391C0924FEDF78007C23B3 /* Dialog+CoreDataClass.swift in Sources */,
-				31391C0A24FEDF78007C23B3 /* Dialog+CoreDataProperties.swift in Sources */,
-				31391C0B24FEDF78007C23B3 /* Service+CoreDataClass.swift in Sources */,
-				31391C0C24FEDF78007C23B3 /* Service+CoreDataProperties.swift in Sources */,
-				31391C0D24FEDF78007C23B3 /* Message+CoreDataClass.swift in Sources */,
-				31391C0E24FEDF78007C23B3 /* Message+CoreDataProperties.swift in Sources */,
-				31391C0F24FEDF78007C23B3 /* User+CoreDataClass.swift in Sources */,
-				31391C1024FEDF78007C23B3 /* User+CoreDataProperties.swift in Sources */,
 				31BA362324C221D400DE0E15 /* LoginViewController.swift in Sources */,
 				31BA361F24C221D400DE0E15 /* AppDelegate.swift in Sources */,
 				3153AEC124FABBE6008A712E /* GradientView.swift in Sources */,
@@ -585,11 +642,22 @@
 				3153AEBF24FABA24008A712E /* BackgroundView.swift in Sources */,
 				31EA7FE324FD036400413762 /* MessageTableViewCell.swift in Sources */,
 				31391BD224FEBE29007C23B3 /* ProfileViewController.swift in Sources */,
+				316D28242506E27C00E5A648 /* ResizeableInfoTableViewCell.swift in Sources */,
 				31BA362924C221D400DE0E15 /* EChoose.xcdatamodeld in Sources */,
+				316D2813250309FB00E5A648 /* User+CoreDataClass.swift in Sources */,
+				315C19402510100200F9FEB2 /* HTTPManager.swift in Sources */,
+				316D2810250309FB00E5A648 /* Message+CoreDataProperties.swift in Sources */,
 				31EA7FE924FD9D5400413762 /* DialogTableViewCell.swift in Sources */,
+				315C1944251107D000F9FEB2 /* MapViewController.swift in Sources */,
 				316115F924F2A384008B0377 /* TextFieldTableViewCell.swift in Sources */,
+				316D2811250309FB00E5A648 /* Service+CoreDataClass.swift in Sources */,
+				316D2816250309FB00E5A648 /* Dialog+CoreDataProperties.swift in Sources */,
+				316D281C250529BE00E5A648 /* StartViewController.swift in Sources */,
+				316D2815250309FB00E5A648 /* Dialog+CoreDataClass.swift in Sources */,
 				31BA362124C221D400DE0E15 /* SceneDelegate.swift in Sources */,
 				31424E0924F52BE100583E72 /* TabBarController.swift in Sources */,
+				316D28282506E96F00E5A648 /* EditTableViewCell.swift in Sources */,
+				316D2812250309FB00E5A648 /* Service+CoreDataProperties.swift in Sources */,
 				3153AEC424FAE505008A712E /* BigServiceTableViewCell.swift in Sources */,
 				31391C1824FEEE96007C23B3 /* InfoTableViewCell.swift in Sources */,
 				31086BCE24F93B4700B3839C /* ServiceTableViewCell.swift in Sources */,
@@ -598,11 +666,15 @@
 				31424E0724F5271C00583E72 /* SettingsViewController.swift in Sources */,
 				31EA7FEC24FD9F2000413762 /* DialogsViewController.swift in Sources */,
 				316115FE24F2A9B4008B0377 /* RadioButtonsTableViewCell.swift in Sources */,
+				3110D839251184D5000096B8 /* ButtonTableViewCell.swift in Sources */,
 				3153891C24D2FC7A004B7A83 /* RegistrationViewController.swift in Sources */,
+				316D28202505FFD500E5A648 /* DoublePickerCell.swift in Sources */,
+				316D280F250309FB00E5A648 /* Message+CoreDataClass.swift in Sources */,
 				31424DFC24F4699D00583E72 /* SectionHeader.swift in Sources */,
 				31424DE824F4077800583E72 /* DatePickerTableViewCell.swift in Sources */,
 				31424DFF24F526B300583E72 /* FeedViewController.swift in Sources */,
 				31424E0324F526E700583E72 /* MyServicesViewController.swift in Sources */,
+				316D2814250309FB00E5A648 /* User+CoreDataProperties.swift in Sources */,
 				31086BD124F9546700B3839C /* RatingController.swift in Sources */,
 				31424E0524F526FF00583E72 /* BotEditorViewController.swift in Sources */,
 				31424DED24F4092A00583E72 /* TextViewTableViewCell.swift in Sources */,

@@ -11,7 +11,7 @@ import UIKit
 class MessageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var messageTextLabel: UILabel!
-    @IBOutlet weak var bubbleBackgroundView: UIView!
+    @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
@@ -48,8 +48,8 @@ class MessageTableViewCell: UITableViewCell {
             dateTrailingConstraint.isActive = !message.isIncoming
         }
         
-        bubbleBackgroundView.layer.cornerRadius = 15
-        bubbleBackgroundView.backgroundColor = message.isIncoming ? #colorLiteral(red: 0.3810000122, green: 0.7239999771, blue: 1, alpha: 1) : #colorLiteral(red: 0.960748136, green: 0.9848688245, blue: 0.4547813535, alpha: 1)
+        backgroundCellView.layer.cornerRadius = 15
+        backgroundCellView.backgroundColor = message.isIncoming ? #colorLiteral(red: 0.3810000122, green: 0.7239999771, blue: 1, alpha: 1) : #colorLiteral(red: 0.960748136, green: 0.9848688245, blue: 0.4547813535, alpha: 1)
         messageTextLabel.textColor = message.isIncoming ? .white : .black
         timeLabel.textAlignment = message.isIncoming ? .left : .right
         messageTextLabel.text = message.text

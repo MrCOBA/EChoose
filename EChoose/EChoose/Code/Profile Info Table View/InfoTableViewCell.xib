@@ -1,23 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="71" id="KGk-i7-Jjw" customClass="InfoTableViewCell" customModule="EChoose" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="63" id="KGk-i7-Jjw" customClass="InfoTableViewCell" customModule="EChoose" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTo-pN-j4Q">
+                        <rect key="frame" x="8" y="8" width="304" height="47"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ko7-aX-xte">
+                                <rect key="frame" x="8" y="8" width="31" height="31"/>
+                                <color key="tintColor" name="MainColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="DJY-rY-WR2"/>
+                                    <constraint firstAttribute="width" constant="31" id="h9i-zU-ePK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attribute: value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3E-PK-Fh7">
+                                <rect key="frame" x="47" y="13" width="249" height="21"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="textColor" name="MainColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="SecondColorGradient"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ko7-aX-xte" secondAttribute="bottom" constant="8" id="1cG-w4-8SN"/>
+                            <constraint firstItem="x3E-PK-Fh7" firstAttribute="leading" secondItem="Ko7-aX-xte" secondAttribute="trailing" constant="8" id="7ir-sb-uIy"/>
+                            <constraint firstAttribute="bottom" secondItem="x3E-PK-Fh7" secondAttribute="bottom" constant="13" id="Opc-hK-dGJ"/>
+                            <constraint firstItem="Ko7-aX-xte" firstAttribute="leading" secondItem="DTo-pN-j4Q" secondAttribute="leading" constant="8" id="dFd-YL-Wfu"/>
+                            <constraint firstItem="Ko7-aX-xte" firstAttribute="top" secondItem="DTo-pN-j4Q" secondAttribute="top" constant="8" id="kmj-YX-01f"/>
+                            <constraint firstItem="x3E-PK-Fh7" firstAttribute="top" secondItem="DTo-pN-j4Q" secondAttribute="top" constant="13" id="q9b-1q-aE2"/>
+                            <constraint firstAttribute="trailing" secondItem="x3E-PK-Fh7" secondAttribute="trailing" constant="8" id="sTl-YW-D7P"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="DTo-pN-j4Q" secondAttribute="bottom" constant="8" id="7u9-Mr-RXF"/>
+                    <constraint firstAttribute="trailing" secondItem="DTo-pN-j4Q" secondAttribute="trailing" constant="8" id="Hlq-Qi-4sX"/>
+                    <constraint firstItem="DTo-pN-j4Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="I2h-7q-yCd"/>
+                    <constraint firstItem="DTo-pN-j4Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="lBl-cg-L3x"/>
+                </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="MainColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="137.68115942028987" y="133.59375"/>
+            <connections>
+                <outlet property="attributeImageView" destination="Ko7-aX-xte" id="TqB-xW-YDr"/>
+                <outlet property="attributeValueLabel" destination="x3E-PK-Fh7" id="ucK-QU-4OP"/>
+                <outlet property="backgroundCellView" destination="DTo-pN-j4Q" id="zX4-cJ-Slu"/>
+            </connections>
+            <point key="canvasLocation" x="40.579710144927539" y="106.80803571428571"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="MainColor">
+            <color red="0.63499999046325684" green="0.85500001907348633" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondColorGradient">
+            <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

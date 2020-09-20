@@ -10,7 +10,7 @@ import UIKit
 
 class DialogTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var opponentImageView: UIImageView!
     @IBOutlet weak var opponentFullnameLabel: UILabel!
     @IBOutlet weak var dialogLastMessageLabel: UILabel!
@@ -26,12 +26,12 @@ class DialogTableViewCell: UITableViewCell {
     
     func setUI() {
         
-        cellBackgroundView.layer.cornerRadius = 10
+        backgroundCellView.layer.cornerRadius = 10
         
-        cellBackgroundView.layer.shadowColor = UIColor.black.cgColor
-        cellBackgroundView.layer.shadowOffset = .zero
-        cellBackgroundView.layer.shadowOpacity = 0.5
-        cellBackgroundView.layer.shadowRadius = 10
+        backgroundCellView.layer.shadowColor = UIColor.black.cgColor
+        backgroundCellView.layer.shadowOffset = .zero
+        backgroundCellView.layer.shadowOpacity = 0.5
+        backgroundCellView.layer.shadowRadius = 10
         
         opponentImageView.layer.cornerRadius = opponentImageView.frame.width / 2
     }

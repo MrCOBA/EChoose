@@ -18,7 +18,7 @@ class BigServiceTableViewCell: UITableViewCell {
     @IBOutlet weak var stateIndicator: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    var service: ServiceStruct!
+    var service: Service!
     static let identifier = "BigServiceTableViewCell"
     
     override func awakeFromNib() {
@@ -29,7 +29,7 @@ class BigServiceTableViewCell: UITableViewCell {
     
     private func setUI() {
         
-        backView.layer.cornerRadius = 10
+        backView.layer.cornerRadius = 20
         
         backView.layer.shadowColor = UIColor.black.cgColor
         backView.layer.shadowOffset = .zero
@@ -37,18 +37,18 @@ class BigServiceTableViewCell: UITableViewCell {
         backView.layer.shadowOpacity = 0.5
     }
     
-    func setCell(_ service: ServiceStruct!) {
+    func setCell(_ service: Service!) {
         
         self.service = service
         
         subjectLabel.text = service.subject
-        workTypeLabel.text = service.typeOfWork
+        workTypeLabel.text = service.type
         costLabel.text = "\(service.cost)₽"
-        descriptionLabel.text = service.description
+        descriptionLabel.text = service.descript
         
         for i in 0...4 {
             
-            if i < service.hardLevel {
+            if i < service.hard {
                 (ratingStackView.subviews[i] as! UIButton).setBackgroundImage(UIImage(systemName: "star.fill"), for: .normal)
             }
             else {
@@ -70,7 +70,6 @@ class BigServiceTableViewCell: UITableViewCell {
     
     func changeState() {
         
-        service.isActivated = !service.isActivated
         
         if service.isActivated {
             

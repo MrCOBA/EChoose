@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 struct ServiceStruct {
     
@@ -24,10 +25,11 @@ class MyServicesViewController: UIViewController {
     @IBOutlet weak var myServicesTableView: UITableView!
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {}
     
-    var services: [ServiceStruct] = []
+    var user: User!
     var mode: EditorMode! = .none
     var row: Int = 0
     var highlitedRow: IndexPath?
+    var context: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +46,11 @@ class MyServicesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         highlitedRow = nil
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        context = appDelegate.persistentContainer.viewContext
+        
+        loadData()
         myServicesTableView.reloadData()
     }
     //MARK: - Setting up UI
@@ -54,19 +59,44 @@ class MyServicesViewController: UIViewController {
         self.overrideUserInterfaceStyle = .light
         self.navigationItem.setHidesBackButton(true, animated: true)
         
-        //Set table view layer
-        myServicesTableView.layer.cornerRadius = 10
+        myServicesTableView.layer.cornerRadius = 20
         myServicesTableView.separatorStyle = .none
     }
 
+    func loadData() {
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        
+        do {
+            try user = context.fetch(fetchRequest).first
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func saveData() {
+        
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func deleteService(_ service: Service) {
+        
+        context.delete(service)
+        saveData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destination = segue.destination as! ServiceEditorViewController
         
         destination.servicesController = self
         destination.mode = mode
+        
         if mode == EditorMode.editService {
-            destination.service = services[row]
+            destination.service = user.services?[row] as? Service
             destination.row = row
         }
     }
@@ -86,19 +116,23 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        services.count
+        
+        guard let services = user.services else { return 1 }
+        return services.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath == highlitedRow {
             let cell = myServicesTableView.dequeueReusableCell(withIdentifier: BigServiceTableViewCell.identifier, for: indexPath) as! BigServiceTableViewCell
-            cell.setCell(services[indexPath.row])
+            cell.setCell(user.services?[indexPath.row] as? Service)
             return cell
         }
-        let cell = myServicesTableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier, for: indexPath) as! ServiceTableViewCell
-        cell.setCell(services[indexPath.row])
-        return cell
+        else {
+            let cell = myServicesTableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier, for: indexPath) as! ServiceTableViewCell
+            cell.setCell(user.services?[indexPath.row] as? Service)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -128,11 +162,14 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func activationContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
-        
+
         let action: UIContextualAction!
+        let services = user.services?.mutableCopy() as? NSMutableOrderedSet
+        let service = services![indexPath.row] as! Service
         
-        if services[indexPath.row].isActivated {
-            
+        
+        if service.isActivated {
+
             action = UIContextualAction(
                 style: .normal,
                 title: "Unactivate",
@@ -140,8 +177,10 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
                     contextualAction: UIContextualAction,
                     swipeButton: UIView,
                     completionHandler: (Bool) -> Void) in
-                    
-                    self.services[indexPath.row].isActivated = false
+
+                    service.isActivated = false
+                    self.user.replaceServices(at: indexPath.row, with: service)
+                    self.saveData()
                     if indexPath != self.highlitedRow {
                         let cell =  self.myServicesTableView.cellForRow(at: indexPath) as! ServiceTableViewCell
                         cell.changeState()
@@ -162,8 +201,10 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
                     contextualAction: UIContextualAction,
                     swipeButton: UIView,
                     completionHandler: (Bool) -> Void) in
-                    
-                    self.services[indexPath.row].isActivated = true
+
+                    service.isActivated = true
+                    self.user.replaceServices(at: indexPath.row, with: service)
+                    self.saveData()
                     if indexPath != self.highlitedRow {
                         let cell =  self.myServicesTableView.cellForRow(at: indexPath) as! ServiceTableViewCell
                         cell.changeState()
@@ -177,8 +218,11 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
             return action
         }
     }
-    
+
     private func deleteContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+
+        let services = user.services?.mutableCopy() as? NSMutableOrderedSet
+        let service = services![indexPath.row] as! Service
         
         let action = UIContextualAction(
             style: .normal,
@@ -187,17 +231,18 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
                 contextualAction: UIContextualAction,
                 swipeButton: UIView,
                 completionHandler: (Bool) -> Void) in
-                
-                self.services.remove(at: indexPath.row)
+
+                self.user.removeFromServices(service)
+                self.saveData()
                 self.myServicesTableView.deleteRows(at: [indexPath], with: .fade)
                 completionHandler(true)
             })
         action.backgroundColor = #colorLiteral(red: 1, green: 0.400758059, blue: 0.3482903581, alpha: 1)
         return action
     }
-    
+
     private func editContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
-        
+
         let action = UIContextualAction(
             style: .normal,
             title: "Edit",
@@ -205,7 +250,7 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
                 contextualAction: UIContextualAction,
                 swipeButton: UIView,
                 completionHandler: (Bool) -> Void) in
-                
+
                 self.mode = EditorMode.editService
                 self.row = indexPath.row
                 self.performSegue(withIdentifier: "serviceEditorSegue", sender: nil)

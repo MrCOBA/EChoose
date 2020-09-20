@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum EditorMode {
     
@@ -36,10 +37,13 @@ class ServiceEditorViewController: UIViewController, UIAlertViewDelegate {
     private var subject2ID: [String: Int] = [:]
     private var workType2ID: [String: Int] = ["Homework": 0, "Practice": 1, "Olympiad": 2, "Exam preparation": 3, "Level-Up": 4, "Consultation": 5, "Any": 6]
     private var workTypes: [String] = ["Homework", "Practice", "Olympiad", "Exam preparation", "Level-Up", "Consultation", "Any"]
+    
     var cost = 0
     var row: Int!
     var mode: EditorMode!
-    var service: ServiceStruct?
+    var user: User!
+    var service: Service!
+    var context: NSManagedObjectContext!
     var servicesController: MyServicesViewController!
     let generator = UIImpactFeedbackGenerator(style: .light)
     
@@ -55,6 +59,8 @@ class ServiceEditorViewController: UIViewController, UIAlertViewDelegate {
         subjectSearchBar.delegate = self
         descriptionTextView.delegate = self
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        context = appDelegate.persistentContainer.viewContext
         let gestureRecognizer_BlurView = UITapGestureRecognizer(target: self, action: #selector(touchBlurViewHandler(_:)))
         blurView.addGestureRecognizer(gestureRecognizer_BlurView)
         let gestureRecognizer_MainView = UITapGestureRecognizer(target: self, action: #selector(touchMainViewHandler(_:)))
@@ -71,7 +77,12 @@ class ServiceEditorViewController: UIViewController, UIAlertViewDelegate {
         setUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     private func setUI() {
+        loadData()
         
         self.overrideUserInterfaceStyle = .light
         
@@ -82,12 +93,15 @@ class ServiceEditorViewController: UIViewController, UIAlertViewDelegate {
             setEditor()
             
         case .editService:
+            self.service = self.user.services![row] as? Service
+            
             self.navigationItem.title = "Edit Service"
-            self.subjectPickerView.selectRow(subject2ID[service!.subject]!, inComponent: 0, animated: true)
-            self.workTypePickerView.selectRow(workType2ID[service!.typeOfWork]!, inComponent: 0, animated: true)
-            self.cost = service!.cost
-            self.descriptionTextView.text = service!.description
-            self.hardRatingStackView.setStarsRating(rating: service!.hardLevel)
+            self.subjectPickerView.selectRow(subject2ID[service.subject!]!, inComponent: 0, animated: true)
+            self.workTypePickerView.selectRow(workType2ID[service.type!]!, inComponent: 0, animated: true)
+            self.cost = Int(service!.cost)
+            self.descriptionTextView.text = service!.descript
+            self.hardRatingStackView.setStarsRating(rating: Int(service.hard))
+            
             setEditor()
             
         case .none:
@@ -117,6 +131,26 @@ class ServiceEditorViewController: UIViewController, UIAlertViewDelegate {
         
         self.costLabel.text = "Cost: \(cost)₽"
         self.costStepper.value = Double((cost / 100 ) * 100)
+    }
+    
+    func loadData() {
+        
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        
+        do {
+            try user = context.fetch(fetchRequest).first
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func saveData() {
+        
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     @objc
@@ -179,11 +213,16 @@ class ServiceEditorViewController: UIViewController, UIAlertViewDelegate {
                 service?.subject = subjects[subjectPickerView.selectedRow(inComponent: 0)]
             }
             
-            service?.typeOfWork = workTypes[workTypePickerView.selectedRow(inComponent: 0)]
-            service?.cost = self.cost
-            service?.hardLevel = hardRatingStackView.starsRating
-            service?.description = descriptionTextView.text
-            self.servicesController.services[row] = service!
+            service?.type = workTypes[workTypePickerView.selectedRow(inComponent: 0)]
+            service?.cost = Int16(self.cost)
+            service?.hard = Int16(hardRatingStackView.starsRating)
+            service?.descript = descriptionTextView.text
+            service?.isActivated = true
+            
+            let services = user.services?.mutableCopy() as! NSMutableOrderedSet
+            services[row] = service!
+            
+            saveData()
             performSegue(withIdentifier: "backToServices", sender: nil)
         
         case .newService:
@@ -201,14 +240,18 @@ class ServiceEditorViewController: UIViewController, UIAlertViewDelegate {
                 return
             }
             
-            service = ServiceStruct(
-                subject: subject,
-                typeOfWork: workTypes[workTypePickerView.selectedRow(inComponent: 0)],
-                cost: self.cost,
-                description: descriptionTextView.text,
-                hardLevel: hardRatingStackView.starsRating)
+            service = Service(context: context)
             
-            self.servicesController.services.append(service!)
+            service.subject = subject
+            service.type = workTypes[workTypePickerView.selectedRow(inComponent: 0)]
+            service.cost = Int16(cost)
+            service.descript = descriptionTextView.text
+            service.hard = Int16(hardRatingStackView.starsRating)
+            service.isActivated = true
+            
+            user.addToServices(service)
+            
+            saveData()
             performSegue(withIdentifier: "backToServices", sender: nil)
             
         case .none:

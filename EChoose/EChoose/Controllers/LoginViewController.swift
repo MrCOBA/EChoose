@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var backgroundView: BackgroundView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,5 +35,6 @@ class LoginViewController: UIViewController {
         logoView.layer.shadowOpacity = 0.8
         logoView.layer.shadowRadius = 10
     }
+    
 }
 

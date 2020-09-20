@@ -10,18 +10,30 @@ import UIKit
 
 class InfoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var backgroundCellView: UIView!
+    @IBOutlet weak var attributeImageView: UIImageView!
+    @IBOutlet weak var attributeValueLabel: UILabel!
     
     static let identifier = "InfoTableViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setUI()
     }
     
+    func setUI() {
+        
+        backgroundCellView.layer.cornerRadius = 5
+        backgroundCellView.layer.shadowColor = UIColor.black.cgColor
+        backgroundCellView.layer.shadowOffset = .zero
+        backgroundCellView.layer.shadowRadius = 5
+        backgroundCellView.layer.shadowOpacity = 0.5
+    }
+    
+    func setCell(_ image: UIImage, _ name: String, _ value: String) {
+        
+        attributeImageView.image = image
+        attributeValueLabel.text = "\(name): \(value)"
+    }
 }

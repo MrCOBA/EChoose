@@ -64,14 +64,15 @@ extension PickerTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
         if row == 1 {
             RegistrationSectionsSizes.thirdSection = 3
             superTableView.reloadData()
-            let indexPath = NSIndexPath(row: 2, section: 2)
-            superTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+            superTableView.scrollToBottom(animated: true)
         }
         else {
             RegistrationSectionsSizes.thirdSection = 4
             superTableView.reloadData()
-            let indexPath = NSIndexPath(row: 3, section: 2)
-            superTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+            superTableView.scrollToBottom(animated: true)
         }
+        let indexPath = NSIndexPath(row: superTableView.numberOfRows(inSection: 2) - 1, section: 2)
+        superTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
     }
 }
+

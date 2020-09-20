@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -57,7 +57,7 @@
             <color key="backgroundColor" name="MainColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="bubbleBackgroundView" destination="wpq-eh-8c6" id="MIX-bg-qjF"/>
+                <outlet property="backgroundCellView" destination="wpq-eh-8c6" id="MIX-bg-qjF"/>
                 <outlet property="dateLeadingConstraint" destination="9GV-Ek-mF6" id="AGO-7p-SMY"/>
                 <outlet property="dateTrailingConstraint" destination="bqq-5z-29z" id="ecO-eN-ybb"/>
                 <outlet property="leadingConstraint" destination="UUz-e4-0h4" id="Pim-m8-t0S"/>

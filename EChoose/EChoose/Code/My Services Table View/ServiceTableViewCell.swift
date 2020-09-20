@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
 class ServiceTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var ratingStackView: UIStackView!
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var workTypeLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var stateIndicator: UIImageView!
     
-    var service: ServiceStruct!
+    var service: Service!
     static let identifier = "ServiceTableViewCell"
     
     override func awakeFromNib() {
@@ -28,25 +29,25 @@ class ServiceTableViewCell: UITableViewCell {
     
     private func setUI() {
         
-        backView.layer.cornerRadius = 10
+        backgroundCellView.layer.cornerRadius = 20
         
-        backView.layer.shadowColor = UIColor.black.cgColor
-        backView.layer.shadowOffset = .zero
-        backView.layer.shadowRadius = 5
-        backView.layer.shadowOpacity = 0.5
+        backgroundCellView.layer.shadowColor = UIColor.black.cgColor
+        backgroundCellView.layer.shadowOffset = .zero
+        backgroundCellView.layer.shadowRadius = 5
+        backgroundCellView.layer.shadowOpacity = 0.5
     }
     
-    func setCell(_ service: ServiceStruct!) {
+    func setCell(_ service: Service!) {
         
         self.service = service
         
         subjectLabel.text = service.subject
-        workTypeLabel.text = service.typeOfWork
+        workTypeLabel.text = service.type
         costLabel.text = "\(service.cost)₽"
         
         for i in 0...4 {
             
-            if i < service.hardLevel {
+            if i < service.hard {
                 (ratingStackView.subviews[i] as! UIButton).setBackgroundImage(UIImage(systemName: "star.fill"), for: .normal)
             }
             else {
@@ -67,8 +68,6 @@ class ServiceTableViewCell: UITableViewCell {
     }
     
     func changeState() {
-        
-        service.isActivated = !service.isActivated
         
         if service.isActivated {
             

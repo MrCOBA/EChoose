@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="Auction" representedClassName="Auction" syncable="YES" codeGenerationType="class">
+        <relationship name="bids" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bid" inverseName="auction" inverseEntity="Bid"/>
+        <relationship name="buyers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Buyer" inverseName="auctions" inverseEntity="Buyer"/>
+        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="auction" inverseEntity="Item"/>
+        <relationship name="seller" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Seller" inverseName="auctions" inverseEntity="Seller"/>
+        <relationship name="winner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Winner" inverseName="auction" inverseEntity="Winner"/>
+    </entity>
+    <entity name="Bid" representedClassName="Bid" syncable="YES" codeGenerationType="class">
+        <relationship name="auction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Auction" inverseName="bids" inverseEntity="Auction"/>
+        <relationship name="buyer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Buyer" inverseName="bids" inverseEntity="Buyer"/>
+    </entity>
+    <entity name="Buyer" representedClassName="Buyer" syncable="YES" codeGenerationType="class">
+        <relationship name="auctions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Auction" inverseName="buyers" inverseEntity="Auction"/>
+        <relationship name="bids" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bid" inverseName="buyer" inverseEntity="Bid"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CreditCard" inverseName="buyer" inverseEntity="CreditCard"/>
+    </entity>
+    <entity name="CreditCard" representedClassName="CreditCard" syncable="YES" codeGenerationType="class">
+        <relationship name="buyer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Buyer" inverseName="cards" inverseEntity="Buyer"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <relationship name="auction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Auction" inverseName="item" inverseEntity="Auction"/>
+        <relationship name="seller" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Seller" inverseName="items" inverseEntity="Seller"/>
+    </entity>
+    <entity name="Seller" representedClassName="Seller" syncable="YES" codeGenerationType="class">
+        <relationship name="auctions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Auction" inverseName="seller" inverseEntity="Auction"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="seller" inverseEntity="Item"/>
+    </entity>
+    <entity name="Winner" representedClassName="Winner" syncable="YES" codeGenerationType="class">
+        <relationship name="auction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Auction" inverseName="winner" inverseEntity="Auction"/>
+        <relationship name="buyer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Buyer"/>
+    </entity>
+    <elements>
+        <element name="Auction" positionX="-307.68359375" positionY="81.4609375" width="128" height="118"/>
+        <element name="Seller" positionX="-377.47265625" positionY="-44.26953125" width="128" height="73"/>
+        <element name="Buyer" positionX="-229.15625" positionY="382.5625" width="128" height="88"/>
+        <element name="Winner" positionX="-140.1484375" positionY="233.875" width="128" height="73"/>
+        <element name="Bid" positionX="96.44921875" positionY="-9.24609375" width="128" height="73"/>
+        <element name="Item" positionX="-480.265625" positionY="289.3046875" width="128" height="73"/>
+        <element name="CreditCard" positionX="41.25390625" positionY="412.8984375" width="128" height="58"/>
+    </elements>
 </model>

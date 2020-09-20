@@ -93,8 +93,9 @@ class FeedViewController: UIViewController {
     
     func resetCard() {
         
+        cardView.center = view.center
+        
         UIView.animate(withDuration: 0.5, animations: {
-            self.cardView.center = self.view.center
             self.cardView.alpha = 1
             self.cardView.transform = .identity
             self.likedislikeImageView.alpha = 0

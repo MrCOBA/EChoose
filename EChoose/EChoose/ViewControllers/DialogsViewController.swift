@@ -30,7 +30,7 @@ class DialogsViewController: UIViewController {
         dialogsTableView.dataSource = self
         
         dialogsTableView.separatorStyle = .none
-        dialogsTableView.layer.cornerRadius = 10
+        dialogsTableView.layer.cornerRadius = 20
         dialogsTableView.register(UINib(nibName: DialogTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: DialogTableViewCell.identifier)
         
     }
