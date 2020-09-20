@@ -2,7 +2,7 @@
 //  Message+CoreDataProperties.swift
 //  EChoose
 //
-//  Created by Oparin Oleg on 01.09.2020.
+//  Created by Oparin Oleg on 05.09.2020.
 //  Copyright © 2020 Oparin Oleg. All rights reserved.
 //
 //
@@ -20,6 +20,6 @@ extension Message {
     @NSManaged public var date: Date?
     @NSManaged public var isIncoming: Bool
     @NSManaged public var text: String?
-    @NSManaged public var messagesToDialog: Dialog?
+    @NSManaged public var dialog: Dialog?
 
 }
