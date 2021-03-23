@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,68 +11,53 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonTableViewCell" rowHeight="78" id="KGk-i7-Jjw" customClass="ButtonTableViewCell" customModule="EChoose" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonTableViewCell" rowHeight="102" id="KGk-i7-Jjw" customClass="ButtonTableViewCell" customModule="EChoose" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="102"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="102"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cje-Ff-2nG">
-                        <rect key="frame" x="16" y="10" width="288" height="23"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameOfField" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mea-8g-z4E">
-                                <rect key="frame" x="8" y="2" width="272" height="19"/>
-                                <color key="backgroundColor" name="SecondColorGradient"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                <color key="textColor" name="MainColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rE-lE-d92" customClass="CustomButton" customModule="EChoose" customModuleProvider="target">
+                        <rect key="frame" x="16" y="10" width="288" height="60"/>
                         <color key="backgroundColor" name="SecondColorGradient"/>
                         <constraints>
-                            <constraint firstItem="Mea-8g-z4E" firstAttribute="top" secondItem="Cje-Ff-2nG" secondAttribute="top" constant="2" id="0Rq-Jt-214"/>
-                            <constraint firstAttribute="height" constant="23" id="7hY-OF-Zek"/>
-                            <constraint firstAttribute="trailing" secondItem="Mea-8g-z4E" secondAttribute="trailing" constant="8" id="XgY-aN-hCx"/>
-                            <constraint firstAttribute="bottom" secondItem="Mea-8g-z4E" secondAttribute="bottom" constant="2" id="i6K-hf-QuE"/>
-                            <constraint firstItem="Mea-8g-z4E" firstAttribute="leading" secondItem="Cje-Ff-2nG" secondAttribute="leading" constant="8" id="oLL-uI-Vhe"/>
+                            <constraint firstAttribute="height" constant="60" id="ZAO-EM-cXN"/>
                         </constraints>
-                    </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5N-rH-zcQ">
-                        <rect key="frame" x="95.5" y="41" width="129" height="30"/>
-                        <color key="backgroundColor" name="MainColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="129" id="4ze-ed-zYK"/>
-                            <constraint firstAttribute="height" constant="30" id="wQR-Op-cge"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                        <state key="normal" title="Select Address">
-                            <color key="titleColor" name="SecondColorGradient"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                        <state key="normal" title="Confirm">
+                            <color key="titleColor" name="MainColor"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
-                            <action selector="buttonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KFq-bn-hZo"/>
+                            <action selector="buttonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BYd-EW-0pO"/>
                         </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" name="MainColor"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Cje-Ff-2nG" secondAttribute="trailing" constant="16" id="Da6-ZM-Ru9"/>
-                    <constraint firstAttribute="bottom" secondItem="j5N-rH-zcQ" secondAttribute="bottom" constant="8" id="JpZ-Wx-f4n"/>
-                    <constraint firstItem="Cje-Ff-2nG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="MuX-u6-esk"/>
-                    <constraint firstItem="j5N-rH-zcQ" firstAttribute="top" secondItem="Cje-Ff-2nG" secondAttribute="bottom" constant="8" id="OUt-VK-2Dd"/>
-                    <constraint firstItem="j5N-rH-zcQ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aW1-SC-Z8f"/>
-                    <constraint firstItem="Cje-Ff-2nG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="coZ-g5-o3t"/>
+                    <constraint firstItem="2rE-lE-d92" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="2eA-tN-260"/>
+                    <constraint firstAttribute="trailing" secondItem="2rE-lE-d92" secondAttribute="trailing" constant="16" id="gux-wn-Mnu"/>
+                    <constraint firstAttribute="bottom" secondItem="2rE-lE-d92" secondAttribute="bottom" constant="32" id="nsL-Ws-967"/>
+                    <constraint firstItem="2rE-lE-d92" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="yu9-Vh-J2P"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="backgroundCellView" destination="Cje-Ff-2nG" id="1As-m4-xkK"/>
-                <outlet property="button" destination="j5N-rH-zcQ" id="f10-2o-Sdn"/>
-                <outlet property="cellNameLabel" destination="Mea-8g-z4E" id="9bQ-mG-2Qq"/>
+                <outlet property="button" destination="2rE-lE-d92" id="wgo-hh-6hJ"/>
             </connections>
-            <point key="canvasLocation" x="140.57971014492756" y="164.0625"/>
+            <point key="canvasLocation" x="140.57971014492756" y="169.75446428571428"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="2rE-lE-d92">
+            <size key="intrinsicContentSize" width="107" height="51"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="MainColor">
             <color red="0.63499999046325684" green="0.85500001907348633" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

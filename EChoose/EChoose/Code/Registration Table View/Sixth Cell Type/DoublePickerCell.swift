@@ -17,11 +17,13 @@ class DoublePickerCell: UITableViewCell {
     @IBOutlet weak var searchBar: UISearchBar!
     
     static let identifier = "DoublePickerCell"
+    var delegate: TransferDelegate?
     var data: [String:[String]] = [:]
     var countries: [String] = []
     var filteredCountries: [String] = []
     var cities: [[String]] = []
     var filteredCities: [[String]] = []
+    private var key = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,8 +39,8 @@ class DoublePickerCell: UITableViewCell {
         setUI()
     }
     
-    func setCell(_ cellName: String) {
-        
+    func setCell(_ cellName: String, _ key: String) {
+        self.key = key
         cellNameLabel.text = cellName
     }
     
@@ -101,7 +103,12 @@ extension DoublePickerCell: UIPickerViewDelegate, UIPickerViewDataSource {
             if searchBar.text == "" {
                 return cities[firstPickerView.selectedRow(inComponent: 0)].count
             } else {
-                return filteredCities[firstPickerView.selectedRow(inComponent: 0)].count
+                if filteredCities.count > 0 {
+                    return filteredCities[firstPickerView.selectedRow(inComponent: 0)].count
+                }
+                else {
+                    return 0
+                }
             }
         }
     }
@@ -134,27 +141,61 @@ extension DoublePickerCell: UIPickerViewDelegate, UIPickerViewDataSource {
             secondPickerView.reloadComponent(0)
             secondPickerView.selectRow(0, inComponent: 0, animated: true)
         }
+        var selectedCity = ""
+        var selectedCountry = ""
+        
+        if searchBar.text == "" {
+            
+            selectedCountry = countries[firstPickerView.selectedRow(inComponent: 0)]
+            selectedCity = cities[firstPickerView.selectedRow(inComponent: 0)][secondPickerView.selectedRow(inComponent: 0)]
+        } else {
+            
+            selectedCountry = filteredCountries[firstPickerView.selectedRow(inComponent: 0)]
+            selectedCity = filteredCities[firstPickerView.selectedRow(inComponent: 0)][secondPickerView.selectedRow(inComponent: 0)]
+        }
+        delegate?.transferData(for: key, with: "\(selectedCountry) : \(selectedCity)")
     }
 }
 extension DoublePickerCell: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        self.filteredCountries = countries.filter{(country) -> Bool in
-
-            return country.lowercased().contains(searchBar.text!.lowercased())
-        }
-        
-        filteredCities = []
-        
-        for country in filteredCountries {
+        DispatchQueue.global(qos: .userInteractive).sync {[unowned self] in
             
-            filteredCities.append(data[country]!)
+            let substring = searchText.lowercased()
+            filteredCountries = []
+            
+            for (i, country) in countries.enumerated() {
+                
+                for (j, city) in cities[i].enumerated() {
+                    
+                    let leftElem = city.lowercased()
+                    let rightElem = cities[i][cities[i].count - 1 - j] .lowercased()
+                    
+                    if (leftElem.contains(substring) ||  rightElem.contains(substring)) && j < cities[i].count - j{
+                        
+                        filteredCountries.append(country)
+                        break
+                    }
+                }
+            }
+            
+            filteredCities = []
+            
+            for country in filteredCountries {
+                
+                filteredCities.append(data[country]!.filter({city in
+                    return city.lowercased().contains(substring.lowercased())
+                }))
+            }
+            
+            DispatchQueue.main.async {
+                
+                firstPickerView.reloadComponent(0)
+                secondPickerView.reloadComponent(0)
+                secondPickerView.selectRow(0, inComponent: 0, animated: true)
+            }
         }
-        
-        firstPickerView.reloadComponent(0)
-        secondPickerView.reloadComponent(0)
-        secondPickerView.selectRow(0, inComponent: 0, animated: true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickerSearcTableViewCell" rowHeight="230" id="KGk-i7-Jjw" customClass="PickerSearcTableViewCell" customModule="EChoose" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tiu-DY-kpj">
+                        <rect key="frame" x="16" y="10" width="288" height="23"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameOfField" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCU-za-93J">
+                                <rect key="frame" x="8" y="2" width="272" height="19"/>
+                                <color key="backgroundColor" name="SecondColorGradient"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" name="MainColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="SecondColorGradient"/>
+                        <constraints>
+                            <constraint firstItem="aCU-za-93J" firstAttribute="leading" secondItem="Tiu-DY-kpj" secondAttribute="leading" constant="8" id="68E-BL-P1h"/>
+                            <constraint firstAttribute="trailing" secondItem="aCU-za-93J" secondAttribute="trailing" constant="8" id="JKA-gT-X1a"/>
+                            <constraint firstItem="aCU-za-93J" firstAttribute="top" secondItem="Tiu-DY-kpj" secondAttribute="top" constant="2" id="c2P-N4-qN2"/>
+                            <constraint firstAttribute="bottom" secondItem="aCU-za-93J" secondAttribute="bottom" constant="2" id="eyF-Ep-Rmb"/>
+                            <constraint firstAttribute="height" constant="23" id="u5d-lB-uLG"/>
+                        </constraints>
+                    </view>
+                    <searchBar contentMode="redraw" placeholder="Search subject..." translatesAutoresizingMaskIntoConstraints="NO" id="COc-r2-ahz" customClass="CustomSearchBar" customModule="EChoose" customModuleProvider="target">
+                        <rect key="frame" x="16" y="37" width="288" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="Ldf-sW-wW9"/>
+                        </constraints>
+                        <color key="barTintColor" name="MainColor"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </searchBar>
+                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUa-yM-lPz">
+                        <rect key="frame" x="16" y="85" width="288" height="124"/>
+                    </pickerView>
+                </subviews>
+                <color key="backgroundColor" name="MainColor"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Tiu-DY-kpj" secondAttribute="trailing" constant="16" id="2Qa-Wm-rCG"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ZUa-yM-lPz" secondAttribute="bottom" constant="10" id="3Sh-wK-roa"/>
+                    <constraint firstItem="COc-r2-ahz" firstAttribute="top" secondItem="Tiu-DY-kpj" secondAttribute="bottom" constant="4" id="JtT-mh-ssO"/>
+                    <constraint firstItem="Tiu-DY-kpj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="TKq-Li-SFC"/>
+                    <constraint firstAttribute="trailing" secondItem="ZUa-yM-lPz" secondAttribute="trailing" constant="16" id="XqA-Y9-zEt"/>
+                    <constraint firstItem="COc-r2-ahz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Xt2-RY-m36"/>
+                    <constraint firstItem="Tiu-DY-kpj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jLt-xN-tpn"/>
+                    <constraint firstAttribute="trailing" secondItem="COc-r2-ahz" secondAttribute="trailing" constant="16" id="kDD-l7-BgS"/>
+                    <constraint firstItem="ZUa-yM-lPz" firstAttribute="top" secondItem="COc-r2-ahz" secondAttribute="bottom" constant="4" id="neV-nW-EVQ"/>
+                    <constraint firstItem="ZUa-yM-lPz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="zZx-oU-tEs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellNameLabel" destination="aCU-za-93J" id="AfB-Qx-OeS"/>
+                <outlet property="cellNameView" destination="Tiu-DY-kpj" id="cgv-qk-Ndj"/>
+                <outlet property="dataPicker" destination="ZUa-yM-lPz" id="S1R-78-pjz"/>
+                <outlet property="searchBar" destination="COc-r2-ahz" id="8hZ-gI-zWs"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="218.30357142857142"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="COc-r2-ahz">
+            <size key="intrinsicContentSize" width="-1" height="56"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="MainColor">
+            <color red="0.63499999046325684" green="0.85500001907348633" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondColorGradient">
+            <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,7 +25,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameOfField" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="999-fo-bbW">
                                 <rect key="frame" x="8" y="2" width="272" height="19"/>
                                 <color key="backgroundColor" name="SecondColorGradient"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" name="MainColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -37,38 +39,37 @@
                             <constraint firstAttribute="height" constant="23" id="ohn-SD-i8b"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVy-ny-qsA">
-                        <rect key="frame" x="16" y="41" width="288" height="173"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ka7-2y-aV4">
-                                <rect key="frame" x="4" y="4" width="280" height="165"/>
-                                <color key="backgroundColor" white="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="165" id="J69-pi-7EA"/>
-                                </constraints>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ka7-2y-aV4" customClass="CustomTextView" customModule="EChoose" customModuleProvider="target">
+                        <rect key="frame" x="16" y="49" width="288" height="165"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ka7-2y-aV4" secondAttribute="trailing" constant="4" id="0ws-Vg-qB6"/>
-                            <constraint firstItem="ka7-2y-aV4" firstAttribute="top" secondItem="hVy-ny-qsA" secondAttribute="top" constant="4" id="l3n-D6-oCa"/>
-                            <constraint firstAttribute="bottom" secondItem="ka7-2y-aV4" secondAttribute="bottom" constant="4" id="ndZ-60-b3B"/>
-                            <constraint firstItem="ka7-2y-aV4" firstAttribute="leading" secondItem="hVy-ny-qsA" secondAttribute="leading" constant="4" id="wud-Jw-R5U"/>
+                            <constraint firstAttribute="height" constant="165" id="J69-pi-7EA"/>
                         </constraints>
-                    </view>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="SecondColorGradient"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textView>
                 </subviews>
                 <color key="backgroundColor" name="MainColor"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="hVy-ny-qsA" secondAttribute="bottom" constant="16" id="1jE-o1-jEl"/>
+                    <constraint firstItem="ka7-2y-aV4" firstAttribute="top" secondItem="Xvc-XI-y3I" secondAttribute="bottom" constant="16" id="96x-q1-rpB"/>
                     <constraint firstItem="Xvc-XI-y3I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HYl-02-V2j"/>
                     <constraint firstAttribute="trailing" secondItem="Xvc-XI-y3I" secondAttribute="trailing" constant="16" id="NdQ-WI-KJ3"/>
-                    <constraint firstItem="hVy-ny-qsA" firstAttribute="top" secondItem="Xvc-XI-y3I" secondAttribute="bottom" constant="8" id="U9h-z5-a4A"/>
-                    <constraint firstAttribute="trailing" secondItem="hVy-ny-qsA" secondAttribute="trailing" constant="16" id="dBX-rS-RfQ"/>
+                    <constraint firstItem="ka7-2y-aV4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Xtu-fF-xdP"/>
+                    <constraint firstAttribute="trailing" secondItem="ka7-2y-aV4" secondAttribute="trailing" constant="16" id="fOr-Zz-ksc"/>
                     <constraint firstItem="Xvc-XI-y3I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="fW4-1I-x7q"/>
-                    <constraint firstItem="hVy-ny-qsA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="jbV-W2-tFh"/>
+                    <constraint firstAttribute="bottom" secondItem="ka7-2y-aV4" secondAttribute="bottom" constant="16" id="fZP-5M-uYZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -76,9 +77,8 @@
                 <outlet property="cellNameLabel" destination="999-fo-bbW" id="SPa-qz-kD2"/>
                 <outlet property="cellNameView" destination="Xvc-XI-y3I" id="dGR-Xv-RSV"/>
                 <outlet property="descriptionTextView" destination="ka7-2y-aV4" id="rji-BF-TSV"/>
-                <outlet property="descriptionView" destination="hVy-ny-qsA" id="O6Q-zF-ffQ"/>
             </connections>
-            <point key="canvasLocation" x="79.710144927536234" y="93.415178571428569"/>
+            <point key="canvasLocation" x="79.710144927536234" y="93.080357142857139"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -88,5 +88,8 @@
         <namedColor name="SecondColorGradient">
             <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

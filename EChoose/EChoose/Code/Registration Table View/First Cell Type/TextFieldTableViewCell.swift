@@ -15,6 +15,8 @@ class TextFieldTableViewCell: UITableViewCell {
     @IBOutlet weak var inputTextField: UITextField!
     
     static let identifier = "TextFieldTableViewCell"
+    var delegate: TransferDelegate?
+    private var key = ""
     private var cellName: String!
     
     override func awakeFromNib() {
@@ -24,8 +26,10 @@ class TextFieldTableViewCell: UITableViewCell {
         setUI()
     }
     
-    func setCell(_ cellName: String, _ isSecured: Bool, _ placholder: String, _ keyboardType: UIKeyboardType = .default) {
+    func setCell(_ cellName: String, _ isSecured: Bool, _ placholder: String, _ keyboardType: UIKeyboardType = .default, _ pair: (String, String)) {
         self.cellName = cellName
+        self.key = pair.0
+        inputTextField.text = pair.1
         cellNameLabel.text = cellName
         inputTextField.isSecureTextEntry = isSecured
         inputTextField.placeholder = placholder
@@ -44,9 +48,15 @@ class TextFieldTableViewCell: UITableViewCell {
 }
 extension TextFieldTableViewCell: UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.transferData(for: key, with: inputTextField.text ?? "")
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         inputTextField.resignFirstResponder()
         return true
     }
 }
+
+

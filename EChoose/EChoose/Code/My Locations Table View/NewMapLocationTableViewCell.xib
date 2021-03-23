@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewMapLocationTableViewCell" rowHeight="74" id="KGk-i7-Jjw" customClass="NewMapLocationTableViewCell" customModule="EChoose" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDC-Xf-TKD" customClass="CustomView" customModule="EChoose" customModuleProvider="target">
+                        <rect key="frame" x="4" y="4" width="312" height="66"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newpoint" translatesAutoresizingMaskIntoConstraints="NO" id="zvD-R7-6vI">
+                                <rect key="frame" x="248" y="13" width="40" height="40"/>
+                                <color key="tintColor" name="SecondColorGradient"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="6cb-cm-xbj"/>
+                                    <constraint firstAttribute="height" constant="40" id="adi-Sc-90b"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTK-2k-rgy">
+                                <rect key="frame" x="24" y="21" width="216" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" name="SecondColorGradient"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzx-no-zfh">
+                                <rect key="frame" x="0.0" y="0.0" width="312" height="66"/>
+                                <connections>
+                                    <action selector="addNewLocation:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3ux-64-UXh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="MainColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Wzx-no-zfh" secondAttribute="bottom" id="Eoc-0h-7w5"/>
+                            <constraint firstAttribute="trailing" secondItem="zvD-R7-6vI" secondAttribute="trailing" constant="24" id="JaB-6Y-Vr5"/>
+                            <constraint firstAttribute="height" constant="66" id="MHh-MT-T8D"/>
+                            <constraint firstItem="zvD-R7-6vI" firstAttribute="leading" secondItem="yTK-2k-rgy" secondAttribute="trailing" constant="8" id="SCo-z5-uhN"/>
+                            <constraint firstAttribute="trailing" secondItem="Wzx-no-zfh" secondAttribute="trailing" id="kap-zs-k4c"/>
+                            <constraint firstItem="Wzx-no-zfh" firstAttribute="leading" secondItem="XDC-Xf-TKD" secondAttribute="leading" id="q1L-uo-s6r"/>
+                            <constraint firstItem="zvD-R7-6vI" firstAttribute="centerY" secondItem="XDC-Xf-TKD" secondAttribute="centerY" id="sLi-EO-NNA"/>
+                            <constraint firstItem="Wzx-no-zfh" firstAttribute="top" secondItem="XDC-Xf-TKD" secondAttribute="top" id="vlh-tS-gjL"/>
+                            <constraint firstItem="yTK-2k-rgy" firstAttribute="centerY" secondItem="XDC-Xf-TKD" secondAttribute="centerY" id="xS7-dc-COT"/>
+                            <constraint firstItem="yTK-2k-rgy" firstAttribute="leading" secondItem="XDC-Xf-TKD" secondAttribute="leading" constant="24" id="xVO-70-6da"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="SecondColorGradient"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="MainColor"/>
+                <constraints>
+                    <constraint firstItem="XDC-Xf-TKD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="8rx-rh-zfm"/>
+                    <constraint firstAttribute="trailing" secondItem="XDC-Xf-TKD" secondAttribute="trailing" constant="4" id="Qa3-2p-N3Z"/>
+                    <constraint firstItem="XDC-Xf-TKD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="gre-le-bHa"/>
+                    <constraint firstAttribute="bottom" secondItem="XDC-Xf-TKD" secondAttribute="bottom" constant="4" id="k0U-Ve-8JY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="-94.20289855072464" y="5.6919642857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="newpoint" width="24" height="24"/>
+        <namedColor name="MainColor">
+            <color red="0.63499999046325684" green="0.85500001907348633" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondColorGradient">
+            <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

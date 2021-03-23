@@ -28,11 +28,6 @@ class DialogTableViewCell: UITableViewCell {
         
         backgroundCellView.layer.cornerRadius = 10
         
-        backgroundCellView.layer.shadowColor = UIColor.black.cgColor
-        backgroundCellView.layer.shadowOffset = .zero
-        backgroundCellView.layer.shadowOpacity = 0.5
-        backgroundCellView.layer.shadowRadius = 10
-        
         opponentImageView.layer.cornerRadius = opponentImageView.frame.width / 2
     }
     

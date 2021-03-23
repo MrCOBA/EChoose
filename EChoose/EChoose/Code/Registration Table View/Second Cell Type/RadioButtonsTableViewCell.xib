@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +24,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameOfField" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBd-ln-LAW">
                                 <rect key="frame" x="8" y="2" width="272" height="19"/>
                                 <color key="backgroundColor" name="SecondColorGradient"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" name="MainColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -37,32 +38,48 @@
                             <constraint firstItem="eBd-ln-LAW" firstAttribute="leading" secondItem="fNw-di-VqN" secondAttribute="leading" constant="8" id="xmw-ni-RrE"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mk-rO-JRf">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mk-rO-JRf" customClass="CustomButton" customModule="EChoose" customModuleProvider="target">
                         <rect key="frame" x="187" y="41" width="80" height="35"/>
-                        <color key="backgroundColor" name="SecondColorGradient"/>
+                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="clc-Nt-eq8"/>
                             <constraint firstAttribute="width" constant="80" id="y30-VS-XCJ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                         <state key="normal" title="Student">
-                            <color key="titleColor" name="FirstColorGradient"/>
+                            <color key="titleColor" name="SecondColorGradient"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="SecondColorGradient"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="studentButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="omz-AX-zcD"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0s-Bv-VJ9">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0s-Bv-VJ9" customClass="CustomButton" customModule="EChoose" customModuleProvider="target">
                         <rect key="frame" x="53" y="41" width="80" height="35"/>
-                        <color key="backgroundColor" name="SecondColorGradient"/>
+                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="fA9-P2-zSn"/>
                             <constraint firstAttribute="width" constant="80" id="ibB-g9-s2b"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                         <state key="normal" title="Teacher">
-                            <color key="titleColor" name="FirstColorGradient"/>
+                            <color key="titleColor" name="SecondColorGradient"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="SecondColorGradient"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="teacherButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4oR-y5-6MM"/>
                         </connections>
@@ -80,25 +97,30 @@
                     <constraint firstAttribute="trailing" secondItem="fNw-di-VqN" secondAttribute="trailing" constant="16" id="udM-ww-tuZ"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="MainColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="MainColor"/>
             <connections>
                 <outlet property="cellNameLabel" destination="eBd-ln-LAW" id="gi0-vI-adR"/>
                 <outlet property="cellNameView" destination="fNw-di-VqN" id="hrW-bz-2Ey"/>
-                <outlet property="studentButtonConstraint" destination="y30-VS-XCJ" id="YGS-Co-IEO"/>
-                <outlet property="studentRadioButton" destination="8Mk-rO-JRf" id="ioj-b7-3Ox"/>
-                <outlet property="teacherButtonConstraint" destination="ibB-g9-s2b" id="TgC-6O-qq5"/>
-                <outlet property="teacherRadioButton" destination="c0s-Bv-VJ9" id="agp-rm-fk3"/>
+                <outlet property="firstButtonConstraint" destination="ibB-g9-s2b" id="TgC-6O-qq5"/>
+                <outlet property="firstRadioButton" destination="c0s-Bv-VJ9" id="agp-rm-fk3"/>
+                <outlet property="secondButtonConstraint" destination="y30-VS-XCJ" id="YGS-Co-IEO"/>
+                <outlet property="secondRadioButton" destination="8Mk-rO-JRf" id="ioj-b7-3Ox"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="160.04464285714286"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="8Mk-rO-JRf">
+            <size key="intrinsicContentSize" width="62" height="34"/>
+        </designable>
+        <designable name="c0s-Bv-VJ9">
+            <size key="intrinsicContentSize" width="61" height="34"/>
+        </designable>
+    </designables>
     <resources>
-        <namedColor name="FirstColorGradient">
-            <color red="0.96078431372549022" green="0.98431372549019602" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="MainColor">
-            <color red="0.63499999046325684" green="0.85500001907348633" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63137254901960782" green="0.85490196078431369" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondColorGradient">
             <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

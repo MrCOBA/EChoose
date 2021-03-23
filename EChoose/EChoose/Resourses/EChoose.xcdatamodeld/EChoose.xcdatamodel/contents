@@ -1,46 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Dialog" representedClassName="Dialog" syncable="YES">
-        <attribute name="city" optional="YES" attributeType="String"/>
-        <attribute name="fullname" optional="YES" attributeType="String"/>
-        <attribute name="image" optional="YES" attributeType="Binary"/>
-        <attribute name="isBotModeON" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="username" optional="YES" attributeType="String"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Dialog" representedClassName=".Dialog" syncable="YES">
+        <attribute name="username" attributeType="String"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Message" inverseName="dialog" inverseEntity="Message"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="dialogs" inverseEntity="User"/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="dialogs" inverseEntity="Profile"/>
     </entity>
-    <entity name="Message" representedClassName="Message" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="isIncoming" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="text" optional="YES" attributeType="String"/>
+    <entity name="Location" representedClassName=".Location" syncable="YES">
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="locations" inverseEntity="Profile"/>
+        <relationship name="services" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Service" inverseName="location" inverseEntity="Service"/>
+    </entity>
+    <entity name="Message" representedClassName=".Message" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isIncoming" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="text" attributeType="String" defaultValueString=""/>
         <relationship name="dialog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dialog" inverseName="messages" inverseEntity="Dialog"/>
     </entity>
-    <entity name="Service" representedClassName="Service" syncable="YES">
-        <attribute name="cost" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    <entity name="Profile" representedClassName=".Profile" syncable="YES">
+        <attribute name="age" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="descript" optional="YES" attributeType="String"/>
-        <attribute name="hard" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="isActivated" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="subject" optional="YES" attributeType="String"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="services" inverseEntity="User"/>
-    </entity>
-    <entity name="User" representedClassName="User" syncable="YES">
-        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="city" optional="YES" attributeType="String"/>
-        <attribute name="descript" optional="YES" attributeType="String"/>
-        <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="fullname" optional="YES" attributeType="String"/>
+        <attribute name="email" attributeType="String" defaultValueString=""/>
+        <attribute name="firstname" attributeType="String" defaultValueString=""/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary"/>
-        <attribute name="password" optional="YES" attributeType="String"/>
-        <attribute name="role" optional="YES" attributeType="String"/>
-        <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="dialogs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Dialog" inverseName="user" inverseEntity="Dialog"/>
-        <relationship name="services" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Service" inverseName="user" inverseEntity="Service"/>
+        <attribute name="lastname" attributeType="String" defaultValueString=""/>
+        <attribute name="sex" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="dialogs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Dialog" inverseName="profile" inverseEntity="Dialog"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Location" inverseName="profile" inverseEntity="Location"/>
+        <relationship name="services" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Service" inverseName="profile" inverseEntity="Service"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="profile" inverseEntity="User"/>
+    </entity>
+    <entity name="Service" representedClassName=".Service" syncable="YES">
+        <attribute name="category" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="edLocationType" attributeType="String" defaultValueString="" customClassName="[(Int, String, String)]"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isActive" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isTutor" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="price" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="serviceTypes" attributeType="Transformable" customClassName="[Int]"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="services" inverseEntity="Location"/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="services" inverseEntity="Profile"/>
+    </entity>
+    <entity name="User" representedClassName=".User" syncable="YES">
+        <attribute name="password" attributeType="String" defaultValueString=""/>
+        <attribute name="username" attributeType="String" defaultValueString=""/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="user" inverseEntity="Profile"/>
     </entity>
     <elements>
-        <element name="Dialog" positionX="-258.94921875" positionY="-227.94921875" width="128" height="148"/>
-        <element name="Message" positionX="-31.26171875" positionY="68.640625" width="128" height="103"/>
-        <element name="Service" positionX="-234.32421875" positionY="-30.9453125" width="128" height="148"/>
-        <element name="User" positionX="-531.83203125" positionY="13.8125" width="128" height="208"/>
+        <element name="Dialog" positionX="-770.992919921875" positionY="-377.6357727050781" width="128" height="88"/>
+        <element name="Location" positionX="-512.4866943359375" positionY="-196.4718017578125" width="128" height="119"/>
+        <element name="Message" positionX="-252.8751220703125" positionY="-408.5839385986328" width="128" height="103"/>
+        <element name="Profile" positionX="-579.464111328125" positionY="15.10302734375" width="128" height="223"/>
+        <element name="Service" positionX="207.5274047851563" positionY="-0.05041503906255684" width="128" height="193"/>
+        <element name="User" positionX="-803.7127685546875" positionY="150.2049560546875" width="128" height="88"/>
     </elements>
 </model>

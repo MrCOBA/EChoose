@@ -15,16 +15,19 @@ class DatePickerTableViewCell: UITableViewCell {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     static let identifier = "DatePickerTableViewCell"
+    var delegate: TransferDelegate?
     private var cellName: String!
+    private var key = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        datePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         setUI()
     }
     
-    func setCell(_ cellName: String) {
-        
+    func setCell(_ cellName: String, _ key: String) {
+        self.key = key
         self.cellName = cellName
         cellNameLabel.text = cellName
     }
@@ -39,5 +42,14 @@ class DatePickerTableViewCell: UITableViewCell {
         cellNameView.layer.shadowRadius = 5
         
         datePicker.maximumDate = Date()
+    }
+    
+    @objc func datePickerChanged(picker: UIDatePicker) {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let date = formatter.string(from: picker.date)
+        
+        delegate?.transferData(for: key, with: date)
     }
 }

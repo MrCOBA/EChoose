@@ -15,9 +15,13 @@ class PickerTableViewCell: UITableViewCell {
     @IBOutlet weak var dataPicker: UIPickerView!
     
     static let identifier = "PickerTableViewCell"
+    
+    var delegate: TransferDelegate?
+    var servicesManager: ServicesManager = ServicesManager.shared
+    var serviceDefault: ServiceDefault?
+    private var key: String = ""
     private var data: [String] = []
     private var cellName: String!
-    var superTableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,11 +31,24 @@ class PickerTableViewCell: UITableViewCell {
         setUI()
     }
     
-    func setCell(_ cellName: String, _ data: [String]) {
-        
+    func setCell(_ cellName: String, _ data: [String], _ key: String) {
+        self.key = key
         self.cellName = cellName
         self.data = data
         cellNameLabel.text = cellName
+        
+        if let serviceDefault = serviceDefault,
+           let edLocationType = servicesManager.edLocationTypes.first(where: {edLocationType in return edLocationType == serviceDefault.edLocation}){
+            
+            for (i, string) in data.enumerated() {
+                if string == edLocationType {
+                    dataPicker.selectRow(i, inComponent: 0, animated: true)
+                }
+            }
+            if serviceDefault.edLocation == "" {
+                serviceDefault.edLocation = data[0]
+            }
+        }
     }
     
     private func setUI() {
@@ -60,19 +77,10 @@ extension PickerTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        if row == 1 {
-            RegistrationSectionsSizes.thirdSection = 3
-            superTableView.reloadData()
-            superTableView.scrollToBottom(animated: true)
+        if let serviceDefault = serviceDefault {
+            serviceDefault.edLocation = data[row]
         }
-        else {
-            RegistrationSectionsSizes.thirdSection = 4
-            superTableView.reloadData()
-            superTableView.scrollToBottom(animated: true)
-        }
-        let indexPath = NSIndexPath(row: superTableView.numberOfRows(inSection: 2) - 1, section: 2)
-        superTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+        delegate?.transferData(for: self.key, with: data[row])
     }
 }
 

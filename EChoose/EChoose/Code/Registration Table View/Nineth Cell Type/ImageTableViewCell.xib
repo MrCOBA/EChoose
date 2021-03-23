@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageTableViewCell" rowHeight="203" id="KGk-i7-Jjw" customClass="ImageTableViewCell" customModule="EChoose" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="203"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="203"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8S-RK-A2j">
+                        <rect key="frame" x="16" y="10" width="288" height="23"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameOfField" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPh-H0-AW8">
+                                <rect key="frame" x="8" y="2" width="272" height="19"/>
+                                <color key="backgroundColor" name="SecondColorGradient"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" name="MainColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="SecondColorGradient"/>
+                        <constraints>
+                            <constraint firstItem="KPh-H0-AW8" firstAttribute="top" secondItem="H8S-RK-A2j" secondAttribute="top" constant="2" id="420-7C-mBq"/>
+                            <constraint firstAttribute="trailing" secondItem="KPh-H0-AW8" secondAttribute="trailing" constant="8" id="Glm-ZR-TXM"/>
+                            <constraint firstItem="KPh-H0-AW8" firstAttribute="leading" secondItem="H8S-RK-A2j" secondAttribute="leading" constant="8" id="Mu5-X6-JMy"/>
+                            <constraint firstAttribute="bottom" secondItem="KPh-H0-AW8" secondAttribute="bottom" constant="2" id="may-Rk-d4M"/>
+                            <constraint firstAttribute="height" constant="23" id="zsJ-tI-eeQ"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addimage" translatesAutoresizingMaskIntoConstraints="NO" id="gLs-qP-lDt" customClass="CustomImageView" customModule="EChoose" customModuleProvider="target">
+                        <rect key="frame" x="85" y="43" width="150" height="150"/>
+                        <color key="tintColor" name="SecondColorGradient"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="150" id="4ZP-dm-S4J"/>
+                            <constraint firstAttribute="width" constant="150" id="ib6-mK-hRJ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="SecondColorGradient"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDQ-E4-6bv">
+                        <rect key="frame" x="85" y="43" width="150" height="150"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="150" id="Q5h-iq-Im3"/>
+                            <constraint firstAttribute="width" constant="150" id="Z6a-uD-UkB"/>
+                        </constraints>
+                        <color key="tintColor" name="SecondColorGradient"/>
+                        <connections>
+                            <action selector="selectImage:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="upv-7N-h7C"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4b-q4-OOd">
+                        <rect key="frame" x="264" y="98" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Mfj-U1-uWo"/>
+                            <constraint firstAttribute="height" constant="40" id="qss-UO-MXT"/>
+                        </constraints>
+                        <color key="tintColor" name="SecondColorGradient"/>
+                        <state key="normal" backgroundImage="broom"/>
+                        <connections>
+                            <action selector="clearImage:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vQ1-iD-udD"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" name="MainColor"/>
+                <constraints>
+                    <constraint firstItem="gLs-qP-lDt" firstAttribute="top" secondItem="H8S-RK-A2j" secondAttribute="bottom" constant="10" id="1D3-vd-grG"/>
+                    <constraint firstItem="fDQ-E4-6bv" firstAttribute="centerY" secondItem="gLs-qP-lDt" secondAttribute="centerY" id="4VE-KF-6nf"/>
+                    <constraint firstItem="gLs-qP-lDt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="6lI-kl-7pn"/>
+                    <constraint firstItem="l4b-q4-OOd" firstAttribute="centerY" secondItem="fDQ-E4-6bv" secondAttribute="centerY" id="Cua-Sc-od1"/>
+                    <constraint firstItem="l4b-q4-OOd" firstAttribute="trailing" secondItem="H8S-RK-A2j" secondAttribute="trailing" id="IZM-yB-0GX"/>
+                    <constraint firstItem="H8S-RK-A2j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="MdD-Ng-8pR"/>
+                    <constraint firstAttribute="trailing" secondItem="H8S-RK-A2j" secondAttribute="trailing" constant="16" id="T4B-ZT-w7y"/>
+                    <constraint firstItem="H8S-RK-A2j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="YZ5-Eg-YE9"/>
+                    <constraint firstItem="fDQ-E4-6bv" firstAttribute="centerX" secondItem="gLs-qP-lDt" secondAttribute="centerX" id="b2f-8D-VwB"/>
+                    <constraint firstAttribute="bottom" secondItem="gLs-qP-lDt" secondAttribute="bottom" constant="10" id="jsX-6f-sis"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellNameLabel" destination="KPh-H0-AW8" id="98a-qs-4LJ"/>
+                <outlet property="cellNameView" destination="H8S-RK-A2j" id="KJr-nK-ZCF"/>
+                <outlet property="profileImageView" destination="gLs-qP-lDt" id="hCM-pF-bea"/>
+                <outlet property="selectImageButton" destination="fDQ-E4-6bv" id="WTB-QW-p3z"/>
+            </connections>
+            <point key="canvasLocation" x="-139.13043478260872" y="156.36160714285714"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="gLs-qP-lDt">
+            <size key="intrinsicContentSize" width="256" height="256"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="addimage" width="256" height="256"/>
+        <image name="broom" width="24" height="24"/>
+        <namedColor name="MainColor">
+            <color red="0.63499999046325684" green="0.85500001907348633" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondColorGradient">
+            <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

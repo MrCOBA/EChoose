@@ -12,12 +12,16 @@ class TextViewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellNameView: UIView!
     @IBOutlet weak var cellNameLabel: UILabel!
-    @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     static let identifier = "TextViewTableViewCell"
+    var serviceManager: ServicesManager = ServicesManager.shared
+    var serviceDefault: ServiceDefault?
+    var delegate: TransferDelegate?
+    var notificationCenter: NotificationCenter!
+    private var key: String = ""
     private var cellName: String!
-    var superTableView: UITableView!
+    private var superTableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,14 +31,20 @@ class TextViewTableViewCell: UITableViewCell {
         setUI()
     }
     
-    func setCell(_ cellName: String, _ superTableView: UITableView) {
-        
+    func setCell(_ cellName: String, _ superTableView: UITableView, _ key: String) {
+        self.key = key
         self.cellName = cellName
         cellNameLabel.text = cellName
         self.superTableView = superTableView
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchHandler))
+        if let serviceDefault = serviceDefault {
+            
+            descriptionTextView.text = serviceDefault.description
+        }
         
+        notificationCenter = NotificationCenter.default
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchHandler))
         superTableView.addGestureRecognizer(gestureRecognizer)
     }
     
@@ -47,20 +57,24 @@ class TextViewTableViewCell: UITableViewCell {
         cellNameView.layer.shadowOpacity = 0.5
         cellNameView.layer.shadowRadius = 5
         
-        descriptionView.layer.cornerRadius = 10
     }
     
     @objc
     func touchHandler(_ recognizer: UITapGestureRecognizer) {
         
         descriptionTextView.resignFirstResponder()
+        if let serviceDefault = serviceDefault {
+            serviceDefault.description = descriptionTextView.text
+            return
+        }
+        delegate?.transferData(for: key, with: descriptionTextView.text)
     }
 }
 extension TextViewTableViewCell: UITextViewDelegate {
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         
-        self.descriptionView.resignFirstResponder()
+        self.descriptionTextView.resignFirstResponder()
         return true
     }
     
