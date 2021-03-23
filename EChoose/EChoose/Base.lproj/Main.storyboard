@@ -895,7 +895,7 @@
                         <outlet property="noOffersView" destination="TXf-a4-llg" id="4lx-67-aTb"/>
                         <outlet property="subjectLabel" destination="7g5-OA-Eei" id="ygF-gl-oD1"/>
                         <segue destination="2rt-UM-rj3" kind="presentation" identifier="profileSegue" id="VJK-hN-wxB"/>
-                        <segue destination="e4h-jo-54G" kind="presentation" id="Z8W-UB-uYp"/>
+                        <segue destination="e4h-jo-54G" kind="presentation" identifier="filtersSegue" id="Z8W-UB-uYp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gog-MF-SCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1452,7 +1452,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10000" minValue="1" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="254-TF-hHb">
-                                        <rect key="frame" x="50" y="283" width="150" height="31"/>
+                                        <rect key="frame" x="50" y="284" width="150" height="31"/>
                                         <color key="tintColor" name="ThirdColorGradient"/>
                                         <connections>
                                             <action selector="distanceChanged:" destination="e4h-jo-54G" eventType="valueChanged" id="ceS-Xl-VNp"/>
@@ -1465,14 +1465,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clc-7l-yoA" customClass="CustomButton" customModule="EChoose" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="81" width="80" height="35"/>
+                                        <rect key="frame" x="24" y="81" width="80" height="36"/>
                                         <color key="backgroundColor" name="MainColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="WQa-5T-uCo"/>
+                                            <constraint firstAttribute="height" constant="36" id="WQa-5T-uCo"/>
                                             <constraint firstAttribute="width" constant="80" id="kDZ-FW-zqu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" title="Teacher">
+                                        <state key="normal" title="Tutor">
                                             <color key="titleColor" name="SecondColorGradient"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1482,13 +1482,19 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" name="SecondColorGradient"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="firstButtonPressed:" destination="e4h-jo-54G" eventType="touchUpInside" id="6qk-5t-qUR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flJ-76-Srd" customClass="CustomButton" customModule="EChoose" customModuleProvider="target">
-                                        <rect key="frame" x="196" y="81" width="80" height="35"/>
+                                        <rect key="frame" x="196" y="81" width="80" height="36"/>
                                         <color key="backgroundColor" name="MainColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="BsH-P2-dk0"/>
+                                            <constraint firstAttribute="height" constant="36" id="BsH-P2-dk0"/>
                                             <constraint firstAttribute="width" constant="80" id="nb3-KU-YyK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
@@ -1502,30 +1508,36 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" name="SecondColorGradient"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="17.5"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="secondButtonPressed:" destination="e4h-jo-54G" eventType="touchUpInside" id="wdi-S2-K8f"/>
+                                        </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10000" minValue="100" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="0D8-5j-eE8">
-                                        <rect key="frame" x="50" y="211" width="169" height="31"/>
+                                        <rect key="frame" x="50" y="212" width="169" height="31"/>
                                         <color key="tintColor" name="SecondColorGradient"/>
                                         <connections>
                                             <action selector="maxPriceChanged:" destination="e4h-jo-54G" eventType="valueChanged" id="XUf-Ov-HEA"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10000" minValue="100" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="xi2-VS-xTc">
-                                        <rect key="frame" x="50" y="161" width="169" height="31"/>
+                                        <rect key="frame" x="50" y="162" width="169" height="31"/>
                                         <color key="tintColor" name="SecondColorGradient"/>
                                         <connections>
                                             <action selector="minPriceChanged:" destination="e4h-jo-54G" eventType="valueChanged" id="E9W-Rr-7QQ"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min./Max. service prices:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spO-Uw-dv3">
-                                        <rect key="frame" x="16" y="140" width="171" height="19"/>
+                                        <rect key="frame" x="16" y="141" width="171" height="19"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHn-W8-t31">
-                                        <rect key="frame" x="16" y="191" width="20" height="20"/>
+                                        <rect key="frame" x="16" y="192" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="SkD-pW-gid"/>
                                             <constraint firstAttribute="height" constant="20" id="eu5-Qn-JKF"/>
@@ -1537,7 +1549,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000₽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBb-W6-YdY">
-                                        <rect key="frame" x="233" y="167" width="51" height="18"/>
+                                        <rect key="frame" x="233" y="168" width="51" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="51" id="A0G-wC-JtR"/>
                                         </constraints>
@@ -1546,7 +1558,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000₽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQi-KI-C3J">
-                                        <rect key="frame" x="233" y="217" width="51" height="18"/>
+                                        <rect key="frame" x="233" y="218" width="51" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="51" id="aYB-WW-wEh"/>
                                         </constraints>
@@ -1555,13 +1567,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max. Distance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njm-BE-XZx">
-                                        <rect key="frame" x="16" y="257" width="103" height="19"/>
+                                        <rect key="frame" x="16" y="258" width="103" height="19"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eV0-Cn-kvL">
-                                        <rect key="frame" x="16" y="288" width="20" height="20"/>
+                                        <rect key="frame" x="16" y="289" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="F97-IY-Ymj"/>
                                             <constraint firstAttribute="height" constant="20" id="iT8-Eq-TSg"/>
@@ -1573,7 +1585,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vb-8R-hFD">
-                                        <rect key="frame" x="214" y="289" width="70" height="18"/>
+                                        <rect key="frame" x="214" y="290" width="70" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="G7f-Of-BJT"/>
                                         </constraints>
@@ -1666,12 +1678,14 @@
                         <outlet property="deletePriceFilters" destination="WHn-W8-t31" id="uOg-KZ-4pl"/>
                         <outlet property="distanceLabel" destination="5vb-8R-hFD" id="zXO-uA-0cq"/>
                         <outlet property="distanceSlider" destination="254-TF-hHb" id="YoW-C1-40v"/>
-                        <outlet property="firstTypeButton" destination="clc-7l-yoA" id="hCa-e1-Ys3"/>
+                        <outlet property="firstButtonConstraint" destination="kDZ-FW-zqu" id="fAe-kR-oxW"/>
+                        <outlet property="firstRadioButton" destination="clc-7l-yoA" id="hCa-e1-Ys3"/>
                         <outlet property="maxPriceLabel" destination="iQi-KI-C3J" id="Yce-8Q-k57"/>
                         <outlet property="maxPriceSlider" destination="0D8-5j-eE8" id="hdZ-od-tW2"/>
                         <outlet property="minPriceLabel" destination="HBb-W6-YdY" id="E6c-5q-6bq"/>
                         <outlet property="minPriceSlider" destination="xi2-VS-xTc" id="dSj-Hk-lDw"/>
-                        <outlet property="secondTypeButton" destination="flJ-76-Srd" id="BLl-eu-XVk"/>
+                        <outlet property="secondButtonConstraint" destination="nb3-KU-YyK" id="J98-Db-iOI"/>
+                        <outlet property="secondRadioButton" destination="flJ-76-Srd" id="BLl-eu-XVk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0J-o2-G6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1848,7 +1862,7 @@
             <size key="intrinsicContentSize" width="143" height="22"/>
         </designable>
         <designable name="clc-7l-yoA">
-            <size key="intrinsicContentSize" width="61" height="34"/>
+            <size key="intrinsicContentSize" width="40" height="34"/>
         </designable>
         <designable name="flJ-76-Srd">
             <size key="intrinsicContentSize" width="62" height="34"/>

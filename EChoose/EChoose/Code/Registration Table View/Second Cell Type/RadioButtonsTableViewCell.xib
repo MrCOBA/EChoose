@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -58,7 +56,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
-                            <action selector="studentButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="omz-AX-zcD"/>
+                            <action selector="secondButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="omz-AX-zcD"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0s-Bv-VJ9" customClass="CustomButton" customModule="EChoose" customModuleProvider="target">
@@ -81,7 +79,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
-                            <action selector="teacherButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4oR-y5-6MM"/>
+                            <action selector="firstButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4oR-y5-6MM"/>
                         </connections>
                     </button>
                 </subviews>
@@ -110,14 +108,6 @@
             <point key="canvasLocation" x="137.68115942028987" y="160.04464285714286"/>
         </tableViewCell>
     </objects>
-    <designables>
-        <designable name="8Mk-rO-JRf">
-            <size key="intrinsicContentSize" width="62" height="34"/>
-        </designable>
-        <designable name="c0s-Bv-VJ9">
-            <size key="intrinsicContentSize" width="61" height="34"/>
-        </designable>
-    </designables>
     <resources>
         <namedColor name="MainColor">
             <color red="0.63137254901960782" green="0.85490196078431369" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

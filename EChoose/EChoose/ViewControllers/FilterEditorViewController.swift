@@ -1,42 +1,31 @@
 //
-//  RadioButtonsTableViewCell.swift
+//  FilterEditorViewController.swift
 //  EChoose
 //
-//  Created by Oparin Oleg on 23.08.2020.
-//  Copyright © 2020 Oparin Oleg. All rights reserved.
+//  Created by Oparin Oleg on 23.03.2021.
+//  Copyright © 2021 Oparin Oleg. All rights reserved.
 //
 
 import UIKit
 
-struct TypeSettings {
-    
-    var constraintConstant: CGFloat
-    var backgroundColor: UIColor?
-    var titleColor: UIColor?
-    var title: String
-}
+class FilterEditorViewController: UIViewController {
 
-enum AccountType: Int {
-    case undefined = 0
-    case firstType
-    case secondType
-}
-
-class RadioButtonsTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var cellNameView: UIView!
-    @IBOutlet weak var cellNameLabel: UILabel!
     @IBOutlet weak var firstRadioButton: CustomButton!
     @IBOutlet weak var secondRadioButton: CustomButton!
-    
     @IBOutlet weak var firstButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var secondButtonConstraint: NSLayoutConstraint!
     
-    static let identifier = "RadioButtonsTableViewCell"
-    private var cellName: String!
-    var serviceManager: ServicesManager = ServicesManager.shared
-    var serviceDefault: ServiceDefault?
-    var delegate: TransferDelegate?
+    @IBOutlet weak var minPriceSlider: UISlider!
+    @IBOutlet weak var maxPriceSlider: UISlider!
+    @IBOutlet weak var distanceSlider: UISlider!
+    @IBOutlet weak var deletePriceFilters: UIButton!
+    @IBOutlet weak var deleteDistanceFilters: UIButton!
+    @IBOutlet weak var minPriceLabel: UILabel!
+    @IBOutlet weak var maxPriceLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
+    
+    private var checkData = [("T", "Tutor"), ("S", "Student")]
     var chosenType: AccountType = .undefined {
         
         didSet {
@@ -55,11 +44,6 @@ class RadioButtonsTableViewCell: UITableViewCell {
                                 titleColor: UIColor(named: "SecondColorGradient"),
                                 title: "\(checkData[1].1)"))
                 
-                if let serviceDefault = serviceDefault{
-                    serviceDefault.isTutor = true
-                }
-                delegate?.transferData(for: key, with: "True")
-                
             } else if chosenType == .secondType {
                 
                 changeButton(firstTypeSettings: TypeSettings(
@@ -73,11 +57,6 @@ class RadioButtonsTableViewCell: UITableViewCell {
                                     backgroundColor: UIColor(named: "SecondColorGradient")!,
                                     titleColor: UIColor(named: "MainColor"),
                                     title: "\(checkData[1].0)"))
-                
-                if let serviceDefault = serviceDefault{
-                    serviceDefault.isTutor = false
-                }
-                delegate?.transferData(for: key, with: "False")
                 
             } else {
                 
@@ -95,48 +74,95 @@ class RadioButtonsTableViewCell: UITableViewCell {
             }
         }
     }
-    private var key: String = ""
-    private var checkData: [(Character, String)] = []
+    var filter: Filter?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        setUI()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        chosenType = filter?.findTutor ?? false ? AccountType.firstType : AccountType.secondType
+        minPriceSlider.setValue(Float(filter?.minPrice ?? 0), animated: true)
+        maxPriceSlider.setValue(Float(filter?.maxPrice ?? 0), animated: true)
+        distanceSlider.setValue(Float(filter?.distance ?? 0), animated: true)
     }
     
-    func setCell(_ cellName: String, _ checkData: [(Character, String)], _ key: String) {
+    @IBAction func blockPrice(_ sender: Any) {
         
-        self.checkData = checkData
-        self.cellName = cellName
-        self.key = key
-        
-        if let serviceDefault = serviceDefault {
+        if minPriceSlider.isEnabled {
             
-            if serviceDefault.isTutor {
-                chosenType = .firstType
-            } else {
-                chosenType = .secondType
-            }
+            minPriceSlider.isEnabled = false
+            maxPriceSlider.isEnabled = false
+            
+            
         } else {
-            chosenType = .undefined
+            
+            minPriceSlider.isEnabled = true
+            maxPriceSlider.isEnabled = true
+        }
+    }
+    
+    @IBAction func blockDistance(_ sender: Any) {
+        
+        if distanceSlider.isEnabled {
+            distanceSlider.isEnabled = false
+            
+        } else {
+            distanceSlider.isEnabled = true
+        }
+    }
+    
+    
+    @IBAction func minPriceChanged(_ sender: Any) {
+        
+        if minPriceSlider.value > maxPriceSlider.value {
+            
+            minPriceSlider.setValue(maxPriceSlider.value, animated: true)
+        }
+        minPriceLabel.text = "\(minPriceSlider.value)₽"
+        filter?.minPrice = Int(minPriceSlider.value)
+    }
+    
+    @IBAction func maxPriceChanged(_ sender: Any) {
+        
+        if minPriceSlider.value > maxPriceSlider.value {
+            
+            maxPriceSlider.setValue(minPriceSlider.value, animated: true)
+        }
+        maxPriceLabel.text = "\(maxPriceSlider.value)₽"
+        filter?.maxPrice = Int(maxPriceSlider.value)
+    }
+    
+    @IBAction func distanceChanged(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func confirmChanges(_ sender: Any) {
+        
+        if minPriceSlider.isEnabled {
+            
+            filter?.minPrice = Int(minPriceSlider.value)
+            filter?.maxPrice = Int(maxPriceSlider.value)
+            
+        } else {
+            
+            filter?.minPrice = 1
+            filter?.maxPrice = 10000
         }
         
-        cellNameLabel.text = cellName
-    }
-    
-    private func setUI() {
-        cellNameView.layer.cornerRadius = 10
+        if distanceSlider.isEnabled {
+            
+            filter?.distance = Int(distanceSlider.value)
+            
+        } else {
+            
+            filter?.distance = 10000
+        }
         
-        cellNameView.layer.shadowColor = UIColor.black.cgColor
-        cellNameView.layer.shadowOffset = .zero
-        cellNameView.layer.shadowOpacity = 0.5
-        cellNameView.layer.shadowRadius = 5
-        
-        firstRadioButton.layer.cornerRadius = firstRadioButton.frame.height / 2
-        secondRadioButton.layer.cornerRadius = secondRadioButton.frame.height / 2
-        
-        firstButtonConstraint.constant = 80
-        secondButtonConstraint.constant = 80
+        if chosenType == .firstType {
+            filter?.findTutor = true
+        } else {
+            filter?.findTutor = false
+        }
     }
     
     @IBAction func firstButtonPressed(_ sender: Any) {
@@ -162,7 +188,7 @@ class RadioButtonsTableViewCell: UITableViewCell {
             secondRadioButton.backgroundColor = secondTypeSettings.backgroundColor
             secondRadioButton.setTitleColor(secondTypeSettings.titleColor, for: .normal)
             secondRadioButton.setTitle(secondTypeSettings.title, for: .normal)
-            layoutIfNeeded()
+            self.view.layoutIfNeeded()
         })
     }
 }
