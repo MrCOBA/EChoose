@@ -308,7 +308,7 @@ class LocationsManager {
     }
 }
 //MARK: - Notifications
-extension LocationsManager: NotificationDelegate {
+extension LocationsManager {
  
     func postNotification(_ name: Notification.Name) {
         NotificationCenter.default.post(name: name, object: nil, userInfo: nil)

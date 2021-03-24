@@ -349,8 +349,8 @@
             filePath = "EChoose/Code/Data &amp; Network Managing/OffersManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "offersSerializer(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -381,8 +381,8 @@
             filePath = "EChoose/Code/Data &amp; Network Managing/OffersManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "locationSerializer(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -397,8 +397,8 @@
             filePath = "EChoose/Code/Data &amp; Network Managing/OffersManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
             landmarkName = "userSerializer(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -413,9 +413,121 @@
             filePath = "EChoose/Code/Data &amp; Network Managing/OffersManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "iterativeImagesInit(maxIter:iter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D603EFF-58C0-4E48-98B3-32DD3440D1F5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EChoose/Code/Data &amp; Network Managing/OffersManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "iterativeImagesInit(maxIter:iter:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3D603EFF-58C0-4E48-98B3-32DD3440D1F5 - abfcfe4c8290c86f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EChoose.OfferQueue.iterativeImagesInit(maxIter: Swift.Int, iter: Swift.Int) -&gt; ()"
+                  moduleName = "EChoose"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mrcoba/Desktop/EChoose%202.0/EChoose/EChoose/Code/Data%20&amp;%20Network%20Managing/OffersManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "1888">
+               </Location>
+               <Location
+                  uuid = "3D603EFF-58C0-4E48-98B3-32DD3440D1F5 - 471730b014053d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in EChoose.OfferQueue.iterativeImagesInit(maxIter: Swift.Int, iter: Swift.Int) -&gt; ()"
+                  moduleName = "EChoose"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mrcoba/Desktop/EChoose%202.0/EChoose/EChoose/Code/Data%20&amp;%20Network%20Managing/OffersManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "296">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34E03ECE-E3C4-4B37-96BB-C5686D4E5CF3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EChoose/Code/Data &amp; Network Managing/OffersManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "iterativeImagesInit(maxIter:iter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBFD7A9F-4B73-416D-AA67-03363FCCA259"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EChoose/Code/Data &amp; Network Managing/OffersManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "iterativeImagesInit(maxIter:iter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D7EFC61B-82E0-4C83-A8DA-60FD60667F6F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EChoose/Code/Data &amp; Network Managing/OffersManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
+            landmarkName = "iterativeImagesInit(maxIter:iter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B8811055-2430-4C44-83BB-2D6BE12B759E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EChoose/ViewControllers/FeedViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "displayOffer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

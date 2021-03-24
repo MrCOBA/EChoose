@@ -69,9 +69,9 @@ class OfferQueue {
         
         if offersPart.count > 0 {
             let offer = offersPart[offersPart.count - 1]
-            let user = offerUsers[offersPart.count - 1]
+            let user = offerUsers[offerUsers.count - 1]
             offersPart.remove(at: offersPart.count - 1)
-            offerUsers.remove(at: offersPart.count - 1)
+            offerUsers.remove(at: offerUsers.count - 1)
             return (offer, user)
         }
         
@@ -197,40 +197,59 @@ class OfferQueue {
     }
     
     func iterativeImagesInit(maxIter: Int, iter: Int) {
+        globalManager.postNotification(Notification.Name("offersUpdated"))
         
-        if offerUsers[iter].imageURL != "" {
-            
-            guard let url = URL(string: offerUsers[iter].imageURL) else {
-                return
-            }
-            
-            DispatchQueue.global().async { [unowned self] in
-                if let data = try? Data(contentsOf: url) {
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            offerUsers[iter].image = image
-                            
-                            if iter < maxIter - 1 {
-                                
-                                iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
-                            } else {
-                                
-                                globalManager.postNotification(Notification.Name("offersUpdated"))
-                            }
-                        }
-                    }
-                }
-            }
-        } else {
-            
-            if iter < maxIter - 1 {
-                
-                iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
-            } else {
-                
-                globalManager.postNotification(Notification.Name("offersUpdated"))
-            }
-        }
+        //TODO: - Fix Images Load
+        
+//        if offerUsers[iter].imageURL != "" {
+//
+//            guard let url = URL(string: "\(globalManager.apiURL)/\(offerUsers[iter].imageURL)") else {
+//                return
+//            }
+//
+//            DispatchQueue.global().async { [unowned self] in
+//                if let data = try? Data(contentsOf: url) {
+//                    if let image = UIImage(data: data) {
+//                        DispatchQueue.main.async {
+//                            offerUsers[iter].image = image
+//
+//                            if iter < maxIter - 1 {
+//
+//                                iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
+//                            } else {
+//
+//                                globalManager.postNotification(Notification.Name("offersUpdated"))
+//                            }
+//                        }
+//                    } else {
+//                        if iter < maxIter - 1 {
+//
+//                            iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
+//                        } else {
+//
+//                            globalManager.postNotification(Notification.Name("offersUpdated"))
+//                        }
+//                    }
+//                } else {
+//                    if iter < maxIter - 1 {
+//
+//                        iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
+//                    } else {
+//
+//                        globalManager.postNotification(Notification.Name("offersUpdated"))
+//                    }
+//                }
+//            }
+//        } else {
+//
+//            if iter < maxIter - 1 {
+//
+//                iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
+//            } else {
+//
+//                globalManager.postNotification(Notification.Name("offersUpdated"))
+//            }
+//        }
     }
     
     func initSearch() {
