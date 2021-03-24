@@ -24,23 +24,6 @@ extension TransferDelegate {
     }
 }
 
-protocol NotificationDelegate {
-    
-    func postNotification(_ name: Notification.Name)
-}
-
-protocol JSONDelegate {
-    
-    func profileSerializer(_ data: Any) -> Bool
-    func dialogSerializer(_ data: Any) -> Bool
-    func messageSerializer(_ data: Any) -> Bool
-    func locationsSerializer(_ data: Any) -> Bool
-    func serviceSerializer(_ data: Any) -> Bool
-    func servicesSerializer(_ data: Any) -> Bool
-    func tokenSerializer(_ data: Any) -> Bool
-    func accessTokenSerializer(_ data: Any) -> Bool
-}
-
 protocol HTTPDelegate {
     
     func GET(url: URL?, data: Data?, withSerializer serializer: ((Any) -> Bool)?, isAuthorized: Bool, completition: (() -> Void)?)
@@ -452,7 +435,7 @@ extension GlobalManager: HTTPDelegate {
     }
 }
 //MARK: - Serializers
-extension GlobalManager: JSONDelegate {
+extension GlobalManager {
     
     func perform(data: Any, isArray: Bool = false) -> Any? {
         
@@ -763,7 +746,7 @@ extension GlobalManager: JSONDelegate {
     }
 }
 //MARK: - Notifications
-extension GlobalManager: NotificationDelegate {
+extension GlobalManager {
  
     func postNotification(_ name: Notification.Name) {
         NotificationCenter.default.post(name: name, object: nil, userInfo: nil)
