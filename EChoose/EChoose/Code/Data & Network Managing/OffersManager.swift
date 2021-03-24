@@ -109,7 +109,7 @@ class OfferQueue {
             return
         }
         
-        globalManager.GET(url: url, data: jsonData, withSerializer: offersSerializer(_:), isAuthorized: true, completition: {[unowned self] in
+        globalManager.POST(url: url, data: jsonData, withSerializer: offersSerializer(_:), isAuthorized: true, completition: {[unowned self] in
             
             if offers.count > 0 {
                 deinitSearch()
@@ -200,7 +200,7 @@ class OfferQueue {
         
         if offerUsers[iter].imageURL != "" {
             
-            guard let url = URL(string: "\(globalManager.apiURL)\(offerUsers[iter].imageURL)") else {
+            guard let url = URL(string: offerUsers[iter].imageURL) else {
                 return
             }
             
@@ -253,34 +253,51 @@ extension OfferQueue {
         }
         
         for json in jsonArray {
-            if let id = json["id"] as? Int,
-               let userid = json["user"] as? Int,
-               let edLocation = json["location"] as? String,
-               let categoryid = json["category"] as? Int,
-               let description = json["description"] as? String,
-               let price = json["price"] as? Int,
-               let isTutor = json["isTutor"] as? Bool,
-               let types = json["types"] as? [Int],
-               let isActive = json["isActive"] as? Bool {
-                
-                let offer = Offer()
-                
+            
+            let offer = Offer()
+            
+            if let id = json["id"] as? Int{
                 offer.id = id
-                offer.edLocation = edLocation
-                offer.categoryid = categoryid
-                offer.description = description
-                offer.price = price
-                offer.isTutor = isTutor
-                offer.types = types
-                offer.isActive = isActive
-                offer.user = userid
-                
-                if let addressid = json["address"] as? Int {
-                    offer.address = addressid
-                }
-                
-                add(offers: [offer])
             }
+            
+            if let userid = json["user"] as? Int {
+                offer.user = userid
+            }
+            
+            if let edLocation = json["location"] as? String {
+                offer.edLocation = edLocation
+            }
+            
+            if let categoryid = json["category"] as? Int {
+                offer.categoryid = categoryid
+            }
+            
+            if let description = json["description"] as? String {
+                offer.description = description
+            }
+               
+            if let price = json["price"] as? Int {
+                offer.price = price
+            }
+            
+            if let isTutor = json["isTutor"] as? Bool {
+                offer.isTutor = isTutor
+            }
+            
+            if let types = json["types"] as? [Int] {
+                offer.types = types
+            }
+               
+            if let isActive = json["isActive"] as? Bool {
+                offer.isActive = isActive
+            }
+            
+            
+            if let addressid = json["address"] as? Int {
+                offer.address = addressid
+            }
+            
+            add(offers: [offer])
         }
         
         return true
@@ -314,26 +331,33 @@ extension OfferQueue {
             return false
         }
         
-        if let id = json["id"] as? Int,
-              let firstname = json["first_name"] as? String,
-              let lastname = json["last_name"] as? String,
-              let isMale = json["isMale"] as? Bool,
-              let description = json["description"] as? String,
-              let birthDate = json["birth_date"] as? String,
-              let image = json["image"] as? String {
-            
-            let offerUser = OfferUser()
-            
+        let offerUser = OfferUser()
+        
+        if let id = json["id"] as? Int {
             offerUser.id = id
-            offerUser.firstName = firstname
-            offerUser.lastName = lastname
-            offerUser.age = globalManager.dateToAge(date: birthDate)
-            offerUser.isMale = isMale
-            offerUser.description = description
-            offerUser.imageURL = image
-            
-            offerUsers.append(offerUser)
         }
+        if let firstname = json["first_name"] as? String {
+            offerUser.firstName = firstname
+        }
+        if let lastname = json["last_name"] as? String {
+            offerUser.lastName = lastname
+        }
+        if let isMale = json["isMale"] as? Bool {
+            offerUser.isMale = isMale
+        }
+        if let description = json["description"] as? String {
+            offerUser.description = description
+        }
+    
+        if let birthDate = json["birth_date"] as? String {
+            offerUser.age = globalManager.dateToAge(date: birthDate)
+        }
+              
+        if let image = json["image"] as? String {
+            offerUser.imageURL = image
+        }
+            
+        offerUsers.append(offerUser)
         
         return true
     }
