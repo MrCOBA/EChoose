@@ -857,6 +857,28 @@ extension GlobalManager {
         
         return nil
     }
+    
+    func reactJSON(from filter: Filter, status: String) -> Data? {
+        
+        let jsonObject: [String : Any]  = [
+            
+            "status" : status,
+            "findTutor" : filter.findTutor,
+            "min_price" : filter.minPrice,
+            "max_price" : filter.maxPrice,
+            "distance" : filter.distance
+        ]
+        
+        let valid = JSONSerialization.isValidJSONObject(jsonObject)
+        
+        if valid {
+            let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            print(jsonObject)
+            return jsonData
+        }
+        
+        return nil
+    }
 }
 extension NSMutableData {
     func appendString(_ string: String) {

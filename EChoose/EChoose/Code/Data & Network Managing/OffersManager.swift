@@ -380,12 +380,10 @@ class OffersManager {
         let instance = OffersManager()
         return instance
     }()
-    var filter: Filter
     var offersQueue: OfferQueue
     
     private init() {
         
-        filter = Filter()
         offersQueue = OfferQueue()
     }
 }
