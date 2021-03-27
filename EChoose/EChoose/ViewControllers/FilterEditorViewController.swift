@@ -79,6 +79,7 @@ class FilterEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         chosenType = filter?.findTutor ?? false ? AccountType.firstType : AccountType.secondType
         minPriceSlider.setValue(Float(filter?.minPrice ?? 0), animated: true)
         maxPriceSlider.setValue(Float(filter?.maxPrice ?? 0), animated: true)
@@ -113,27 +114,34 @@ class FilterEditorViewController: UIViewController {
     
     @IBAction func minPriceChanged(_ sender: Any) {
         
+        minPriceSlider.value = Float(Int(minPriceSlider.value))
+        
         if minPriceSlider.value > maxPriceSlider.value {
             
             minPriceSlider.setValue(maxPriceSlider.value, animated: true)
         }
-        minPriceLabel.text = "\(minPriceSlider.value)₽"
-        filter?.minPrice = Int(minPriceSlider.value)
+        minPriceLabel.text = "\((Int(minPriceSlider.value) / 100) * 100 )₽"
+        filter?.minPrice = (Int(minPriceSlider.value) / 100) * 100
     }
     
     @IBAction func maxPriceChanged(_ sender: Any) {
+        
+        maxPriceSlider.value = Float(Int(maxPriceSlider.value))
         
         if minPriceSlider.value > maxPriceSlider.value {
             
             maxPriceSlider.setValue(minPriceSlider.value, animated: true)
         }
-        maxPriceLabel.text = "\(maxPriceSlider.value)₽"
-        filter?.maxPrice = Int(maxPriceSlider.value)
+        maxPriceLabel.text = "\((Int(maxPriceSlider.value) / 100) * 100 )₽"
+        filter?.maxPrice = (Int(maxPriceSlider.value) / 100) * 100
     }
     
     @IBAction func distanceChanged(_ sender: Any) {
         
+        distanceSlider.value = Float(Int(distanceSlider.value))
         
+        distanceLabel.text = "\((Int(distanceSlider.value) / 100) * 100 )₽"
+        filter?.distance = (Int(distanceSlider.value) / 100) * 100
     }
     
     @IBAction func confirmChanges(_ sender: Any) {

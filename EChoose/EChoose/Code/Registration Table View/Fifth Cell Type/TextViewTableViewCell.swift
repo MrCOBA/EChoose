@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol GestureDelegate {
+    
+    func addGestureRecognizer(_ recognizer: UITapGestureRecognizer)
+}
+
 class TextViewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellNameView: UIView!
@@ -18,10 +23,9 @@ class TextViewTableViewCell: UITableViewCell {
     var serviceManager: ServicesManager = ServicesManager.shared
     var serviceDefault: ServiceDefault?
     var delegate: TransferDelegate?
+    var gestureDelegate: GestureDelegate?
     var notificationCenter: NotificationCenter!
     private var key: String = ""
-    private var cellName: String!
-    private var superTableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,11 +35,9 @@ class TextViewTableViewCell: UITableViewCell {
         setUI()
     }
     
-    func setCell(_ cellName: String, _ superTableView: UITableView, _ key: String) {
+    func setCell(_ cellName: String, _ key: String) {
         self.key = key
-        self.cellName = cellName
         cellNameLabel.text = cellName
-        self.superTableView = superTableView
         
         if let serviceDefault = serviceDefault {
             
@@ -45,7 +47,7 @@ class TextViewTableViewCell: UITableViewCell {
         notificationCenter = NotificationCenter.default
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchHandler))
-        superTableView.addGestureRecognizer(gestureRecognizer)
+        gestureDelegate?.addGestureRecognizer(gestureRecognizer)
     }
     
     private func setUI() {

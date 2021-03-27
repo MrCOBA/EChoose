@@ -34,10 +34,11 @@ protocol HTTPDelegate {
 
 class GlobalManager {
     
-    var apiURL = "https://a5ef711a5d23.ngrok.io"
+    var apiURL = "https://b879bb45c1aa.ngrok.io"
     var imageURL: String?
     var context: NSManagedObjectContext?
     var user: User?
+    var buffer: Any?
     
     private var isPinging = false
     private var group: DispatchGroup
@@ -317,6 +318,29 @@ extension GlobalManager: HTTPDelegate {
         task.resume()
     }
     
+    private func GETimage(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func downloadImage(from url: URL, completition: (() -> Void)?) {
+        
+        GETimage(from: url) {[unowned self] (data, response, error) in
+            
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            
+            if let data = data {
+                buffer = UIImage(data: data)
+            }
+            
+            if let completition = completition {
+                completition()
+            }
+        }
+    }
+    
     func POSTimage(url: URL?, image: UIImage?,  withSerializer serializer: ((Any) -> Bool)?, completition: (() -> Void)?) {
         
         var request  = URLRequest(url: URL(string: "\(apiURL)/profile/upload_image/")!)
@@ -493,6 +517,10 @@ extension GlobalManager {
         
         if let isMale = json["isMale"] as? Bool{
             profile.sex = isMale
+        }
+        
+        if let description = json["description"] as? String {
+            profile.descript = description
         }
         
         if let birthDate = json["birth_date"] as? String{
@@ -767,6 +795,7 @@ extension GlobalManager {
                 "password" : data["password"],
                 "first_name" : data["firstname"],
                 "last_name" : data["lastname"],
+                "description" : data["description"],
                 "email" : data["email"]],
             "isMale" : data["isMale"] ?? "False",
             "birth_date" : data["birthDate"] ?? ""

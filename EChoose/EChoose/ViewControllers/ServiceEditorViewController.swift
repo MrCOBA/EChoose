@@ -183,7 +183,7 @@ extension ServiceEditorViewController: UITableViewDelegate, UITableViewDataSourc
                     let cell = serviceEditorTableView.dequeueReusableCell(withIdentifier: TextViewTableViewCell.identifier, for: indexPath) as! TextViewTableViewCell
                     
                     cell.serviceDefault = serviceDefault
-                    cell.setCell("Service Description", serviceEditorTableView, "description")
+                    cell.setCell("Service Description", "description")
 
                     return cell
                     

@@ -11,7 +11,7 @@ import UIKit
 
 class Filter {
     
-    var findTutor: Bool = true
+    var findTutor: Bool = false
     var minPrice: Int = 0
     var maxPrice: Int = 10000
     var distance: Int = 10000
@@ -51,12 +51,15 @@ class OfferQueue {
     
     var globalManager: GlobalManager = GlobalManager.shared
     var locationsManager: LocationsManager = LocationsManager.shared
-    fileprivate var queue = DispatchQueue(label: "COBA.Inc.EChoose.offersQueue", qos: .userInteractive, attributes: .concurrent)
+    var queue = DispatchQueue(label: "COBA.Inc.EChoose.offersQueue", qos: .userInteractive, attributes: .concurrent)
+    
+    
     var filter: Filter = Filter()
     var offers: [Offer] = []
     var offerUsers: [OfferUser] = []
     var offersPart: [Offer] = []
     var locationsDefault: [LocationDefault] = []
+    var buffer: Any?
     var isPinging: Bool = false
     
     func add(offers: [Offer]) {
@@ -123,6 +126,7 @@ class OfferQueue {
                 decodeOffers()
                 
             } else if isPinging {
+                
                 queue.asyncAfter(deadline: .now() + 60) {[unowned self] in
                     update()
                 }
@@ -135,40 +139,54 @@ class OfferQueue {
         iterativeLocationsInit(maxIter: offersPart.count, iter: 0)
     }
     
+    private func nextIterate(with iterativeFunction: ((Int, Int) -> Void), for iter: Int, _ maxIter: Int, completition: (() -> Void)?) {
+        
+        if iter < maxIter - 1 {
+            
+            iterativeFunction(maxIter, iter + 1)
+            
+        } else {
+            
+            if let completition = completition {
+                
+                completition()
+            }
+        }
+    }
+    
     func iterativeLocationsInit(maxIter: Int, iter: Int) {
         
         if let url = URL(string: "\(globalManager.apiURL)/address/\(offersPart[iter].address)/") {
             
             globalManager.GET(url: url, data: nil, withSerializer: locationSerializer(_:), isAuthorized: true, completition: {[unowned self] in
                 
-                if iter < maxIter - 1 {
+                if let locationDefault = globalManager.buffer as? LocationDefault {
                     
-                    iterativeLocationsInit(maxIter: maxIter, iter: iter + 1)
-                    
-                } else {
+                    offersPart[iter].locationDefault = locationDefault
+                    globalManager.buffer = nil
+                }
+                
+                nextIterate(with: iterativeLocationsInit, for: iter, maxIter, completition: {
                     
                     locationsManager.iterativeGeoDecoder(from: locationsDefault, maxIter: locationsDefault.count, iter: 0, completition: {
                         
                         iterativeUsersInit(maxIter: offersPart.count, iter: 0)
                     })
-                }
+                })
             })
             
         } else {
             
-            if iter < maxIter - 1 {
+            nextIterate(with: iterativeLocationsInit, for: iter, maxIter, completition: {[unowned self] in
                 
-                iterativeLocationsInit(maxIter: maxIter, iter: iter + 1)
-                
-            } else {
-                
-                locationsManager.iterativeGeoDecoder(from: locationsDefault, maxIter: locationsDefault.count, iter: 0, completition: {[unowned self] in
+                locationsManager.iterativeGeoDecoder(from: locationsDefault, maxIter: locationsDefault.count, iter: 0, completition: {
                     
                     iterativeUsersInit(maxIter: offersPart.count, iter: 0)
                 })
-            }
+            })
         }
     }
+
     
     func iterativeUsersInit(maxIter: Int, iter: Int) {
         
@@ -176,80 +194,47 @@ class OfferQueue {
             
             globalManager.GET(url: url, data: nil, withSerializer: userSerializer(_:), isAuthorized: true, completition: {[unowned self] in
                 
-                if iter < maxIter - 1 {
-                    
-                    iterativeUsersInit(maxIter: maxIter, iter: iter + 1)
-                } else {
+                nextIterate(with: iterativeUsersInit, for: iter, maxIter, completition: {
                     
                     iterativeImagesInit(maxIter: offerUsers.count, iter: 0)
-                }
+                })
             })
         } else {
             
-            if iter < maxIter - 1 {
-                
-                iterativeUsersInit(maxIter: maxIter, iter: iter + 1)
-            } else {
+            nextIterate(with: iterativeUsersInit, for: iter, maxIter, completition: {[unowned self] in
                 
                 iterativeImagesInit(maxIter: offerUsers.count, iter: 0)
-            }
+            })
         }
     }
     
     func iterativeImagesInit(maxIter: Int, iter: Int) {
-        globalManager.postNotification(Notification.Name("offersUpdated"))
         
-        //TODO: - Fix Images Load
-        
-//        if offerUsers[iter].imageURL != "" {
-//
-//            guard let url = URL(string: "\(globalManager.apiURL)/\(offerUsers[iter].imageURL)") else {
-//                return
-//            }
-//
-//            DispatchQueue.global().async { [unowned self] in
-//                if let data = try? Data(contentsOf: url) {
-//                    if let image = UIImage(data: data) {
-//                        DispatchQueue.main.async {
-//                            offerUsers[iter].image = image
-//
-//                            if iter < maxIter - 1 {
-//
-//                                iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
-//                            } else {
-//
-//                                globalManager.postNotification(Notification.Name("offersUpdated"))
-//                            }
-//                        }
-//                    } else {
-//                        if iter < maxIter - 1 {
-//
-//                            iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
-//                        } else {
-//
-//                            globalManager.postNotification(Notification.Name("offersUpdated"))
-//                        }
-//                    }
-//                } else {
-//                    if iter < maxIter - 1 {
-//
-//                        iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
-//                    } else {
-//
-//                        globalManager.postNotification(Notification.Name("offersUpdated"))
-//                    }
-//                }
-//            }
-//        } else {
-//
-//            if iter < maxIter - 1 {
-//
-//                iterativeImagesInit(maxIter: maxIter, iter: iter + 1)
-//            } else {
-//
-//                globalManager.postNotification(Notification.Name("offersUpdated"))
-//            }
-//        }
+        if offerUsers[iter].imageURL != "" {
+
+            guard let url = URL(string: "\(globalManager.apiURL)/\(offerUsers[iter].imageURL)/") else {
+                return
+            }
+            
+            globalManager.downloadImage(from: url, completition: { [unowned self] in
+                
+                if let image = globalManager.buffer as? UIImage {
+                    offerUsers[iter].image = image
+                }
+                
+                nextIterate(with: iterativeImagesInit, for: iter, maxIter, completition: {
+                    
+                    globalManager.postNotification(Notification.Name("offersUpdated"))
+                })
+            })
+            
+        } else {
+
+            nextIterate(with: iterativeImagesInit, for: iter, maxIter, completition: { [unowned self] in
+                
+                globalManager.postNotification(Notification.Name("offersUpdated"))
+            })
+        }
     }
     
     func initSearch() {
@@ -333,12 +318,12 @@ extension OfferQueue {
            let latitude = json["latitude"] as? Double,
            let longitude = json["longitude"] as? Double {
             
-            if let offer = offersPart.first(where: {offer in return offer.address == id}) {
-                offer.locationDefault = LocationDefault(latitude, longitude)
-                offer.locationDefault!.id = id
-                offer.locationDefault!.name = name
-                locationsDefault.append(offer.locationDefault!)
-            }
+            let locationDefault = LocationDefault(latitude, longitude)
+            locationDefault.id = id
+            locationDefault.name = name
+            locationsDefault.append(locationDefault)
+            
+            globalManager.buffer = locationDefault
         }
         
         return true
@@ -355,15 +340,22 @@ extension OfferQueue {
         if let id = json["id"] as? Int {
             offerUser.id = id
         }
-        if let firstname = json["first_name"] as? String {
-            offerUser.firstName = firstname
+        
+        if let userData = json["user"] as? [String : Any] {
+            
+            if let firstname = userData["first_name"] as? String {
+                offerUser.firstName = firstname
+            }
+            
+            if let lastname = userData["last_name"] as? String {
+                offerUser.lastName = lastname
+            }
         }
-        if let lastname = json["last_name"] as? String {
-            offerUser.lastName = lastname
-        }
+        
         if let isMale = json["isMale"] as? Bool {
             offerUser.isMale = isMale
         }
+        
         if let description = json["description"] as? String {
             offerUser.description = description
         }

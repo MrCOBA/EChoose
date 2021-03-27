@@ -47,4 +47,13 @@ class CustomSearchBar: UISearchBar {
             textFieldInsideSearchBar!.attributedPlaceholder = attributeString
         }
     }
+    
+    @IBInspectable var textFieldBackgroundColor: UIColor = .black {
+        
+        didSet {
+            
+            let textFieldInsideSearchBar = value(forKey: "searchField") as? UITextField
+            textFieldInsideSearchBar?.backgroundColor = textFieldBackgroundColor
+        }
+    }
 }
