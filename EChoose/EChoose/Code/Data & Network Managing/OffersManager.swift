@@ -25,7 +25,7 @@ class Offer {
     var edLocation: String = ""
     var categoryid: Int = -1
     var address: Int = -1
-    var description: String?
+    var description: String = ""
     var price: Int = -1
     var isTutor: Bool = true
     var isActive: Bool = true
@@ -42,7 +42,8 @@ class OfferUser {
     var lastName: String = ""
     var age: Int = -1
     var isMale: Bool = true
-    var description: String?
+    var email: String = ""
+    var description: String = ""
     var image: UIImage?
     var imageURL: String = ""
 }
@@ -349,6 +350,10 @@ extension OfferQueue {
             
             if let lastname = userData["last_name"] as? String {
                 offerUser.lastName = lastname
+            }
+            
+            if let email = userData["email"] as? String {
+                offerUser.email = email
             }
         }
         

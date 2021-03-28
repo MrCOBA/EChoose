@@ -21,6 +21,9 @@
 		31202BA125EFFDF60012A2BE /* NewMapLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31202B9F25EFFDF60012A2BE /* NewMapLocationTableViewCell.swift */; };
 		31202BA225EFFDF60012A2BE /* NewMapLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31202BA025EFFDF60012A2BE /* NewMapLocationTableViewCell.xib */; };
 		3121DAB02603D32800351F20 /* LocationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121DAAF2603D32800351F20 /* LocationsManager.swift */; };
+		3126C7B42610B5060008D362 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126C7B22610B5060008D362 /* ProfileTableViewCell.swift */; };
+		3126C7B52610B5060008D362 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3126C7B32610B5060008D362 /* ProfileTableViewCell.xib */; };
+		3126C7BA2610B7EC0008D362 /* FullInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126C7B92610B7EC0008D362 /* FullInfoViewController.swift */; };
 		31391BD224FEBE29007C23B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BD124FEBE29007C23B3 /* ProfileViewController.swift */; };
 		31391C1824FEEE96007C23B3 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391C1624FEEE96007C23B3 /* InfoTableViewCell.swift */; };
 		31391C1924FEEE96007C23B3 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31391C1724FEEE96007C23B3 /* InfoTableViewCell.xib */; };
@@ -149,6 +152,9 @@
 		31202B9F25EFFDF60012A2BE /* NewMapLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMapLocationTableViewCell.swift; sourceTree = "<group>"; };
 		31202BA025EFFDF60012A2BE /* NewMapLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMapLocationTableViewCell.xib; sourceTree = "<group>"; };
 		3121DAAF2603D32800351F20 /* LocationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsManager.swift; sourceTree = "<group>"; };
+		3126C7B22610B5060008D362 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		3126C7B32610B5060008D362 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		3126C7B92610B7EC0008D362 /* FullInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoViewController.swift; sourceTree = "<group>"; };
 		31391BD124FEBE29007C23B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		31391C1624FEEE96007C23B3 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		31391C1724FEEE96007C23B3 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
@@ -333,6 +339,7 @@
 				31D8F5A626022AF4007B06D6 /* ProfileEditorViewController.swift */,
 				31B08CC626076129009E5136 /* LoadingViewController.swift */,
 				3145DBCE260A31F7002DBBCB /* FilterEditorViewController.swift */,
+				3126C7B92610B7EC0008D362 /* FullInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -355,6 +362,15 @@
 				31BA362F24C221D600DE0E15 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3126C7AE2610ADCA0008D362 /* FullInfo Table View */ = {
+			isa = PBXGroup;
+			children = (
+				3126C7B22610B5060008D362 /* ProfileTableViewCell.swift */,
+				3126C7B32610B5060008D362 /* ProfileTableViewCell.xib */,
+			);
+			path = "FullInfo Table View";
 			sourceTree = "<group>";
 		};
 		31391C1524FEEE18007C23B3 /* Profile Info Table View */ = {
@@ -411,6 +427,7 @@
 		316115F424F2A283008B0377 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				3126C7AE2610ADCA0008D362 /* FullInfo Table View */,
 				318F00D325DA9F070017425A /* CustomUI */,
 				316D2802250176DA00E5A648 /* Core Data */,
 				31391C1524FEEE18007C23B3 /* Profile Info Table View */,
@@ -770,6 +787,7 @@
 				3110D83A251184D5000096B8 /* ButtonTableViewCell.xib in Resources */,
 				31391C1924FEEE96007C23B3 /* InfoTableViewCell.xib in Resources */,
 				31C463F225ED5A1B00894D1C /* StepperCell.xib in Resources */,
+				3126C7B52610B5060008D362 /* ProfileTableViewCell.xib in Resources */,
 				31BA362624C221D400DE0E15 /* Main.storyboard in Resources */,
 				31424DFD24F4699D00583E72 /* SectionHeader.xib in Resources */,
 				31CD21C225E29673001779DA /* ListTableViewCell.xib in Resources */,
@@ -822,6 +840,7 @@
 				31448C6F2604ACE900D9CCFA /* ServicesManager.swift in Sources */,
 				317C9A2F25F66D140097074C /* ImageTableViewCell.swift in Sources */,
 				31424E0124F526D000583E72 /* MessagesViewController.swift in Sources */,
+				3126C7B42610B5060008D362 /* ProfileTableViewCell.swift in Sources */,
 				3153AEBF24FABA24008A712E /* BackgroundView.swift in Sources */,
 				31391BD224FEBE29007C23B3 /* ProfileViewController.swift in Sources */,
 				31202B9025EFB9900012A2BE /* CustomStepper.swift in Sources */,
@@ -836,6 +855,7 @@
 				31EA7FE924FD9D5400413762 /* DialogTableViewCell.swift in Sources */,
 				31448CCB2605126C00D9CCFA /* Location+CoreDataClass.swift in Sources */,
 				318F00E725DAB0230017425A /* CustomView.swift in Sources */,
+				3126C7BA2610B7EC0008D362 /* FullInfoViewController.swift in Sources */,
 				31D7B36725FE5BB700434D88 /* ServiceViewController.swift in Sources */,
 				31C463F125ED5A1B00894D1C /* StepperCell.swift in Sources */,
 				315C1944251107D000F9FEB2 /* MapViewController.swift in Sources */,
