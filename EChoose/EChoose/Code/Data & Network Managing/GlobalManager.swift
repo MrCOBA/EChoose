@@ -198,7 +198,7 @@ class GlobalManager {
             
             POST(url: url, data: jsonData, withSerializer: accessTokenSerializer(_:), isAuthorized: true, completition: {[unowned self] in
                 if isPinging {
-                    queue.asyncAfter(deadline: .now() + 240) {[unowned self] in
+                    queue.asyncAfter(deadline: .now() + 120) {[unowned self] in
                         initRefresh()
                     }
                 }

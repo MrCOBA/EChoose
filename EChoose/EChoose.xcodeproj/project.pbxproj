@@ -15,6 +15,10 @@
 		3110D839251184D5000096B8 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110D837251184D5000096B8 /* ButtonTableViewCell.swift */; };
 		3110D83A251184D5000096B8 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3110D838251184D5000096B8 /* ButtonTableViewCell.xib */; };
 		3110D83D25118B51000096B8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3110D83C25118B51000096B8 /* MapKit.framework */; };
+		311C64A726121FF800C5BD67 /* SequenceIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C64A626121FF800C5BD67 /* SequenceIterator.swift */; };
+		311C64B026122B4800C5BD67 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C64AE26122B4800C5BD67 /* ActivityTableViewCell.swift */; };
+		311C64B126122B4800C5BD67 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 311C64AF26122B4800C5BD67 /* ActivityTableViewCell.xib */; };
+		311C64B9261247D000C5BD67 /* ActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C64B8261247D000C5BD67 /* ActivitiesManager.swift */; };
 		31202B9025EFB9900012A2BE /* CustomStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31202B8F25EFB9900012A2BE /* CustomStepper.swift */; };
 		31202B9725EFEEA20012A2BE /* MapLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31202B9525EFEEA20012A2BE /* MapLocationTableViewCell.swift */; };
 		31202B9825EFEEA20012A2BE /* MapLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31202B9625EFEEA20012A2BE /* MapLocationTableViewCell.xib */; };
@@ -37,7 +41,7 @@
 		31424DFF24F526B300583E72 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424DFE24F526B300583E72 /* FeedViewController.swift */; };
 		31424E0124F526D000583E72 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424E0024F526D000583E72 /* MessagesViewController.swift */; };
 		31424E0324F526E700583E72 /* MyServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424E0224F526E700583E72 /* MyServicesViewController.swift */; };
-		31424E0524F526FF00583E72 /* DelayedServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424E0424F526FF00583E72 /* DelayedServicesViewController.swift */; };
+		31424E0524F526FF00583E72 /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424E0424F526FF00583E72 /* ActivitiesViewController.swift */; };
 		31424E0724F5271C00583E72 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424E0624F5271C00583E72 /* SettingsViewController.swift */; };
 		31424E0924F52BE100583E72 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424E0824F52BE100583E72 /* TabBarController.swift */; };
 		31448C6F2604ACE900D9CCFA /* ServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448C6E2604ACE900D9CCFA /* ServicesManager.swift */; };
@@ -143,6 +147,10 @@
 		3110D837251184D5000096B8 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		3110D838251184D5000096B8 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		3110D83C25118B51000096B8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		311C64A626121FF800C5BD67 /* SequenceIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceIterator.swift; sourceTree = "<group>"; };
+		311C64AE26122B4800C5BD67 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		311C64AF26122B4800C5BD67 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
+		311C64B8261247D000C5BD67 /* ActivitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesManager.swift; sourceTree = "<group>"; };
 		311FB155252B11F400628BC0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		311FB159252B11F400628BC0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		311FB15E252B123800628BC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -168,7 +176,7 @@
 		31424DFE24F526B300583E72 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		31424E0024F526D000583E72 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		31424E0224F526E700583E72 /* MyServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServicesViewController.swift; sourceTree = "<group>"; };
-		31424E0424F526FF00583E72 /* DelayedServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedServicesViewController.swift; sourceTree = "<group>"; };
+		31424E0424F526FF00583E72 /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		31424E0624F5271C00583E72 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		31424E0824F52BE100583E72 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		31448C6E2604ACE900D9CCFA /* ServicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesManager.swift; sourceTree = "<group>"; };
@@ -286,6 +294,8 @@
 				31086BCD24F93B4700B3839C /* ServiceTableViewCell.xib */,
 				31D7B37625FE5F9500434D88 /* EducationTypeCell.swift */,
 				31D7B37725FE5F9500434D88 /* EducationTypeCell.xib */,
+				311C64AE26122B4800C5BD67 /* ActivityTableViewCell.swift */,
+				311C64AF26122B4800C5BD67 /* ActivityTableViewCell.xib */,
 			);
 			path = "My Services Table View";
 			sourceTree = "<group>";
@@ -326,7 +336,7 @@
 				31424DFE24F526B300583E72 /* FeedViewController.swift */,
 				31424E0024F526D000583E72 /* MessagesViewController.swift */,
 				31424E0224F526E700583E72 /* MyServicesViewController.swift */,
-				31424E0424F526FF00583E72 /* DelayedServicesViewController.swift */,
+				31424E0424F526FF00583E72 /* ActivitiesViewController.swift */,
 				31424E0624F5271C00583E72 /* SettingsViewController.swift */,
 				31424E0824F52BE100583E72 /* TabBarController.swift */,
 				31EA7FEB24FD9F2000413762 /* DialogsViewController.swift */,
@@ -420,6 +430,8 @@
 				3121DAAF2603D32800351F20 /* LocationsManager.swift */,
 				31448C6E2604ACE900D9CCFA /* ServicesManager.swift */,
 				31586FCE2608B8260006BCEE /* OffersManager.swift */,
+				311C64A626121FF800C5BD67 /* SequenceIterator.swift */,
+				311C64B8261247D000C5BD67 /* ActivitiesManager.swift */,
 			);
 			path = "Data & Network Managing";
 			sourceTree = "<group>";
@@ -798,6 +810,7 @@
 				31086BDC24F9C58400B3839C /* Countries&Cities.json in Resources */,
 				31C463FD25ED5D4C00894D1C /* SheetTableViewCell.xib in Resources */,
 				316115FF24F2A9B4008B0377 /* RadioButtonsTableViewCell.xib in Resources */,
+				311C64B126122B4800C5BD67 /* ActivityTableViewCell.xib in Resources */,
 				317C9A3025F66D140097074C /* ImageTableViewCell.xib in Resources */,
 				31EA7FEA24FD9D5400413762 /* DialogTableViewCell.xib in Resources */,
 				31F3614425EF80E200F90C8F /* LocationTableViewCell.xib in Resources */,
@@ -833,6 +846,7 @@
 				31BA361F24C221D400DE0E15 /* AppDelegate.swift in Sources */,
 				318F00E225DAA2A00017425A /* CustomSearchBar.swift in Sources */,
 				31B08CC726076129009E5136 /* LoadingViewController.swift in Sources */,
+				311C64B026122B4800C5BD67 /* ActivityTableViewCell.swift in Sources */,
 				31448CCD2605126C00D9CCFA /* Service+CoreDataClass.swift in Sources */,
 				3153AEC124FABBE6008A712E /* GradientView.swift in Sources */,
 				31448CCC2605126C00D9CCFA /* Location+CoreDataProperties.swift in Sources */,
@@ -856,6 +870,7 @@
 				31448CCB2605126C00D9CCFA /* Location+CoreDataClass.swift in Sources */,
 				318F00E725DAB0230017425A /* CustomView.swift in Sources */,
 				3126C7BA2610B7EC0008D362 /* FullInfoViewController.swift in Sources */,
+				311C64A726121FF800C5BD67 /* SequenceIterator.swift in Sources */,
 				31D7B36725FE5BB700434D88 /* ServiceViewController.swift in Sources */,
 				31C463F125ED5A1B00894D1C /* StepperCell.swift in Sources */,
 				315C1944251107D000F9FEB2 /* MapViewController.swift in Sources */,
@@ -881,6 +896,7 @@
 				31424E0724F5271C00583E72 /* SettingsViewController.swift in Sources */,
 				317C9A3525F66EA30097074C /* CustomImageView.swift in Sources */,
 				31EA7FEC24FD9F2000413762 /* DialogsViewController.swift in Sources */,
+				311C64B9261247D000C5BD67 /* ActivitiesManager.swift in Sources */,
 				31CD21C125E29673001779DA /* ListTableViewCell.swift in Sources */,
 				316115FE24F2A9B4008B0377 /* RadioButtonsTableViewCell.swift in Sources */,
 				31C463E025ED562D00894D1C /* PickerSearcTableViewCell.swift in Sources */,
@@ -900,7 +916,7 @@
 				31424E0324F526E700583E72 /* MyServicesViewController.swift in Sources */,
 				31448CCA2605126C00D9CCFA /* Dialog+CoreDataProperties.swift in Sources */,
 				31086BD124F9546700B3839C /* RatingController.swift in Sources */,
-				31424E0524F526FF00583E72 /* DelayedServicesViewController.swift in Sources */,
+				31424E0524F526FF00583E72 /* ActivitiesViewController.swift in Sources */,
 				31D8F5A726022AF4007B06D6 /* ProfileEditorViewController.swift in Sources */,
 				31448CCE2605126C00D9CCFA /* Service+CoreDataProperties.swift in Sources */,
 				31424DED24F4092A00583E72 /* TextViewTableViewCell.swift in Sources */,

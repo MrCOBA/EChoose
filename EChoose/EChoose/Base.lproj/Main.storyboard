@@ -242,7 +242,7 @@
             <objects>
                 <viewController id="Cbr-D0-Pc6" customClass="MapViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3v9-vl-f4b" customClass="GradientView" customModule="EChoose" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2vD-je-eOS" customClass="CustomMapView" customModule="EChoose" customModuleProvider="target">
@@ -390,13 +390,13 @@
         <!--Activities-->
         <scene sceneID="SX2-ET-WNY">
             <objects>
-                <viewController id="kW9-fK-FXf" sceneMemberID="viewController">
+                <viewController id="kW9-fK-FXf" customClass="ActivitiesViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hxP-97-hZM" customClass="GradientView" customModule="EChoose" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8Z2-h6-dVm">
-                                <rect key="frame" x="16" y="120" width="382" height="32"/>
+                                <rect key="frame" x="16" y="104" width="382" height="32"/>
                                 <color key="backgroundColor" name="MainColor"/>
                                 <segments>
                                     <segment title="Matches"/>
@@ -404,15 +404,15 @@
                                 </segments>
                                 <color key="selectedSegmentTintColor" name="SecondColorGradient"/>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqo-uN-oaA">
-                                <rect key="frame" x="8" y="159" width="398" height="646"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqo-uN-oaA" customClass="BackgroundView" customModule="EChoose" customModuleProvider="target">
+                                <rect key="frame" x="8" y="143" width="398" height="662"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fE5-OQ-4jY">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="646"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="662"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agV-u0-y1w" customClass="CustomView" customModule="EChoose" customModuleProvider="target">
-                                        <rect key="frame" x="74" y="198" width="250" height="250"/>
+                                        <rect key="frame" x="74" y="206" width="250" height="250"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nohandshake" translatesAutoresizingMaskIntoConstraints="NO" id="tel-FZ-bQi">
                                                 <rect key="frame" x="8" y="8" width="234" height="196"/>
@@ -471,11 +471,15 @@
                             <constraint firstItem="86a-ow-Ak9" firstAttribute="trailing" secondItem="xqo-uN-oaA" secondAttribute="trailing" constant="8" id="GWF-Ky-Q9k"/>
                             <constraint firstItem="86a-ow-Ak9" firstAttribute="bottom" secondItem="xqo-uN-oaA" secondAttribute="bottom" constant="8" id="Zjf-A0-Xr9"/>
                             <constraint firstItem="xqo-uN-oaA" firstAttribute="top" secondItem="8Z2-h6-dVm" secondAttribute="bottom" constant="8" id="ig7-Fn-Bh4"/>
-                            <constraint firstItem="8Z2-h6-dVm" firstAttribute="top" secondItem="86a-ow-Ak9" secondAttribute="top" constant="32" id="oqL-Vl-4DN"/>
+                            <constraint firstItem="8Z2-h6-dVm" firstAttribute="top" secondItem="86a-ow-Ak9" secondAttribute="top" constant="16" id="oqL-Vl-4DN"/>
                             <constraint firstItem="86a-ow-Ak9" firstAttribute="trailing" secondItem="8Z2-h6-dVm" secondAttribute="trailing" constant="16" id="z2f-HZ-zDR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Activities" id="7Ne-o4-GvU"/>
+                    <connections>
+                        <outlet property="activitiesTableView" destination="fE5-OQ-4jY" id="q4M-Il-IOz"/>
+                        <segue destination="mqM-si-HJ1" kind="presentation" identifier="fullInfoSegue" id="Jkg-LT-QGa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9k-8Y-7hw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -486,7 +490,7 @@
             <objects>
                 <viewController id="mqM-si-HJ1" customClass="FullInfoViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BFI-fO-9sE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3sU-6y-Ebm">
@@ -517,7 +521,7 @@
             <objects>
                 <viewController id="UvE-FP-UJ4" customClass="ServiceViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W7o-rQ-UHD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Th-4W-4st" customClass="CustomView" customModule="EChoose" customModuleProvider="target">
@@ -1407,7 +1411,7 @@
             <objects>
                 <viewController id="9qi-Dd-egv" customClass="MyLocationsViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ivh-Bl-KIS" customClass="GradientView" customModule="EChoose" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOx-lN-Pgb" customClass="BackgroundView" customModule="EChoose" customModuleProvider="target">
@@ -1555,7 +1559,7 @@
             <objects>
                 <viewController id="e4h-jo-54G" customClass="FilterEditorViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ibf-6i-LM8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfY-sa-Y2G" customClass="CustomView" customModule="EChoose" customModuleProvider="target">
@@ -2009,6 +2013,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Rac-GP-cY9"/>
         <segue reference="SDF-h6-nNY"/>
+        <segue reference="Jkg-LT-QGa"/>
         <segue reference="ZOj-sh-GIT"/>
     </inferredMetricsTieBreakers>
     <resources>
