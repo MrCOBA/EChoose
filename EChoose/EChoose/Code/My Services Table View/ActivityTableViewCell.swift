@@ -18,6 +18,8 @@ class ActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var firstActionButton: CustomButton!
     @IBOutlet weak var secondActionButton: CustomButton!
     
+    static let identifier = "ActivityTableViewCell"
+    
     var servicesManager: ServicesManager = ServicesManager.shared
     var offer: Offer?
     var user: OfferUser?
@@ -36,7 +38,14 @@ class ActivityTableViewCell: UITableViewCell {
         delegate?.perform(segue: "fullInfoSegue", data: [(offer, user)], sender: nil)
     }
     
-    func setCell(_ offer: Offer, _ user: OfferUser) {
+    func setCell(_ offer: Offer?, _ user: OfferUser?) {
+        
+        guard let offer = offer else {
+            return
+        }
+        guard let user = user else {
+            return
+        }
         
         self.offer = offer
         self.user = user

@@ -39,9 +39,9 @@ class GlobalManager {
     var context: NSManagedObjectContext?
     var user: User?
     var buffer: Any?
+    var group: DispatchGroup
     
     private var isPinging = false
-    private var group: DispatchGroup
     private var queue: DispatchQueue
     private var tokenRefreshTimer: Timer?
     private var username: String?

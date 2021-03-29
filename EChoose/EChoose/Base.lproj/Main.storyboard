@@ -403,6 +403,9 @@
                                     <segment title="Archived Offers"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" name="SecondColorGradient"/>
+                                <connections>
+                                    <action selector="activityChanged:" destination="kW9-fK-FXf" eventType="valueChanged" id="PV9-mX-KdG"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqo-uN-oaA" customClass="BackgroundView" customModule="EChoose" customModuleProvider="target">
                                 <rect key="frame" x="8" y="143" width="398" height="662"/>
@@ -477,6 +480,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Activities" id="7Ne-o4-GvU"/>
                     <connections>
+                        <outlet property="activitiesControl" destination="8Z2-h6-dVm" id="xIu-YZ-ZPH"/>
                         <outlet property="activitiesTableView" destination="fE5-OQ-4jY" id="q4M-Il-IOz"/>
                         <segue destination="mqM-si-HJ1" kind="presentation" identifier="fullInfoSegue" id="Jkg-LT-QGa"/>
                     </connections>
@@ -490,7 +494,7 @@
             <objects>
                 <viewController id="mqM-si-HJ1" customClass="FullInfoViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BFI-fO-9sE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3sU-6y-Ebm">
@@ -521,7 +525,7 @@
             <objects>
                 <viewController id="UvE-FP-UJ4" customClass="ServiceViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W7o-rQ-UHD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Th-4W-4st" customClass="CustomView" customModule="EChoose" customModuleProvider="target">
@@ -1559,7 +1563,7 @@
             <objects>
                 <viewController id="e4h-jo-54G" customClass="FilterEditorViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ibf-6i-LM8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfY-sa-Y2G" customClass="CustomView" customModule="EChoose" customModuleProvider="target">
@@ -1962,16 +1966,16 @@
     </scenes>
     <designables>
         <designable name="8zR-lS-i2T">
-            <size key="intrinsicContentSize" width="126" height="34"/>
+            <size key="intrinsicContentSize" width="132" height="34"/>
         </designable>
         <designable name="A0t-aY-Hvw">
             <size key="intrinsicContentSize" width="37" height="26"/>
         </designable>
         <designable name="BG9-pO-5k7">
-            <size key="intrinsicContentSize" width="160" height="29"/>
+            <size key="intrinsicContentSize" width="145" height="29"/>
         </designable>
         <designable name="FcY-7v-eBa">
-            <size key="intrinsicContentSize" width="75.5" height="22"/>
+            <size key="intrinsicContentSize" width="95.5" height="22"/>
         </designable>
         <designable name="HRF-cr-ISQ">
             <size key="intrinsicContentSize" width="74" height="51"/>
@@ -1980,10 +1984,10 @@
             <size key="intrinsicContentSize" width="62" height="28"/>
         </designable>
         <designable name="Sp1-LU-rOV">
-            <size key="intrinsicContentSize" width="179" height="28"/>
+            <size key="intrinsicContentSize" width="164" height="28"/>
         </designable>
         <designable name="cic-iJ-OFc">
-            <size key="intrinsicContentSize" width="123" height="22"/>
+            <size key="intrinsicContentSize" width="143" height="22"/>
         </designable>
         <designable name="clc-7l-yoA">
             <size key="intrinsicContentSize" width="40" height="34"/>
@@ -2001,10 +2005,10 @@
             <size key="intrinsicContentSize" width="282" height="282"/>
         </designable>
         <designable name="nzb-Qh-1bh">
-            <size key="intrinsicContentSize" width="73" height="21"/>
+            <size key="intrinsicContentSize" width="93" height="21"/>
         </designable>
         <designable name="qlo-mL-RCd">
-            <size key="intrinsicContentSize" width="207" height="29"/>
+            <size key="intrinsicContentSize" width="192" height="29"/>
         </designable>
         <designable name="qnG-Qf-z5V">
             <size key="intrinsicContentSize" width="-1" height="56"/>

@@ -100,7 +100,7 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
                     return cell
                 }
                 
-                cell.setCell(UIImage(named: "descriptionimage")!, "Description", user.description == "" ? "No Description" : user.description)
+                cell.setCell(UIImage(named: "descriptionimage")!, "Description", user.userDescription == "" ? "No Description" : user.userDescription)
                 
                 return cell
                 
@@ -177,7 +177,7 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
                     return cell
                 }
                 
-                cell.setCell(UIImage(named: "descriptionimage")!, "Description", offer.description == "" ? "No Description" : offer.description)
+                cell.setCell(UIImage(named: "descriptionimage")!, "Description", offer.serviceDescription == "" ? "No Description" : offer.serviceDescription)
                 
                 return cell
                 
