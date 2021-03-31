@@ -171,6 +171,8 @@ class FilterEditorViewController: UIViewController {
         } else {
             filter?.findTutor = false
         }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func firstButtonPressed(_ sender: Any) {

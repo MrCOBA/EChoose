@@ -65,8 +65,10 @@ class MatchesActivity: SequenceIterator, Activity {
 
 class ArchivesActivity: SequenceIterator, Activity {
     
+    var isLoaded: Bool = false
+    
     func loadActivity() {
-        
+
         guard let url = URL(string: "\(globalManager.apiURL)/offers/archives/") else {
             return
         }
@@ -118,15 +120,6 @@ class ActivitiesManager {
         
         activities[.match] = MatchesActivity()
         activities[.archive] = ArchivesActivity()
-    }
-    
-    func loadActivities() {
-        
-        for activity in activities {
-            
-            activity.value.loadActivity()
-        }
-        
     }
     
     subscript (activityType: ActivityType) -> Activity? {
