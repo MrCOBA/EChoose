@@ -10,6 +10,7 @@ import UIKit
 
 class ActivityTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var userImageView: CustomImageView!
     @IBOutlet weak var fullnameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -30,12 +31,21 @@ class ActivityTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setUI()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        delegate?.perform(segue: "fullInfoSegue", data: [(offer, user)], sender: nil)
+        if selected {
+            delegate?.perform(segue: "fullInfoSegue", data: [(offer, user)], sender: nil)
+        }
+    }
+    
+    func setUI() {
+        
+        backgroundCellView.layer.cornerRadius = 20
     }
     
     func setCell(_ offer: Offer?, _ user: OfferUser?) {

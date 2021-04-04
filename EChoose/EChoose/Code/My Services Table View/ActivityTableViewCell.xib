@@ -151,6 +151,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backgroundCellView" destination="DDX-0g-5cn" id="eLl-vc-P1n"/>
                 <outlet property="categoryLabel" destination="b6Q-B2-yKc" id="uD8-Ei-jEl"/>
                 <outlet property="firstActionButton" destination="ZYa-UD-8Jd" id="20g-hF-gr2"/>
                 <outlet property="fullnameLabel" destination="CW4-Gy-sXe" id="itq-6r-VcS"/>

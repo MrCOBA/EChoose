@@ -97,6 +97,7 @@
 		31BA362E24C221D600DE0E15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31BA362C24C221D600DE0E15 /* LaunchScreen.storyboard */; };
 		31BA363924C221D700DE0E15 /* EChooseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BA363824C221D700DE0E15 /* EChooseTests.swift */; };
 		31BA364424C221D700DE0E15 /* EChooseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BA364324C221D700DE0E15 /* EChooseUITests.swift */; };
+		31BD4ACE2614F901006ED479 /* AlertsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BD4ACD2614F901006ED479 /* AlertsController.swift */; };
 		31C463E025ED562D00894D1C /* PickerSearcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C463DE25ED562D00894D1C /* PickerSearcTableViewCell.swift */; };
 		31C463E125ED562D00894D1C /* PickerSearcTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31C463DF25ED562D00894D1C /* PickerSearcTableViewCell.xib */; };
 		31C463F125ED5A1B00894D1C /* StepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C463EF25ED5A1B00894D1C /* StepperCell.swift */; };
@@ -238,6 +239,7 @@
 		31BA363F24C221D700DE0E15 /* EChooseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EChooseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BA364324C221D700DE0E15 /* EChooseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EChooseUITests.swift; sourceTree = "<group>"; };
 		31BA364524C221D700DE0E15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31BD4ACD2614F901006ED479 /* AlertsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsController.swift; sourceTree = "<group>"; };
 		31C463DE25ED562D00894D1C /* PickerSearcTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSearcTableViewCell.swift; sourceTree = "<group>"; };
 		31C463DF25ED562D00894D1C /* PickerSearcTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerSearcTableViewCell.xib; sourceTree = "<group>"; };
 		31C463EF25ED5A1B00894D1C /* StepperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperCell.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				31586FCE2608B8260006BCEE /* OffersManager.swift */,
 				311C64A626121FF800C5BD67 /* SequenceIterator.swift */,
 				311C64B8261247D000C5BD67 /* ActivitiesManager.swift */,
+				31BD4ACD2614F901006ED479 /* AlertsController.swift */,
 			);
 			path = "Data & Network Managing";
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				31BA361F24C221D400DE0E15 /* AppDelegate.swift in Sources */,
 				318F00E225DAA2A00017425A /* CustomSearchBar.swift in Sources */,
 				31B08CC726076129009E5136 /* LoadingViewController.swift in Sources */,
+				31BD4ACE2614F901006ED479 /* AlertsController.swift in Sources */,
 				311C64B026122B4800C5BD67 /* ActivityTableViewCell.swift in Sources */,
 				31448CCD2605126C00D9CCFA /* Service+CoreDataClass.swift in Sources */,
 				3153AEC124FABBE6008A712E /* GradientView.swift in Sources */,

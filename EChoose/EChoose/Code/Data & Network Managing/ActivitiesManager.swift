@@ -20,6 +20,7 @@ protocol Activity {
     func size() -> Int
     func get(_ index: Int) -> Offer?
     func get(_ index: Int) -> OfferUser?
+    func clear()
 }
 
 class MatchesActivity: SequenceIterator, Activity {
@@ -44,7 +45,7 @@ class MatchesActivity: SequenceIterator, Activity {
     
     func get(_ index: Int) -> Offer? {
         
-        if index > 0 && index < size() {
+        if index >= 0 && index < size() {
             
             return offersPart[index]
         }
@@ -54,12 +55,20 @@ class MatchesActivity: SequenceIterator, Activity {
     
     func get(_ index: Int) -> OfferUser? {
         
-        if index > 0 && index < size() {
+        if index >= 0 && index < size() {
             
             return offerUsers[index]
         }
         
         return nil
+    }
+    
+    func clear() {
+        
+        locationsDefault = []
+        offers = []
+        offersPart = []
+        offerUsers = []
     }
 }
 
@@ -103,6 +112,14 @@ class ArchivesActivity: SequenceIterator, Activity {
         }
         
         return nil
+    }
+    
+    func clear() {
+        
+        locationsDefault = []
+        offers = []
+        offersPart = []
+        offerUsers = []
     }
 }
 
