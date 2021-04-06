@@ -27,6 +27,7 @@ class PickerSearcTableViewCell: UITableViewCell {
         
         dataPicker.delegate = self
         dataPicker.dataSource = self
+        searchBar.delegate = self
         setUI()
     }
     

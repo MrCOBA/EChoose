@@ -10,6 +10,7 @@ import UIKit
 
 class ServiceViewController: UIViewController {
 
+    @IBOutlet weak var noDescriptionImageView: CustomImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var communicationAndSubjectLabel: UILabel!
@@ -59,10 +60,16 @@ class ServiceViewController: UIViewController {
             if let category = category,
                let edLocationType = edLocationType {
                 communicationAndSubjectLabel.text = "\(category.name), \(edLocationType)"
-                descriptionTextView.text = serviceDefault.description
                 costLabel.text = "Price: \(serviceDefault.price)₽"
             }
             
+            if serviceDefault.description != "" {
+                descriptionTextView.text = serviceDefault.description
+                noDescriptionImageView.isHidden = true
+            } else {
+                
+                noDescriptionImageView.isHidden = false
+            }
         }
         
         educationTypesCollectionView.delegate = self

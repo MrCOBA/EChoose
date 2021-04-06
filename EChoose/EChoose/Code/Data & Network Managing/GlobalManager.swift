@@ -34,7 +34,7 @@ protocol HTTPDelegate {
 
 class GlobalManager {
     
-    var apiURL = "https://bcde8b3e20d1.ngrok.io"
+    var apiURL = "https://95260edc9036.ngrok.io"
     var imageURL: String?
     var context: NSManagedObjectContext?
     var user: User?
@@ -626,7 +626,6 @@ extension GlobalManager {
             if let id = json["id"] as? Int32,
                let edLocation = json["location"] as? String,
                let categoryid = json["category"] as? Int32,
-               let description = json["description"] as? String,
                let price = json["price"] as? Int32,
                let isTutor = json["isTutor"] as? Bool,
                let types = json["types"] as? [Int],
@@ -654,12 +653,15 @@ extension GlobalManager {
                     }
                 }
 
+                if let description = json["description"] as? String {
+                    service.descript = description
+                }
+                
                 service.edLocationType = edLocation
                 service.id = id
                 service.serviceTypes = types
                 service.isActive = isActive
                 service.category = categoryid
-                service.descript = description
                 service.price = price
                 service.isTutor = isTutor
                 

@@ -96,7 +96,7 @@ class ArchivesActivity: SequenceIterator, Activity {
     
     func get(_ index: Int) -> Offer? {
         
-        if index > 0 && index < size() {
+        if index >= 0 && index < size() {
             
             return offersPart[index]
         }
@@ -106,7 +106,7 @@ class ArchivesActivity: SequenceIterator, Activity {
     
     func get(_ index: Int) -> OfferUser? {
         
-        if index > 0 && index < size() {
+        if index >= 0 && index < size() {
             
             return offerUsers[index]
         }

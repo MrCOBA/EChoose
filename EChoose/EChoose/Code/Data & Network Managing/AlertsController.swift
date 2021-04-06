@@ -123,7 +123,7 @@ extension AlertType: RawRepresentable {
 }
 
 protocol Alert {
-    subscript(of type: AlertType) -> UIAlertController? { get }
+    subscript(type: AlertType) -> UIAlertController? { get }
 }
 
 class InformationAlert: Alert {
@@ -137,7 +137,7 @@ class InformationAlert: Alert {
     
     private var controller: UIAlertController?
     
-    subscript(of type: AlertType) -> UIAlertController? {
+    subscript(type: AlertType) -> UIAlertController? {
         
         get {
             if !availableTypes.contains(type) {
@@ -165,7 +165,7 @@ class WarningAlert: Alert {
         self.action = action
     }
     
-    subscript(of type: AlertType) -> UIAlertController? {
+    subscript(type: AlertType) -> UIAlertController? {
         
         get {
             if !availableTypes.contains(type) {
@@ -195,7 +195,7 @@ class ActionsAlert: Alert {
         self.secondAction = secondAction
     }
     
-    subscript(of type: AlertType) -> UIAlertController? {
+    subscript(type: AlertType) -> UIAlertController? {
         
         get {
             if !availableTypes.contains(type) {

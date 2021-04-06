@@ -215,6 +215,7 @@ class ServicesManager {
     func defaultCopy(of service: Service) -> ServiceDefault {
         
         let serviceCopy = ServiceDefault()
+        
         serviceCopy.addressid = Int(service.location?.id ?? -1)
         serviceCopy.edLocation = service.edLocationType ?? ""
         serviceCopy.categoryid = Int(service.category)

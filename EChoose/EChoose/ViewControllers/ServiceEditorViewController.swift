@@ -183,6 +183,7 @@ extension ServiceEditorViewController: UITableViewDelegate, UITableViewDataSourc
                     let cell = serviceEditorTableView.dequeueReusableCell(withIdentifier: TextViewTableViewCell.identifier, for: indexPath) as! TextViewTableViewCell
                     
                     cell.serviceDefault = serviceDefault
+                    cell.gestureDelegate = self
                     cell.setCell("Service Description", "description")
 
                     return cell
@@ -235,11 +236,16 @@ extension ServiceEditorViewController: UITableViewDelegate, UITableViewDataSourc
         return 60
     }
 }
-extension ServiceEditorViewController: SegueDelegate {
+extension ServiceEditorViewController: SegueDelegate, GestureDelegate {
 
     func perform(segue identifier: String, data: [Any]?, sender: Any?) {
         
         performSegue(withIdentifier: identifier, sender: sender)
+    }
+    
+    func addGestureRecognizer(_ recognizer: UITapGestureRecognizer) {
+        
+        serviceEditorTableView.addGestureRecognizer(recognizer)
     }
 }
 extension ServiceEditorViewController: ActionDelegate {

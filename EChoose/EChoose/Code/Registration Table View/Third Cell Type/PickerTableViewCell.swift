@@ -45,9 +45,10 @@ class PickerTableViewCell: UITableViewCell {
                     dataPicker.selectRow(i, inComponent: 0, animated: true)
                 }
             }
-            if serviceDefault.edLocation == "" {
-                serviceDefault.edLocation = data[0]
-            }
+        }
+        
+        if serviceDefault?.edLocation == "" {
+            serviceDefault?.edLocation = data[0]
         }
     }
     

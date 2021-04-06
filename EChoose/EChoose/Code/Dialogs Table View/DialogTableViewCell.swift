@@ -11,7 +11,7 @@ import UIKit
 class DialogTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backgroundCellView: UIView!
-    @IBOutlet weak var opponentImageView: UIImageView!
+    @IBOutlet weak var opponentImageView: CustomImageView!
     @IBOutlet weak var opponentFullnameLabel: UILabel!
     @IBOutlet weak var dialogLastMessageLabel: UILabel!
     
@@ -28,7 +28,6 @@ class DialogTableViewCell: UITableViewCell {
         
         backgroundCellView.layer.cornerRadius = 10
         
-        opponentImageView.layer.cornerRadius = opponentImageView.frame.width / 2
     }
     
     func setCell(_ dialog: DialogStruct) {

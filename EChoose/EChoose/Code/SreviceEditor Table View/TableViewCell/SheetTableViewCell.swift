@@ -93,7 +93,9 @@ extension SheetTableViewCell: MultipleSelectioDelegate {
             
             if let serviceType = servicesManager.serviceTypes.first(where: {serviceType in return serviceType.name == data[id]}) {
                 
-                serviceDefault.types.append(serviceType.id)
+                if !serviceDefault.types.contains(serviceType.id) {
+                    serviceDefault.types.append(serviceType.id)
+                }
             }
         }
     }
