@@ -67,7 +67,7 @@
                                             <constraint firstAttribute="height" constant="34" id="Yh4-Fu-9Fg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="2"/>
@@ -90,7 +90,7 @@
                                             <constraint firstAttribute="height" constant="34" id="jgn-mG-dkw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" name="SecondColorGradient"/>
@@ -245,7 +245,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2vD-je-eOS" customClass="CustomMapView" customModule="EChoose" customModuleProvider="target">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vD-je-eOS" customClass="CustomMapView" customModule="EChoose" customModuleProvider="target">
                                 <rect key="frame" x="8" y="136" width="398" height="572"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -311,7 +311,7 @@
                                 </constraints>
                                 <color key="tintColor" name="MainColor"/>
                                 <color key="barTintColor" name="SecondColorGradient"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTintColor">
                                         <color key="value" name="MainColor"/>
@@ -339,7 +339,7 @@
                                 </constraints>
                                 <color key="textColor" name="MainColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="2"/>
@@ -756,6 +756,9 @@
                                         <color key="value" name="SecondColorGradient"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="editProfile:" destination="vht-kn-lyC" eventType="touchUpInside" id="0vW-jj-ppf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlo-mL-RCd" customClass="CustomButton" customModule="EChoose" customModuleProvider="target">
                                 <rect key="frame" x="67" y="196" width="280" height="60"/>
@@ -802,8 +805,8 @@
                     <navigationItem key="navigationItem" title="Settings" id="8B5-uW-h2P"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="showDetail" identifier="loginScreenSegue" id="ZOj-sh-GIT"/>
-                        <segue destination="9qi-Dd-egv" kind="presentation" identifier="mylocationsScreenSegue" id="Rac-GP-cY9"/>
-                        <segue destination="ZaY-1I-ta2" kind="show" id="DXC-Yd-by7"/>
+                        <segue destination="9qi-Dd-egv" kind="push" identifier="mylocationsScreenSegue" id="Rac-GP-cY9"/>
+                        <segue destination="ZaY-1I-ta2" kind="show" identifier="profileEditorSegue" id="DXC-Yd-by7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETX-tn-lT5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -818,28 +821,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQl-DF-f3e" customClass="CustomButton" customModule="EChoose" customModuleProvider="target">
-                                <rect key="frame" x="16" y="96" width="62" height="28"/>
-                                <color key="backgroundColor" name="MainColor"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
-                                <state key="normal" title="Filters">
-                                    <color key="titleColor" name="SecondColorGradient"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" name="SecondColorGradient"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="setFilters:" destination="fHg-oL-EsT" eventType="touchUpInside" id="nPr-gh-bzi"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEl-Ke-YPI">
                                 <rect key="frame" x="16" y="151" width="382" height="594"/>
                                 <subviews>
@@ -1000,9 +981,7 @@
                             <constraint firstItem="s8I-rE-dVG" firstAttribute="centerY" secondItem="klS-If-v3f" secondAttribute="centerY" id="Huu-Hd-UZ1"/>
                             <constraint firstItem="aEl-Ke-YPI" firstAttribute="centerX" secondItem="klS-If-v3f" secondAttribute="centerX" id="MdM-3R-kOr"/>
                             <constraint firstItem="aEl-Ke-YPI" firstAttribute="width" secondItem="LqN-6L-HmX" secondAttribute="width" multiplier="0.922705" id="QxA-Qq-Mix"/>
-                            <constraint firstItem="JQl-DF-f3e" firstAttribute="leading" secondItem="klS-If-v3f" secondAttribute="leading" constant="16" id="TDM-IF-jpT"/>
                             <constraint firstItem="CNq-8E-tZc" firstAttribute="top" secondItem="klS-If-v3f" secondAttribute="top" id="Y2g-J1-2Ib"/>
-                            <constraint firstItem="JQl-DF-f3e" firstAttribute="top" secondItem="klS-If-v3f" secondAttribute="top" constant="8" id="be8-Yj-q85"/>
                             <constraint firstItem="TXf-a4-llg" firstAttribute="centerX" secondItem="klS-If-v3f" secondAttribute="centerX" id="cH1-Oe-Uuz"/>
                             <constraint firstItem="klS-If-v3f" firstAttribute="trailing" secondItem="s8I-rE-dVG" secondAttribute="trailing" constant="79" id="gJh-eQ-FUT"/>
                             <constraint firstItem="aEl-Ke-YPI" firstAttribute="centerY" secondItem="klS-If-v3f" secondAttribute="centerY" constant="-2.5" id="gQD-gb-Hbp"/>
@@ -1012,6 +991,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="7yb-hV-EIK">
+                        <barButtonItem key="leftBarButtonItem" title="Filters" id="89B-LH-HW5">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="setFilters:" destination="fHg-oL-EsT" id="5D0-Gi-fL7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="person.circle" catalog="system" landscapeImage="person.circle" largeContentSizeImage="person.circle" id="EcM-Ez-A7T">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -1072,8 +1057,8 @@
                                 <rect key="frame" x="16" y="72" width="382" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fullname, Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebU-7Q-2JR">
-                                        <rect key="frame" x="8" y="8" width="183.5" height="44"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
+                                        <rect key="frame" x="8" y="8" width="171.5" height="44"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
                                         <color key="textColor" name="MainColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1139,16 +1124,44 @@
             <objects>
                 <viewController id="ZaY-1I-ta2" customClass="ProfileEditorViewController" customModule="EChoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HkN-Ur-eIK" customClass="GradientView" customModule="EChoose" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kt3-fX-NGn" customClass="BackgroundView" customModule="EChoose" customModuleProvider="target">
+                                <rect key="frame" x="8" y="96" width="398" height="709"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tbW-9h-9Yz">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
+                                        <color key="backgroundColor" name="MainColor"/>
+                                        <color key="sectionIndexBackgroundColor" name="MainColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" name="MainColor"/>
+                                <constraints>
+                                    <constraint firstItem="tbW-9h-9Yz" firstAttribute="top" secondItem="Kt3-fX-NGn" secondAttribute="top" id="1tW-9r-nVd"/>
+                                    <constraint firstAttribute="trailing" secondItem="tbW-9h-9Yz" secondAttribute="trailing" id="3Wl-A0-yUf"/>
+                                    <constraint firstItem="tbW-9h-9Yz" firstAttribute="leading" secondItem="Kt3-fX-NGn" secondAttribute="leading" id="Gf9-aR-bgz"/>
+                                    <constraint firstAttribute="bottom" secondItem="tbW-9h-9Yz" secondAttribute="bottom" id="gOO-3O-Z7d"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Qbn-0V-wl2"/>
                         <color key="backgroundColor" name="SecondColorGradient"/>
+                        <constraints>
+                            <constraint firstItem="Kt3-fX-NGn" firstAttribute="leading" secondItem="Qbn-0V-wl2" secondAttribute="leading" constant="8" id="A8P-zL-dsi"/>
+                            <constraint firstItem="Qbn-0V-wl2" firstAttribute="trailing" secondItem="Kt3-fX-NGn" secondAttribute="trailing" constant="8" id="EB5-cO-XYZ"/>
+                            <constraint firstItem="Qbn-0V-wl2" firstAttribute="bottom" secondItem="Kt3-fX-NGn" secondAttribute="bottom" constant="8" id="FZ8-is-HdG"/>
+                            <constraint firstItem="Kt3-fX-NGn" firstAttribute="top" secondItem="Qbn-0V-wl2" secondAttribute="top" constant="8" id="K2p-kJ-2zj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile Editor" id="ja5-HV-AaF"/>
+                    <connections>
+                        <outlet property="profileEditorTableView" destination="tbW-9h-9Yz" id="M12-zj-Qsu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KgA-mc-85p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6461" y="700"/>
+            <point key="canvasLocation" x="6460.8695652173919" y="699.77678571428567"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="HJR-Kj-ZCM">
@@ -1544,6 +1557,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="4IO-Sa-3Y0">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                             <color key="textColor" name="MainColor"/>
@@ -1575,7 +1589,7 @@
                                         <color key="textColor" name="SecondColorGradient"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10000" minValue="1" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="254-TF-hHb">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10000" minValue="1" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="254-TF-hHb" customClass="CustomSlider" customModule="EChoose" customModuleProvider="target">
                                         <rect key="frame" x="50" y="284" width="140" height="31"/>
                                         <color key="tintColor" name="ThirdColorGradient"/>
                                         <color key="minimumTrackTintColor" name="FirstColorGradient"/>
@@ -1642,7 +1656,7 @@
                                             <action selector="secondButtonPressed:" destination="e4h-jo-54G" eventType="touchUpInside" id="wdi-S2-K8f"/>
                                         </connections>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10000" minValue="100" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="0D8-5j-eE8">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10000" minValue="100" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="0D8-5j-eE8" customClass="CustomSlider" customModule="EChoose" customModuleProvider="target">
                                         <rect key="frame" x="50" y="212" width="140" height="31"/>
                                         <color key="tintColor" name="SecondColorGradient"/>
                                         <color key="minimumTrackTintColor" name="FirstColorGradient"/>
@@ -1652,7 +1666,7 @@
                                             <action selector="maxPriceChanged:" destination="e4h-jo-54G" eventType="valueChanged" id="XUf-Ov-HEA"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10000" minValue="100" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="xi2-VS-xTc">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10000" minValue="100" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="xi2-VS-xTc" customClass="CustomSlider" customModule="EChoose" customModuleProvider="target">
                                         <rect key="frame" x="50" y="162" width="140" height="31"/>
                                         <color key="backgroundColor" name="MainColor"/>
                                         <color key="tintColor" name="SecondColorGradient"/>
@@ -1971,9 +1985,6 @@
         <designable name="HRF-cr-ISQ">
             <size key="intrinsicContentSize" width="74" height="51"/>
         </designable>
-        <designable name="JQl-DF-f3e">
-            <size key="intrinsicContentSize" width="62" height="28"/>
-        </designable>
         <designable name="Sp1-LU-rOV">
             <size key="intrinsicContentSize" width="164" height="28"/>
         </designable>
@@ -2009,7 +2020,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="6d3-ZU-Elk"/>
+        <segue reference="Rac-GP-cY9"/>
         <segue reference="JwZ-e6-vmn"/>
         <segue reference="VA2-6G-IQu"/>
         <segue reference="ZOj-sh-GIT"/>
@@ -2038,7 +2049,7 @@
             <color red="0.96078431372549022" green="0.98431372549019602" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainColor">
-            <color red="0.68048805553267744" green="0.90639767660955828" blue="0.67127037358165365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.67843137254901964" green="0.90588235294117647" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2050,10 +2061,10 @@
             <color red="0.38100001215934753" green="0.72399997711181641" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="dislikeColor">
-            <color red="0.95809204409820869" green="0.31974248645977249" blue="0.26364557269839195" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.95800000429153442" green="0.31999999284744263" blue="0.26399999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="likeGreen">
-            <color red="0.28768853284496804" green="0.72563240744850854" blue="0.24255856844637871" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.28799998760223389" green="0.72600001096725464" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

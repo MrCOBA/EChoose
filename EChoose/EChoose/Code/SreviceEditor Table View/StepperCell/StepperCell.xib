@@ -47,7 +47,7 @@
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100000" stepValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="HcZ-ys-gIi" customClass="CustomStepper" customModule="EChoose" customModuleProvider="target">
+                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minimumValue="100" maximumValue="10000" stepValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="HcZ-ys-gIi" customClass="CustomStepper" customModule="EChoose" customModuleProvider="target">
                         <rect key="frame" x="210" y="46" width="94" height="32"/>
                         <color key="backgroundColor" name="MainColor"/>
                         <constraints>
@@ -101,7 +101,7 @@
     </designables>
     <resources>
         <namedColor name="MainColor">
-            <color red="0.63499999046325684" green="0.85500001907348633" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.67843137254901964" green="0.90588235294117647" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondColorGradient">
             <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

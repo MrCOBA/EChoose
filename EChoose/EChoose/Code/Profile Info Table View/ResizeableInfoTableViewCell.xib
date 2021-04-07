@@ -29,35 +29,29 @@
                                     <constraint firstAttribute="width" constant="31" id="pfM-62-fTw"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbq-0T-m6u">
-                                <rect key="frame" x="47" y="13" width="100" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="fZf-uz-2Pq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="textColor" name="MainColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucg-kS-JwD">
-                                <rect key="frame" x="155" y="8" width="141" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucg-kS-JwD" customClass="CustomLabel" customModule="EChoose" customModuleProvider="target">
+                                <rect key="frame" x="47" y="8" width="249" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="MRM-8f-pNC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" name="MainColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" name="SecondColorGradient"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Ucg-kS-JwD" secondAttribute="bottom" constant="8" id="3Wr-4z-Yhh"/>
-                            <constraint firstItem="nbq-0T-m6u" firstAttribute="centerY" secondItem="zVI-Ff-N1q" secondAttribute="centerY" id="5qP-Zh-URx"/>
+                            <constraint firstItem="LM4-ra-fRg" firstAttribute="top" secondItem="Ucg-kS-JwD" secondAttribute="top" id="JPE-Wj-A8X"/>
                             <constraint firstAttribute="trailing" secondItem="Ucg-kS-JwD" secondAttribute="trailing" constant="8" id="P0Q-ko-bK7"/>
                             <constraint firstItem="LM4-ra-fRg" firstAttribute="leading" secondItem="zVI-Ff-N1q" secondAttribute="leading" constant="8" id="Sez-cu-j7G"/>
                             <constraint firstItem="Ucg-kS-JwD" firstAttribute="top" secondItem="zVI-Ff-N1q" secondAttribute="top" constant="8" id="YuN-C6-VhH"/>
-                            <constraint firstItem="nbq-0T-m6u" firstAttribute="leading" secondItem="LM4-ra-fRg" secondAttribute="trailing" constant="8" id="cTb-Yl-bEU"/>
-                            <constraint firstItem="LM4-ra-fRg" firstAttribute="centerY" secondItem="zVI-Ff-N1q" secondAttribute="centerY" id="pdq-MS-oNE"/>
-                            <constraint firstItem="Ucg-kS-JwD" firstAttribute="leading" secondItem="nbq-0T-m6u" secondAttribute="trailing" constant="8" id="zeZ-gh-bNb"/>
+                            <constraint firstItem="Ucg-kS-JwD" firstAttribute="leading" secondItem="LM4-ra-fRg" secondAttribute="trailing" constant="8" id="r22-jF-HlC"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -72,7 +66,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="attributeImageView" destination="LM4-ra-fRg" id="HsQ-dJ-sur"/>
-                <outlet property="attributeLabel" destination="nbq-0T-m6u" id="J0H-Wk-BAP"/>
                 <outlet property="backgroundCellView" destination="zVI-Ff-N1q" id="shD-3A-atB"/>
                 <outlet property="valueLabel" destination="Ucg-kS-JwD" id="4A2-dp-9wx"/>
             </connections>
@@ -81,7 +74,7 @@
     </objects>
     <resources>
         <namedColor name="MainColor">
-            <color red="0.63137254901960782" green="0.85490196078431369" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.67843137254901964" green="0.90588235294117647" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondColorGradient">
             <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

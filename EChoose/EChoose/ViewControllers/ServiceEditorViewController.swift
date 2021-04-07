@@ -174,7 +174,7 @@ extension ServiceEditorViewController: UITableViewDelegate, UITableViewDataSourc
                     let cell = serviceEditorTableView.dequeueReusableCell(withIdentifier: RadioButtonsTableViewCell.identifier, for: indexPath) as! RadioButtonsTableViewCell
 
                     cell.serviceDefault = serviceDefault
-                    cell.setCell("Student/Tutor", [("T", "Tutor"), ("S", "Student")], "role")
+                    cell.setCell("Student/Tutor", [("T", "Tutor"), ("S", "Student")], ("role", ""))
 
                     return cell
                     
@@ -184,7 +184,7 @@ extension ServiceEditorViewController: UITableViewDelegate, UITableViewDataSourc
                     
                     cell.serviceDefault = serviceDefault
                     cell.gestureDelegate = self
-                    cell.setCell("Service Description", "description")
+                    cell.setCell("Service Description", ("description", ""))
 
                     return cell
                     

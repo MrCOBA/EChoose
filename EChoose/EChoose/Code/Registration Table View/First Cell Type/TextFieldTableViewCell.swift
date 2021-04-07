@@ -27,7 +27,6 @@ class TextFieldTableViewCell: UITableViewCell {
     }
     
     func setCell(_ cellName: String, _ isSecured: Bool, _ placholder: String, _ keyboardType: UIKeyboardType = .default, _ pair: (String, String)) {
-        self.cellName = cellName
         self.key = pair.0
         inputTextField.text = pair.1
         cellNameLabel.text = cellName

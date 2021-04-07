@@ -104,11 +104,11 @@ class RadioButtonsTableViewCell: UITableViewCell {
         setUI()
     }
     
-    func setCell(_ cellName: String, _ checkData: [(Character, String)], _ key: String) {
+    func setCell(_ cellName: String, _ checkData: [(Character, String)], _ pair: (String, String)) {
         
         self.checkData = checkData
         self.cellName = cellName
-        self.key = key
+        self.key = pair.0
         
         if let serviceDefault = serviceDefault {
             
@@ -117,7 +117,18 @@ class RadioButtonsTableViewCell: UITableViewCell {
             } else {
                 chosenType = .secondType
             }
+        } else if pair.1 != ""{
+            
+            if pair.1 == "False" {
+                
+                chosenType = .secondType
+            } else {
+                
+                chosenType = .firstType
+            }
+            
         } else {
+            
             chosenType = .undefined
         }
         

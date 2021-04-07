@@ -26,8 +26,17 @@ class DatePickerTableViewCell: UITableViewCell {
         setUI()
     }
     
-    func setCell(_ cellName: String, _ key: String) {
-        self.key = key
+    func setCell(_ cellName: String, _ pair: (String, String)) {
+        self.key = pair.0
+        
+        if pair.1 != "" {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            if let date = formatter.date(from: pair.1) {
+                datePicker.setDate(date, animated: true)
+            }
+        }
+        
         self.cellName = cellName
         cellNameLabel.text = cellName
     }

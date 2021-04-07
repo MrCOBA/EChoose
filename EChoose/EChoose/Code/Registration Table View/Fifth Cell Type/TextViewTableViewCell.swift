@@ -35,13 +35,16 @@ class TextViewTableViewCell: UITableViewCell {
         setUI()
     }
     
-    func setCell(_ cellName: String, _ key: String) {
-        self.key = key
+    func setCell(_ cellName: String, _ pair: (String, String)) {
+        self.key = pair.0
         cellNameLabel.text = cellName
         
         if let serviceDefault = serviceDefault {
             
             descriptionTextView.text = serviceDefault.description
+        } else {
+            
+            descriptionTextView.text = pair.1
         }
         
         notificationCenter = NotificationCenter.default

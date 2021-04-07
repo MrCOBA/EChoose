@@ -52,7 +52,7 @@ class StepperCell: UITableViewCell {
         cellNameLabel.text = cellName
         
         if let serviceDefault = serviceDefault {
-            price = serviceDefault.price > 0 ? serviceDefault.price : 0
+            price = serviceDefault.price > 100 ? serviceDefault.price : 100
         }
     }
     

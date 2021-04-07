@@ -88,7 +88,13 @@ class LoginViewController: UIViewController {
         } else if notification.name.rawValue == "loginUnsuccess"{
             
             DispatchQueue.main.async {[unowned self] in
+                
                 hideContentController(content: loadingVC)
+                let alertGenerator = AlertGenerator()
+                
+                if let controller = alertGenerator.getAlert()[AlertType.incorrecLoginData] {
+                    present(controller, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -107,6 +113,16 @@ class LoginViewController: UIViewController {
             displayContentController(content: loadingVC)
             
             globalManager.tokenInit(username: username, password: password)
+        } else {
+            
+            DispatchQueue.main.async {[unowned self] in
+                
+                let alertGenerator = AlertGenerator()
+                
+                if let controller = alertGenerator.getAlert()[AlertType.incorrecLoginData] {
+                    present(controller, animated: true, completion: nil)
+                }
+            }
         }
         
     }

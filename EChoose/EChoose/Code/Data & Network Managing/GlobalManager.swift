@@ -34,7 +34,7 @@ protocol HTTPDelegate {
 
 class GlobalManager {
     
-    var apiURL = "https://95260edc9036.ngrok.io"
+    var apiURL = "https://f9c3ca597f9a.ngrok.io"
     var imageURL: String?
     var context: NSManagedObjectContext?
     var user: User?
@@ -274,8 +274,10 @@ extension GlobalManager: HTTPDelegate {
                 return
             }
             
-            if let data = data, let serializer = serializer {
-                print(serializer(data))
+            if let data = data {
+                if let serializer = serializer {
+                    print(serializer(data))
+                }
             }
             
             if let completition = completition {
@@ -307,8 +309,10 @@ extension GlobalManager: HTTPDelegate {
                 return
             }
         
-            if let data = data, let serializer = serializer {
-                print(serializer(data))
+            if let data = data {
+                if let serializer = serializer {
+                    print(serializer(data))
+                }
             }
             
             if let completition = completition {
@@ -361,8 +365,10 @@ extension GlobalManager: HTTPDelegate {
                 return
             }
         
-            if let data = data, let serializer = serializer {
-                print(serializer(data))
+            if let data = data {
+                if let serializer = serializer {
+                    print(serializer(data))
+                }
             }
             
             if let completition = completition {
@@ -414,9 +420,11 @@ extension GlobalManager: HTTPDelegate {
                 print("Error took place \(error)")
                 return
             }
-
-            if let data = data, let serializer = serializer {
-                print(serializer(data))
+            
+            if let data = data {
+                if let serializer = serializer {
+                    print(serializer(data))
+                }
             }
             
             if let completition = completition {
@@ -447,8 +455,10 @@ extension GlobalManager: HTTPDelegate {
                 return
             }
         
-            if let data = data, let serializer = serializer {
-                print(serializer(data))
+            if let data = data {
+                if let serializer = serializer {
+                    print(serializer(data))
+                }
             }
             
             if let completition = completition {
@@ -483,12 +493,25 @@ extension GlobalManager {
         return json
     }
     
+    func registrationSerializer(_ data: Any) -> Bool {
+        
+        guard let json = perform(data: data) as? [String : Any] else {
+            return false
+        }
+        
+        print(json)
+        
+        return true
+    }
+    
     //Profile parser
     func profileSerializer(_ data: Any) -> Bool {
         
         guard let json = perform(data: data) as? [String : Any] else {
             return false
         }
+        
+        print(json)
         
         guard let user = user, let context = context else {
             return false
@@ -538,6 +561,9 @@ extension GlobalManager {
         saveData()
         return true
     }
+    
+    
+    
     
     //Dialog parser
     func dialogSerializer(_ data: Any) -> Bool {
@@ -797,9 +823,33 @@ extension GlobalManager {
                 "password" : data["password"],
                 "first_name" : data["firstname"],
                 "last_name" : data["lastname"],
-                "description" : data["description"],
                 "email" : data["email"]],
             "isMale" : data["isMale"] ?? "False",
+            "description" : data["description"] ?? "",
+            "birth_date" : data["birthDate"] ?? ""
+        ]
+        
+        let valid = JSONSerialization.isValidJSONObject(jsonObject)
+        
+        if valid {
+            let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            
+            print(jsonData)
+            return jsonData
+        }
+        
+        return nil
+    }
+    
+    func updateJSON(from data: [String : String]) -> Data? {
+        
+        let jsonObject: [String : Any] = [
+            "credentials" : [
+                "first_name" : data["firstname"],
+                "last_name" : data["lastname"],
+                "email" : data["email"]],
+            "isMale" : data["isMale"] ?? "False",
+            "description" : data["description"] ?? "",
             "birth_date" : data["birthDate"] ?? ""
         ]
         

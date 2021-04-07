@@ -15,16 +15,16 @@ class FilterEditorViewController: UIViewController {
     @IBOutlet weak var firstButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var secondButtonConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var minPriceSlider: UISlider!
-    @IBOutlet weak var maxPriceSlider: UISlider!
-    @IBOutlet weak var distanceSlider: UISlider!
+    @IBOutlet weak var minPriceSlider: CustomSlider!
+    @IBOutlet weak var maxPriceSlider: CustomSlider!
+    @IBOutlet weak var distanceSlider: CustomSlider!
     @IBOutlet weak var deletePriceFilters: UIButton!
     @IBOutlet weak var deleteDistanceFilters: UIButton!
     @IBOutlet weak var minPriceLabel: UILabel!
     @IBOutlet weak var maxPriceLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
-    
+    var updateClosure: (() -> Void)?
     private var checkData = [("T", "Tutor"), ("S", "Student")]
     var chosenType: AccountType = .undefined {
         
@@ -84,6 +84,10 @@ class FilterEditorViewController: UIViewController {
         minPriceSlider.setValue(Float(filter?.minPrice ?? 0), animated: true)
         maxPriceSlider.setValue(Float(filter?.maxPrice ?? 0), animated: true)
         distanceSlider.setValue(Float(filter?.distance ?? 0), animated: true)
+        
+        minPriceLabel.text = "\(Int(minPriceSlider.value))₽"
+        maxPriceLabel.text = "\(Int(maxPriceSlider.value))₽"
+        distanceLabel.text = "\(Int(distanceSlider.value)) km"
     }
     
     @IBAction func blockPrice(_ sender: Any) {
@@ -93,11 +97,16 @@ class FilterEditorViewController: UIViewController {
             minPriceSlider.isEnabled = false
             maxPriceSlider.isEnabled = false
             
+            deletePriceFilters.setImage(UIImage(named: "activatedstate"), for: .normal)
+            deletePriceFilters.tintColor = UIColor(named: "likeGreen")
             
         } else {
             
             minPriceSlider.isEnabled = true
             maxPriceSlider.isEnabled = true
+            
+            deletePriceFilters.setImage(UIImage(named: "unactivatedstate"), for: .normal)
+            deletePriceFilters.tintColor = UIColor(named: "dislikeColor")
         }
     }
     
@@ -106,15 +115,21 @@ class FilterEditorViewController: UIViewController {
         if distanceSlider.isEnabled {
             distanceSlider.isEnabled = false
             
+            deleteDistanceFilters.setImage(UIImage(named: "activatedstate"), for: .normal)
+            deleteDistanceFilters.tintColor = UIColor(named: "likeGreen")
+            
         } else {
             distanceSlider.isEnabled = true
+            
+            deleteDistanceFilters.setImage(UIImage(named: "unactivatedstate"), for: .normal)
+            deleteDistanceFilters.tintColor = UIColor(named: "dislikeColor")
         }
     }
     
     
     @IBAction func minPriceChanged(_ sender: Any) {
         
-        minPriceSlider.value = Float(Int(minPriceSlider.value))
+        minPriceSlider.value = Float(Int(minPriceSlider.value) / 100 * 100)
         
         if minPriceSlider.value > maxPriceSlider.value {
             
@@ -126,7 +141,7 @@ class FilterEditorViewController: UIViewController {
     
     @IBAction func maxPriceChanged(_ sender: Any) {
         
-        maxPriceSlider.value = Float(Int(maxPriceSlider.value))
+        maxPriceSlider.value = Float(Int(maxPriceSlider.value) / 100 * 100)
         
         if minPriceSlider.value > maxPriceSlider.value {
             
@@ -138,9 +153,9 @@ class FilterEditorViewController: UIViewController {
     
     @IBAction func distanceChanged(_ sender: Any) {
         
-        distanceSlider.value = Float(Int(distanceSlider.value))
+        distanceSlider.value = Float(Int(distanceSlider.value) / 100 * 100)
         
-        distanceLabel.text = "\((Int(distanceSlider.value) / 100) * 100 )₽"
+        distanceLabel.text = "\((Int(distanceSlider.value) / 100) * 100 ) km"
         filter?.distance = (Int(distanceSlider.value) / 100) * 100
     }
     
@@ -153,7 +168,7 @@ class FilterEditorViewController: UIViewController {
             
         } else {
             
-            filter?.minPrice = 1
+            filter?.minPrice = 100
             filter?.maxPrice = 10000
         }
         
@@ -173,6 +188,7 @@ class FilterEditorViewController: UIViewController {
         }
         
         dismiss(animated: true, completion: nil)
+        updateClosure?()
     }
     
     @IBAction func firstButtonPressed(_ sender: Any) {

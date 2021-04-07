@@ -12,7 +12,7 @@ class ResizeableInfoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var attributeImageView: UIImageView!
-    @IBOutlet weak var attributeLabel: UILabel!
+
     @IBOutlet weak var valueLabel: UILabel!
     
     static let identifier = "ResizeableInfoTableViewCell"
@@ -35,7 +35,6 @@ class ResizeableInfoTableViewCell: UITableViewCell {
     func setCell(_ image: UIImage, _ name: String, _ value: String) {
         
         attributeImageView.image = image
-        attributeLabel.text = "\(name): "
-        valueLabel.text = "\(value)"
+        valueLabel.text = "\(name):\n\(value)"
     }
 }

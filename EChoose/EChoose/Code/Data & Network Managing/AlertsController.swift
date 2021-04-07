@@ -44,9 +44,11 @@ enum AlertType {
     
     //Registration Form
     case existsUsername
+    case incorrectUsernameFormat
     case existsEmail
     case notSimilarPasswords
     case incorrectEmailFormat
+    case incorrectPasswordFormat
     
     //Service Form
     case notChoosedAddress
@@ -69,6 +71,10 @@ extension AlertType: RawRepresentable {
             return ("Something going wrong!", "Fill all required gaps...")
         case .incorrecLoginData:
             return ("Incorrect username or password!", "Check username and password...")
+        case .incorrectUsernameFormat:
+            return("Wrong username format!", "It should contains from at least 6 (a-b, A-B, 0-9) symbols!")
+        case .incorrectPasswordFormat:
+            return("Wrong password format!", "It should contains from at least 8 (a-b, A-B, 0-9) symbols!\n And has at least 1 (a-b), at least 1 (A-B) and at least 1 (0-9) symbol!")
         case .existsUsername:
             return ("This username already exists!", "Try another username...")
         case .existsEmail:
@@ -97,6 +103,10 @@ extension AlertType: RawRepresentable {
             self = .fillAllGaps
         case ("Incorrect username or password!", "Check username and password..."):
             self = .incorrecLoginData
+        case ("Wrong username format!", "It should contains from at least 6 (a-b, A-B, 0-9) symbols!"):
+            self = .incorrectUsernameFormat
+        case ("Wrong password format!", "It should contains from at least 8 (a-b, A-B, 0-9) symbols!\n And has at least 1 (a-b), at least 1 (A-B) and at least 1 (0-9) symbol!"):
+            self = .incorrectPasswordFormat
         case ("This username already exists!", "Try another username..."):
             self = .existsUsername
         case ("This email is already taken!", "Try another email..."):
@@ -133,7 +143,8 @@ class InformationAlert: Alert {
                                                      .existsUsername,
                                                      .existsEmail,
                                                      .notSimilarPasswords,
-                                                     .incorrectEmailFormat]
+                                                     .incorrectEmailFormat,
+                                                     .incorrectUsernameFormat]
     
     private var controller: UIAlertController?
     
