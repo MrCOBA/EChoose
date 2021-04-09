@@ -34,7 +34,7 @@ protocol HTTPDelegate {
 
 class GlobalManager {
     
-    var apiURL = "https://f9c3ca597f9a.ngrok.io"
+    var apiURL = "https://0fc6db6e18bb.ngrok.io"
     var imageURL: String?
     var context: NSManagedObjectContext?
     var user: User?
@@ -539,7 +539,7 @@ extension GlobalManager {
         }
         
         if let isMale = json["isMale"] as? Bool{
-            profile.sex = isMale
+            profile.isMale = isMale
         }
         
         if let description = json["description"] as? String {
@@ -833,8 +833,6 @@ extension GlobalManager {
         
         if valid {
             let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: [])
-            
-            print(jsonData)
             return jsonData
         }
         

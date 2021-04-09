@@ -176,8 +176,6 @@ class ServicesManager {
             service.isActive = serviceDefault.isActive
             profile.replaceServices(at: index, with: service)
             
-            globalManager.saveData()
-            
             if let completition = completition {
                 completition()
             }
@@ -205,7 +203,7 @@ class ServicesManager {
             }
             profile.removeFromServices(service)
             context.delete(service)
-            globalManager.saveData()
+            
             if let completition = completition {
                 completition()
             }

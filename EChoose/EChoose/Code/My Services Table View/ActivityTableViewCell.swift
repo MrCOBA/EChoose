@@ -23,11 +23,11 @@ class ActivityTableViewCell: UITableViewCell {
     
     var servicesManager: ServicesManager = ServicesManager.shared
     var offer: Offer?
-    var user: OfferUser?
+    var user: UserDefault?
     var delegate: SegueDelegate?
     
-    var firstAction: ((Offer?, OfferUser?) -> Void)?
-    var secondAction: ((Offer?, OfferUser?) -> Void)?
+    var firstAction: ((Offer?, UserDefault?) -> Void)?
+    var secondAction: ((Offer?, UserDefault?) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,7 +48,7 @@ class ActivityTableViewCell: UITableViewCell {
         backgroundCellView.layer.cornerRadius = 20
     }
     
-    func setCell(_ offer: Offer?, _ user: OfferUser?) {
+    func setCell(_ offer: Offer?, _ user: UserDefault?) {
         
         guard let offer = offer else {
             return

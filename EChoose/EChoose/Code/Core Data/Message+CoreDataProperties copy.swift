@@ -1,9 +1,8 @@
 //
 //  Message+CoreDataProperties.swift
-//  EChoose
+//  
 //
-//  Created by Oparin Oleg on 19.03.2021.
-//  Copyright © 2021 Oparin Oleg. All rights reserved.
+//  Created by Oparin Oleg on 09.04.2021.
 //
 //
 
@@ -21,9 +20,5 @@ extension Message {
     @NSManaged public var isIncoming: Bool
     @NSManaged public var text: String?
     @NSManaged public var dialog: Dialog?
-
-}
-
-extension Message : Identifiable {
 
 }

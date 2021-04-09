@@ -1,9 +1,8 @@
 //
 //  Dialog+CoreDataProperties.swift
-//  EChoose
+//  
 //
-//  Created by Oparin Oleg on 19.03.2021.
-//  Copyright © 2021 Oparin Oleg. All rights reserved.
+//  Created by Oparin Oleg on 09.04.2021.
 //
 //
 
@@ -17,7 +16,10 @@ extension Dialog {
         return NSFetchRequest<Dialog>(entityName: "Dialog")
     }
 
-    @NSManaged public var username: String?
+    @NSManaged public var id: Int32
+    @NSManaged public var user1: Int32
+    @NSManaged public var user2: Int32
+    @NSManaged public var lastMessage: MessageDefault?
     @NSManaged public var messages: NSOrderedSet?
     @NSManaged public var profile: Profile?
 
@@ -55,9 +57,5 @@ extension Dialog {
 
     @objc(removeMessages:)
     @NSManaged public func removeFromMessages(_ values: NSOrderedSet)
-
-}
-
-extension Dialog : Identifiable {
 
 }

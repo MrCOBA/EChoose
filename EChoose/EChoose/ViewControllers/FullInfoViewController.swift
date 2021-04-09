@@ -15,7 +15,7 @@ class FullInfoViewController: UIViewController {
     
     var servicesManager: ServicesManager = ServicesManager.shared
     var offer: Offer?
-    var user: OfferUser?
+    var user: UserDefault?
     
     override func viewDidLoad() {
         super.viewDidLoad()

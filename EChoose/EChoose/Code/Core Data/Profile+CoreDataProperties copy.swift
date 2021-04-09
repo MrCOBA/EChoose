@@ -1,9 +1,8 @@
 //
 //  Profile+CoreDataProperties.swift
-//  EChoose
+//  
 //
-//  Created by Oparin Oleg on 19.03.2021.
-//  Copyright © 2021 Oparin Oleg. All rights reserved.
+//  Created by Oparin Oleg on 09.04.2021.
 //
 //
 
@@ -24,7 +23,7 @@ extension Profile {
     @NSManaged public var id: Int32
     @NSManaged public var image: Data?
     @NSManaged public var lastname: String?
-    @NSManaged public var sex: Bool
+    @NSManaged public var isMale: Bool
     @NSManaged public var dialogs: NSOrderedSet?
     @NSManaged public var locations: NSOrderedSet?
     @NSManaged public var services: NSOrderedSet?
@@ -134,9 +133,5 @@ extension Profile {
 
     @objc(removeServices:)
     @NSManaged public func removeFromServices(_ values: NSOrderedSet)
-
-}
-
-extension Profile : Identifiable {
 
 }

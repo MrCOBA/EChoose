@@ -15,6 +15,19 @@
 		3110D839251184D5000096B8 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3110D837251184D5000096B8 /* ButtonTableViewCell.swift */; };
 		3110D83A251184D5000096B8 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3110D838251184D5000096B8 /* ButtonTableViewCell.xib */; };
 		3110D83D25118B51000096B8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3110D83C25118B51000096B8 /* MapKit.framework */; };
+		31143C7C26208615002260CD /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C7B26208615002260CD /* ChatController.swift */; };
+		31143C8F26209766002260CD /* Message+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8326209763002260CD /* Message+CoreDataClass copy.swift */; };
+		31143C9026209766002260CD /* User+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8426209764002260CD /* User+CoreDataProperties copy.swift */; };
+		31143C9126209766002260CD /* Profile+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8526209764002260CD /* Profile+CoreDataProperties copy.swift */; };
+		31143C9226209766002260CD /* Location+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8626209764002260CD /* Location+CoreDataProperties copy.swift */; };
+		31143C9326209766002260CD /* Dialog+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8726209764002260CD /* Dialog+CoreDataProperties copy.swift */; };
+		31143C9426209766002260CD /* Dialog+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8826209764002260CD /* Dialog+CoreDataClass copy.swift */; };
+		31143C9526209766002260CD /* Message+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8926209765002260CD /* Message+CoreDataProperties copy.swift */; };
+		31143C9626209766002260CD /* Location+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8A26209765002260CD /* Location+CoreDataClass copy.swift */; };
+		31143C9726209766002260CD /* User+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8B26209765002260CD /* User+CoreDataClass copy.swift */; };
+		31143C9826209766002260CD /* Service+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8C26209765002260CD /* Service+CoreDataClass copy.swift */; };
+		31143C9926209766002260CD /* Service+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8D26209766002260CD /* Service+CoreDataProperties copy.swift */; };
+		31143C9A26209766002260CD /* Profile+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8E26209766002260CD /* Profile+CoreDataClass copy.swift */; };
 		311C64A726121FF800C5BD67 /* SequenceIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C64A626121FF800C5BD67 /* SequenceIterator.swift */; };
 		311C64B026122B4800C5BD67 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C64AE26122B4800C5BD67 /* ActivityTableViewCell.swift */; };
 		311C64B126122B4800C5BD67 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 311C64AF26122B4800C5BD67 /* ActivityTableViewCell.xib */; };
@@ -46,18 +59,6 @@
 		31424E0724F5271C00583E72 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424E0624F5271C00583E72 /* SettingsViewController.swift */; };
 		31424E0924F52BE100583E72 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424E0824F52BE100583E72 /* TabBarController.swift */; };
 		31448C6F2604ACE900D9CCFA /* ServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448C6E2604ACE900D9CCFA /* ServicesManager.swift */; };
-		31448CC72605126C00D9CCFA /* Profile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CBB2605126C00D9CCFA /* Profile+CoreDataClass.swift */; };
-		31448CC82605126C00D9CCFA /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CBC2605126C00D9CCFA /* Profile+CoreDataProperties.swift */; };
-		31448CC92605126C00D9CCFA /* Dialog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CBD2605126C00D9CCFA /* Dialog+CoreDataClass.swift */; };
-		31448CCA2605126C00D9CCFA /* Dialog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CBE2605126C00D9CCFA /* Dialog+CoreDataProperties.swift */; };
-		31448CCB2605126C00D9CCFA /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CBF2605126C00D9CCFA /* Location+CoreDataClass.swift */; };
-		31448CCC2605126C00D9CCFA /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CC02605126C00D9CCFA /* Location+CoreDataProperties.swift */; };
-		31448CCD2605126C00D9CCFA /* Service+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CC12605126C00D9CCFA /* Service+CoreDataClass.swift */; };
-		31448CCE2605126C00D9CCFA /* Service+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CC22605126C00D9CCFA /* Service+CoreDataProperties.swift */; };
-		31448CCF2605126C00D9CCFA /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CC32605126C00D9CCFA /* Message+CoreDataClass.swift */; };
-		31448CD02605126C00D9CCFA /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CC42605126C00D9CCFA /* Message+CoreDataProperties.swift */; };
-		31448CD12605126C00D9CCFA /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CC52605126C00D9CCFA /* User+CoreDataClass.swift */; };
-		31448CD22605126C00D9CCFA /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31448CC62605126C00D9CCFA /* User+CoreDataProperties.swift */; };
 		3145DBCF260A31F7002DBBCB /* FilterEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3145DBCE260A31F7002DBBCB /* FilterEditorViewController.swift */; };
 		3153891C24D2FC7A004B7A83 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153891B24D2FC7A004B7A83 /* RegistrationViewController.swift */; };
 		3153AEBF24FABA24008A712E /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153AEBE24FABA24008A712E /* BackgroundView.swift */; };
@@ -154,6 +155,19 @@
 		3110D837251184D5000096B8 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		3110D838251184D5000096B8 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		3110D83C25118B51000096B8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		31143C7B26208615002260CD /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		31143C8326209763002260CD /* Message+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		31143C8426209764002260CD /* User+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		31143C8526209764002260CD /* Profile+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		31143C8626209764002260CD /* Location+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		31143C8726209764002260CD /* Dialog+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		31143C8826209764002260CD /* Dialog+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		31143C8926209765002260CD /* Message+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		31143C8A26209765002260CD /* Location+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		31143C8B26209765002260CD /* User+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		31143C8C26209765002260CD /* Service+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		31143C8D26209766002260CD /* Service+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		31143C8E26209766002260CD /* Profile+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		311C64A626121FF800C5BD67 /* SequenceIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceIterator.swift; sourceTree = "<group>"; };
 		311C64AE26122B4800C5BD67 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		311C64AF26122B4800C5BD67 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -188,18 +202,6 @@
 		31424E0624F5271C00583E72 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		31424E0824F52BE100583E72 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		31448C6E2604ACE900D9CCFA /* ServicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesManager.swift; sourceTree = "<group>"; };
-		31448CBB2605126C00D9CCFA /* Profile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31448CBC2605126C00D9CCFA /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		31448CBD2605126C00D9CCFA /* Dialog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31448CBE2605126C00D9CCFA /* Dialog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		31448CBF2605126C00D9CCFA /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31448CC02605126C00D9CCFA /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		31448CC12605126C00D9CCFA /* Service+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31448CC22605126C00D9CCFA /* Service+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		31448CC32605126C00D9CCFA /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31448CC42605126C00D9CCFA /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		31448CC52605126C00D9CCFA /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31448CC62605126C00D9CCFA /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3145DBCE260A31F7002DBBCB /* FilterEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEditorViewController.swift; sourceTree = "<group>"; };
 		3153891B24D2FC7A004B7A83 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		3153AEBE24FABA24008A712E /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				311C64A626121FF800C5BD67 /* SequenceIterator.swift */,
 				311C64B8261247D000C5BD67 /* ActivitiesManager.swift */,
 				31BD4ACD2614F901006ED479 /* AlertsController.swift */,
+				31143C7B26208615002260CD /* ChatController.swift */,
 			);
 			path = "Data & Network Managing";
 			sourceTree = "<group>";
@@ -462,7 +465,6 @@
 		316115F424F2A283008B0377 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				3126C7AE2610ADCA0008D362 /* FullInfo Table View */,
 				318F00D325DA9F070017425A /* CustomUI */,
 				316D2802250176DA00E5A648 /* Core Data */,
 				31391C1524FEEE18007C23B3 /* Profile Info Table View */,
@@ -472,6 +474,7 @@
 				31202B9425EFEB140012A2BE /* My Locations Table View */,
 				31C463DD25ED55BE00894D1C /* SreviceEditor Table View */,
 				316115F524F2A2AF008B0377 /* Registration Table View */,
+				3126C7AE2610ADCA0008D362 /* FullInfo Table View */,
 				3153AEBE24FABA24008A712E /* BackgroundView.swift */,
 				3153AEC024FABBE6008A712E /* GradientView.swift */,
 				31086BD024F9546700B3839C /* RatingController.swift */,
@@ -527,18 +530,18 @@
 		316D2802250176DA00E5A648 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				31448CBB2605126C00D9CCFA /* Profile+CoreDataClass.swift */,
-				31448CBC2605126C00D9CCFA /* Profile+CoreDataProperties.swift */,
-				31448CBD2605126C00D9CCFA /* Dialog+CoreDataClass.swift */,
-				31448CBE2605126C00D9CCFA /* Dialog+CoreDataProperties.swift */,
-				31448CBF2605126C00D9CCFA /* Location+CoreDataClass.swift */,
-				31448CC02605126C00D9CCFA /* Location+CoreDataProperties.swift */,
-				31448CC12605126C00D9CCFA /* Service+CoreDataClass.swift */,
-				31448CC22605126C00D9CCFA /* Service+CoreDataProperties.swift */,
-				31448CC32605126C00D9CCFA /* Message+CoreDataClass.swift */,
-				31448CC42605126C00D9CCFA /* Message+CoreDataProperties.swift */,
-				31448CC52605126C00D9CCFA /* User+CoreDataClass.swift */,
-				31448CC62605126C00D9CCFA /* User+CoreDataProperties.swift */,
+				31143C8E26209766002260CD /* Profile+CoreDataClass copy.swift */,
+				31143C8D26209766002260CD /* Service+CoreDataProperties copy.swift */,
+				31143C8C26209765002260CD /* Service+CoreDataClass copy.swift */,
+				31143C8B26209765002260CD /* User+CoreDataClass copy.swift */,
+				31143C8A26209765002260CD /* Location+CoreDataClass copy.swift */,
+				31143C8926209765002260CD /* Message+CoreDataProperties copy.swift */,
+				31143C8826209764002260CD /* Dialog+CoreDataClass copy.swift */,
+				31143C8726209764002260CD /* Dialog+CoreDataProperties copy.swift */,
+				31143C8626209764002260CD /* Location+CoreDataProperties copy.swift */,
+				31143C8526209764002260CD /* Profile+CoreDataProperties copy.swift */,
+				31143C8426209764002260CD /* User+CoreDataProperties copy.swift */,
+				31143C8326209763002260CD /* Message+CoreDataClass copy.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -989,14 +992,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				31BA362324C221D400DE0E15 /* LoginViewController.swift in Sources */,
+				31143C9226209766002260CD /* Location+CoreDataProperties copy.swift in Sources */,
 				31BA361F24C221D400DE0E15 /* AppDelegate.swift in Sources */,
 				318F00E225DAA2A00017425A /* CustomSearchBar.swift in Sources */,
 				31B08CC726076129009E5136 /* LoadingViewController.swift in Sources */,
 				31BD4ACE2614F901006ED479 /* AlertsController.swift in Sources */,
 				311C64B026122B4800C5BD67 /* ActivityTableViewCell.swift in Sources */,
-				31448CCD2605126C00D9CCFA /* Service+CoreDataClass.swift in Sources */,
 				3153AEC124FABBE6008A712E /* GradientView.swift in Sources */,
-				31448CCC2605126C00D9CCFA /* Location+CoreDataProperties.swift in Sources */,
 				31F3615825EFB69600F90C8F /* CustomButton.swift in Sources */,
 				31448C6F2604ACE900D9CCFA /* ServicesManager.swift in Sources */,
 				3131BEDF261E264900EE6037 /* CustomSlider.swift in Sources */,
@@ -1013,9 +1015,10 @@
 				318F00DD25DAA17F0017425A /* CustomTextView.swift in Sources */,
 				31C463FC25ED5D4C00894D1C /* SheetTableViewCell.swift in Sources */,
 				31202B9725EFEEA20012A2BE /* MapLocationTableViewCell.swift in Sources */,
+				31143C9026209766002260CD /* User+CoreDataProperties copy.swift in Sources */,
 				318F00D825DA9F710017425A /* CustomTextField.swift in Sources */,
+				31143C9626209766002260CD /* Location+CoreDataClass copy.swift in Sources */,
 				31EA7FE924FD9D5400413762 /* DialogTableViewCell.swift in Sources */,
-				31448CCB2605126C00D9CCFA /* Location+CoreDataClass.swift in Sources */,
 				318F00E725DAB0230017425A /* CustomView.swift in Sources */,
 				3126C7BA2610B7EC0008D362 /* FullInfoViewController.swift in Sources */,
 				311C64A726121FF800C5BD67 /* SequenceIterator.swift in Sources */,
@@ -1026,47 +1029,48 @@
 				316115F924F2A384008B0377 /* TextFieldTableViewCell.swift in Sources */,
 				3121DAB02603D32800351F20 /* LocationsManager.swift in Sources */,
 				31B62DFB25EEE372005C6726 /* ServiceEditorViewController.swift in Sources */,
+				31143C9A26209766002260CD /* Profile+CoreDataClass copy.swift in Sources */,
 				316D281C250529BE00E5A648 /* StartViewController.swift in Sources */,
 				31F3614325EF80E200F90C8F /* LocationTableViewCell.swift in Sources */,
 				31202BA125EFFDF60012A2BE /* NewMapLocationTableViewCell.swift in Sources */,
-				31448CD12605126C00D9CCFA /* User+CoreDataClass.swift in Sources */,
-				31448CC72605126C00D9CCFA /* Profile+CoreDataClass.swift in Sources */,
 				31BA362124C221D400DE0E15 /* SceneDelegate.swift in Sources */,
+				31143C9726209766002260CD /* User+CoreDataClass copy.swift in Sources */,
 				31424E0924F52BE100583E72 /* TabBarController.swift in Sources */,
 				316D28282506E96F00E5A648 /* EditTableViewCell.swift in Sources */,
 				31391C1824FEEE96007C23B3 /* InfoTableViewCell.swift in Sources */,
 				318B61BC25F00A6700B40697 /* MyLocationsViewController.swift in Sources */,
 				31086BCE24F93B4700B3839C /* ServiceTableViewCell.swift in Sources */,
 				3161160324F2AE4A008B0377 /* PickerTableViewCell.swift in Sources */,
-				31448CC92605126C00D9CCFA /* Dialog+CoreDataClass.swift in Sources */,
-				31448CD02605126C00D9CCFA /* Message+CoreDataProperties.swift in Sources */,
 				31D8F5AC26027267007B06D6 /* CustomLabel.swift in Sources */,
 				31424E0724F5271C00583E72 /* SettingsViewController.swift in Sources */,
 				317C9A3525F66EA30097074C /* CustomImageView.swift in Sources */,
 				31EA7FEC24FD9F2000413762 /* DialogsViewController.swift in Sources */,
+				31143C9326209766002260CD /* Dialog+CoreDataProperties copy.swift in Sources */,
 				311C64B9261247D000C5BD67 /* ActivitiesManager.swift in Sources */,
+				31143C9926209766002260CD /* Service+CoreDataProperties copy.swift in Sources */,
 				31CD21C125E29673001779DA /* ListTableViewCell.swift in Sources */,
 				316115FE24F2A9B4008B0377 /* RadioButtonsTableViewCell.swift in Sources */,
+				31143C9526209766002260CD /* Message+CoreDataProperties copy.swift in Sources */,
 				31C463E025ED562D00894D1C /* PickerSearcTableViewCell.swift in Sources */,
 				3110D839251184D5000096B8 /* ButtonTableViewCell.swift in Sources */,
+				31143C9426209766002260CD /* Dialog+CoreDataClass copy.swift in Sources */,
+				31143C9126209766002260CD /* Profile+CoreDataProperties copy.swift in Sources */,
 				31586FCF2608B8260006BCEE /* OffersManager.swift in Sources */,
+				31143C9826209766002260CD /* Service+CoreDataClass copy.swift in Sources */,
 				3153891C24D2FC7A004B7A83 /* RegistrationViewController.swift in Sources */,
+				31143C8F26209766002260CD /* Message+CoreDataClass copy.swift in Sources */,
 				3145DBCF260A31F7002DBBCB /* FilterEditorViewController.swift in Sources */,
-				31448CC82605126C00D9CCFA /* Profile+CoreDataProperties.swift in Sources */,
-				31448CD22605126C00D9CCFA /* User+CoreDataProperties.swift in Sources */,
 				316D28202505FFD500E5A648 /* DoublePickerCell.swift in Sources */,
-				31448CCF2605126C00D9CCFA /* Message+CoreDataClass.swift in Sources */,
 				3141868A25F272C3005E607F /* EChoose.xcdatamodeld in Sources */,
 				31D7B37825FE5F9500434D88 /* EducationTypeCell.swift in Sources */,
 				31424DFC24F4699D00583E72 /* SectionHeader.swift in Sources */,
+				31143C7C26208615002260CD /* ChatController.swift in Sources */,
 				31424DE824F4077800583E72 /* DatePickerTableViewCell.swift in Sources */,
 				31424DFF24F526B300583E72 /* FeedViewController.swift in Sources */,
 				31424E0324F526E700583E72 /* MyServicesViewController.swift in Sources */,
-				31448CCA2605126C00D9CCFA /* Dialog+CoreDataProperties.swift in Sources */,
 				31086BD124F9546700B3839C /* RatingController.swift in Sources */,
 				31424E0524F526FF00583E72 /* ActivitiesViewController.swift in Sources */,
 				31D8F5A726022AF4007B06D6 /* ProfileEditorViewController.swift in Sources */,
-				31448CCE2605126C00D9CCFA /* Service+CoreDataProperties.swift in Sources */,
 				31424DED24F4092A00583E72 /* TextViewTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1251,6 +1255,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KA3Z3V35J6;
 				INFOPLIST_FILE = "$(SRCROOT)/EChoose/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1270,6 +1275,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KA3Z3V35J6;
 				INFOPLIST_FILE = "$(SRCROOT)/EChoose/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
