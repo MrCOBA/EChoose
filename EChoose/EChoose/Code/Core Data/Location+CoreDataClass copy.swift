@@ -2,7 +2,7 @@
 //  Location+CoreDataClass.swift
 //  
 //
-//  Created by Oparin Oleg on 09.04.2021.
+//  Created by Oparin Oleg on 11.04.2021.
 //
 //
 

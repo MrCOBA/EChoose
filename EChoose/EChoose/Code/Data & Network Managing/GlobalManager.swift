@@ -510,9 +510,7 @@ extension GlobalManager {
         guard let json = perform(data: data) as? [String : Any] else {
             return false
         }
-        
-        print(json)
-        
+
         guard let user = user, let context = context else {
             return false
         }
@@ -559,19 +557,6 @@ extension GlobalManager {
         user.profile = profile
         
         saveData()
-        return true
-    }
-    
-    
-    
-    
-    //Dialog parser
-    func dialogSerializer(_ data: Any) -> Bool {
-        return true
-    }
-    
-    //Message parser
-    func messageSerializer(_ data: Any) -> Bool {
         return true
     }
     
@@ -916,6 +901,22 @@ extension GlobalManager {
             "min_price" : filter.minPrice,
             "max_price" : filter.maxPrice,
             "distance" : filter.distance
+        ]
+        
+        let valid = JSONSerialization.isValidJSONObject(jsonObject)
+        
+        if valid {
+            let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            return jsonData
+        }
+        
+        return nil
+    }
+    
+    func messageJSON(with text: String) -> Data? {
+        
+        let jsonObject: [String : Any] = [
+            "text" : text
         ]
         
         let valid = JSONSerialization.isValidJSONObject(jsonObject)

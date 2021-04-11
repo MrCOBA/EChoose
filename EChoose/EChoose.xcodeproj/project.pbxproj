@@ -16,18 +16,6 @@
 		3110D83A251184D5000096B8 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3110D838251184D5000096B8 /* ButtonTableViewCell.xib */; };
 		3110D83D25118B51000096B8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3110D83C25118B51000096B8 /* MapKit.framework */; };
 		31143C7C26208615002260CD /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C7B26208615002260CD /* ChatController.swift */; };
-		31143C8F26209766002260CD /* Message+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8326209763002260CD /* Message+CoreDataClass copy.swift */; };
-		31143C9026209766002260CD /* User+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8426209764002260CD /* User+CoreDataProperties copy.swift */; };
-		31143C9126209766002260CD /* Profile+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8526209764002260CD /* Profile+CoreDataProperties copy.swift */; };
-		31143C9226209766002260CD /* Location+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8626209764002260CD /* Location+CoreDataProperties copy.swift */; };
-		31143C9326209766002260CD /* Dialog+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8726209764002260CD /* Dialog+CoreDataProperties copy.swift */; };
-		31143C9426209766002260CD /* Dialog+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8826209764002260CD /* Dialog+CoreDataClass copy.swift */; };
-		31143C9526209766002260CD /* Message+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8926209765002260CD /* Message+CoreDataProperties copy.swift */; };
-		31143C9626209766002260CD /* Location+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8A26209765002260CD /* Location+CoreDataClass copy.swift */; };
-		31143C9726209766002260CD /* User+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8B26209765002260CD /* User+CoreDataClass copy.swift */; };
-		31143C9826209766002260CD /* Service+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8C26209765002260CD /* Service+CoreDataClass copy.swift */; };
-		31143C9926209766002260CD /* Service+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8D26209766002260CD /* Service+CoreDataProperties copy.swift */; };
-		31143C9A26209766002260CD /* Profile+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143C8E26209766002260CD /* Profile+CoreDataClass copy.swift */; };
 		311C64A726121FF800C5BD67 /* SequenceIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C64A626121FF800C5BD67 /* SequenceIterator.swift */; };
 		311C64B026122B4800C5BD67 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C64AE26122B4800C5BD67 /* ActivityTableViewCell.swift */; };
 		311C64B126122B4800C5BD67 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 311C64AF26122B4800C5BD67 /* ActivityTableViewCell.xib */; };
@@ -41,11 +29,21 @@
 		3126C7B42610B5060008D362 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126C7B22610B5060008D362 /* ProfileTableViewCell.swift */; };
 		3126C7B52610B5060008D362 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3126C7B32610B5060008D362 /* ProfileTableViewCell.xib */; };
 		3126C7BA2610B7EC0008D362 /* FullInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126C7B92610B7EC0008D362 /* FullInfoViewController.swift */; };
+		3130427D26232D29006D09D9 /* EChoose.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3130427B26232D29006D09D9 /* EChoose.xcdatamodeld */; };
+		3130428E26232DFD006D09D9 /* Service+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428426232DF8006D09D9 /* Service+CoreDataProperties copy.swift */; };
+		3130428F26232DFD006D09D9 /* Dialog+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428526232DF9006D09D9 /* Dialog+CoreDataProperties copy.swift */; };
+		3130429026232DFD006D09D9 /* Location+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428626232DF9006D09D9 /* Location+CoreDataProperties copy.swift */; };
+		3130429126232DFD006D09D9 /* Location+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428726232DFA006D09D9 /* Location+CoreDataClass copy.swift */; };
+		3130429226232DFD006D09D9 /* User+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428826232DFA006D09D9 /* User+CoreDataProperties copy.swift */; };
+		3130429326232DFD006D09D9 /* Profile+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428926232DFB006D09D9 /* Profile+CoreDataProperties copy.swift */; };
+		3130429426232DFD006D09D9 /* Service+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428A26232DFB006D09D9 /* Service+CoreDataClass copy.swift */; };
+		3130429526232DFD006D09D9 /* Profile+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428B26232DFC006D09D9 /* Profile+CoreDataClass copy.swift */; };
+		3130429626232DFD006D09D9 /* User+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428C26232DFC006D09D9 /* User+CoreDataClass copy.swift */; };
+		3130429726232DFD006D09D9 /* Dialog+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428D26232DFD006D09D9 /* Dialog+CoreDataClass copy.swift */; };
 		3131BEDF261E264900EE6037 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131BEDE261E264900EE6037 /* CustomSlider.swift */; };
 		31391BD224FEBE29007C23B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BD124FEBE29007C23B3 /* ProfileViewController.swift */; };
 		31391C1824FEEE96007C23B3 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391C1624FEEE96007C23B3 /* InfoTableViewCell.swift */; };
 		31391C1924FEEE96007C23B3 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31391C1724FEEE96007C23B3 /* InfoTableViewCell.xib */; };
-		3141868A25F272C3005E607F /* EChoose.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3141868825F272C3005E607F /* EChoose.xcdatamodeld */; };
 		31424DE824F4077800583E72 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424DE624F4077800583E72 /* DatePickerTableViewCell.swift */; };
 		31424DE924F4077800583E72 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31424DE724F4077800583E72 /* DatePickerTableViewCell.xib */; };
 		31424DED24F4092A00583E72 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424DEB24F4092A00583E72 /* TextViewTableViewCell.swift */; };
@@ -156,18 +154,6 @@
 		3110D838251184D5000096B8 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		3110D83C25118B51000096B8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		31143C7B26208615002260CD /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
-		31143C8326209763002260CD /* Message+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		31143C8426209764002260CD /* User+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		31143C8526209764002260CD /* Profile+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		31143C8626209764002260CD /* Location+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		31143C8726209764002260CD /* Dialog+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		31143C8826209764002260CD /* Dialog+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		31143C8926209765002260CD /* Message+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		31143C8A26209765002260CD /* Location+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		31143C8B26209765002260CD /* User+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		31143C8C26209765002260CD /* Service+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		31143C8D26209766002260CD /* Service+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		31143C8E26209766002260CD /* Profile+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		311C64A626121FF800C5BD67 /* SequenceIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceIterator.swift; sourceTree = "<group>"; };
 		311C64AE26122B4800C5BD67 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		311C64AF26122B4800C5BD67 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -184,11 +170,21 @@
 		3126C7B22610B5060008D362 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		3126C7B32610B5060008D362 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		3126C7B92610B7EC0008D362 /* FullInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoViewController.swift; sourceTree = "<group>"; };
+		3130427C26232D29006D09D9 /* EChoose.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EChoose.xcdatamodel; sourceTree = "<group>"; };
+		3130428426232DF8006D09D9 /* Service+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		3130428526232DF9006D09D9 /* Dialog+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		3130428626232DF9006D09D9 /* Location+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		3130428726232DFA006D09D9 /* Location+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		3130428826232DFA006D09D9 /* User+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		3130428926232DFB006D09D9 /* Profile+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		3130428A26232DFB006D09D9 /* Service+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		3130428B26232DFC006D09D9 /* Profile+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		3130428C26232DFC006D09D9 /* User+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		3130428D26232DFD006D09D9 /* Dialog+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataClass copy.swift"; sourceTree = "<group>"; };
 		3131BEDE261E264900EE6037 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		31391BD124FEBE29007C23B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		31391C1624FEEE96007C23B3 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		31391C1724FEEE96007C23B3 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
-		3141868925F272C3005E607F /* EChoose.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EChoose.xcdatamodel; sourceTree = "<group>"; };
 		31424DE624F4077800583E72 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		31424DE724F4077800583E72 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		31424DEB24F4092A00583E72 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -381,7 +377,7 @@
 		3124434824EFF2CB008BDDA5 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				3141868825F272C3005E607F /* EChoose.xcdatamodeld */,
+				3130427B26232D29006D09D9 /* EChoose.xcdatamodeld */,
 				311018892518C1C800DD1D14 /* ComicRelief.ttf */,
 				31086BDF24F9C5AB00B3839C /* Subjects.json */,
 				31086BDB24F9C58400B3839C /* Countries&Cities.json */,
@@ -530,18 +526,16 @@
 		316D2802250176DA00E5A648 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				31143C8E26209766002260CD /* Profile+CoreDataClass copy.swift */,
-				31143C8D26209766002260CD /* Service+CoreDataProperties copy.swift */,
-				31143C8C26209765002260CD /* Service+CoreDataClass copy.swift */,
-				31143C8B26209765002260CD /* User+CoreDataClass copy.swift */,
-				31143C8A26209765002260CD /* Location+CoreDataClass copy.swift */,
-				31143C8926209765002260CD /* Message+CoreDataProperties copy.swift */,
-				31143C8826209764002260CD /* Dialog+CoreDataClass copy.swift */,
-				31143C8726209764002260CD /* Dialog+CoreDataProperties copy.swift */,
-				31143C8626209764002260CD /* Location+CoreDataProperties copy.swift */,
-				31143C8526209764002260CD /* Profile+CoreDataProperties copy.swift */,
-				31143C8426209764002260CD /* User+CoreDataProperties copy.swift */,
-				31143C8326209763002260CD /* Message+CoreDataClass copy.swift */,
+				3130428D26232DFD006D09D9 /* Dialog+CoreDataClass copy.swift */,
+				3130428C26232DFC006D09D9 /* User+CoreDataClass copy.swift */,
+				3130428B26232DFC006D09D9 /* Profile+CoreDataClass copy.swift */,
+				3130428A26232DFB006D09D9 /* Service+CoreDataClass copy.swift */,
+				3130428926232DFB006D09D9 /* Profile+CoreDataProperties copy.swift */,
+				3130428826232DFA006D09D9 /* User+CoreDataProperties copy.swift */,
+				3130428726232DFA006D09D9 /* Location+CoreDataClass copy.swift */,
+				3130428626232DF9006D09D9 /* Location+CoreDataProperties copy.swift */,
+				3130428526232DF9006D09D9 /* Dialog+CoreDataProperties copy.swift */,
+				3130428426232DF8006D09D9 /* Service+CoreDataProperties copy.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -992,7 +986,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				31BA362324C221D400DE0E15 /* LoginViewController.swift in Sources */,
-				31143C9226209766002260CD /* Location+CoreDataProperties copy.swift in Sources */,
 				31BA361F24C221D400DE0E15 /* AppDelegate.swift in Sources */,
 				318F00E225DAA2A00017425A /* CustomSearchBar.swift in Sources */,
 				31B08CC726076129009E5136 /* LoadingViewController.swift in Sources */,
@@ -1011,30 +1004,33 @@
 				316D28242506E27C00E5A648 /* ResizeableInfoTableViewCell.swift in Sources */,
 				3158C01425E6C09C008BBAE3 /* ChatMessageCell.swift in Sources */,
 				315C19402510100200F9FEB2 /* GlobalManager.swift in Sources */,
+				3130429326232DFD006D09D9 /* Profile+CoreDataProperties copy.swift in Sources */,
+				3130427D26232D29006D09D9 /* EChoose.xcdatamodeld in Sources */,
 				31C4640A25ED5E2B00894D1C /* MultipleSelectionCell.swift in Sources */,
 				318F00DD25DAA17F0017425A /* CustomTextView.swift in Sources */,
 				31C463FC25ED5D4C00894D1C /* SheetTableViewCell.swift in Sources */,
 				31202B9725EFEEA20012A2BE /* MapLocationTableViewCell.swift in Sources */,
-				31143C9026209766002260CD /* User+CoreDataProperties copy.swift in Sources */,
+				3130429026232DFD006D09D9 /* Location+CoreDataProperties copy.swift in Sources */,
+				3130429426232DFD006D09D9 /* Service+CoreDataClass copy.swift in Sources */,
 				318F00D825DA9F710017425A /* CustomTextField.swift in Sources */,
-				31143C9626209766002260CD /* Location+CoreDataClass copy.swift in Sources */,
 				31EA7FE924FD9D5400413762 /* DialogTableViewCell.swift in Sources */,
 				318F00E725DAB0230017425A /* CustomView.swift in Sources */,
 				3126C7BA2610B7EC0008D362 /* FullInfoViewController.swift in Sources */,
 				311C64A726121FF800C5BD67 /* SequenceIterator.swift in Sources */,
 				31D7B36725FE5BB700434D88 /* ServiceViewController.swift in Sources */,
+				3130428F26232DFD006D09D9 /* Dialog+CoreDataProperties copy.swift in Sources */,
 				31C463F125ED5A1B00894D1C /* StepperCell.swift in Sources */,
 				315C1944251107D000F9FEB2 /* MapViewController.swift in Sources */,
+				3130429526232DFD006D09D9 /* Profile+CoreDataClass copy.swift in Sources */,
 				318F00EC25DAB1CC0017425A /* CustomMapView.swift in Sources */,
 				316115F924F2A384008B0377 /* TextFieldTableViewCell.swift in Sources */,
 				3121DAB02603D32800351F20 /* LocationsManager.swift in Sources */,
 				31B62DFB25EEE372005C6726 /* ServiceEditorViewController.swift in Sources */,
-				31143C9A26209766002260CD /* Profile+CoreDataClass copy.swift in Sources */,
 				316D281C250529BE00E5A648 /* StartViewController.swift in Sources */,
+				3130429626232DFD006D09D9 /* User+CoreDataClass copy.swift in Sources */,
 				31F3614325EF80E200F90C8F /* LocationTableViewCell.swift in Sources */,
 				31202BA125EFFDF60012A2BE /* NewMapLocationTableViewCell.swift in Sources */,
 				31BA362124C221D400DE0E15 /* SceneDelegate.swift in Sources */,
-				31143C9726209766002260CD /* User+CoreDataClass copy.swift in Sources */,
 				31424E0924F52BE100583E72 /* TabBarController.swift in Sources */,
 				316D28282506E96F00E5A648 /* EditTableViewCell.swift in Sources */,
 				31391C1824FEEE96007C23B3 /* InfoTableViewCell.swift in Sources */,
@@ -1043,31 +1039,27 @@
 				3161160324F2AE4A008B0377 /* PickerTableViewCell.swift in Sources */,
 				31D8F5AC26027267007B06D6 /* CustomLabel.swift in Sources */,
 				31424E0724F5271C00583E72 /* SettingsViewController.swift in Sources */,
+				3130429226232DFD006D09D9 /* User+CoreDataProperties copy.swift in Sources */,
+				3130429726232DFD006D09D9 /* Dialog+CoreDataClass copy.swift in Sources */,
 				317C9A3525F66EA30097074C /* CustomImageView.swift in Sources */,
 				31EA7FEC24FD9F2000413762 /* DialogsViewController.swift in Sources */,
-				31143C9326209766002260CD /* Dialog+CoreDataProperties copy.swift in Sources */,
 				311C64B9261247D000C5BD67 /* ActivitiesManager.swift in Sources */,
-				31143C9926209766002260CD /* Service+CoreDataProperties copy.swift in Sources */,
 				31CD21C125E29673001779DA /* ListTableViewCell.swift in Sources */,
 				316115FE24F2A9B4008B0377 /* RadioButtonsTableViewCell.swift in Sources */,
-				31143C9526209766002260CD /* Message+CoreDataProperties copy.swift in Sources */,
 				31C463E025ED562D00894D1C /* PickerSearcTableViewCell.swift in Sources */,
 				3110D839251184D5000096B8 /* ButtonTableViewCell.swift in Sources */,
-				31143C9426209766002260CD /* Dialog+CoreDataClass copy.swift in Sources */,
-				31143C9126209766002260CD /* Profile+CoreDataProperties copy.swift in Sources */,
 				31586FCF2608B8260006BCEE /* OffersManager.swift in Sources */,
-				31143C9826209766002260CD /* Service+CoreDataClass copy.swift in Sources */,
 				3153891C24D2FC7A004B7A83 /* RegistrationViewController.swift in Sources */,
-				31143C8F26209766002260CD /* Message+CoreDataClass copy.swift in Sources */,
 				3145DBCF260A31F7002DBBCB /* FilterEditorViewController.swift in Sources */,
 				316D28202505FFD500E5A648 /* DoublePickerCell.swift in Sources */,
-				3141868A25F272C3005E607F /* EChoose.xcdatamodeld in Sources */,
 				31D7B37825FE5F9500434D88 /* EducationTypeCell.swift in Sources */,
 				31424DFC24F4699D00583E72 /* SectionHeader.swift in Sources */,
 				31143C7C26208615002260CD /* ChatController.swift in Sources */,
+				3130429126232DFD006D09D9 /* Location+CoreDataClass copy.swift in Sources */,
 				31424DE824F4077800583E72 /* DatePickerTableViewCell.swift in Sources */,
 				31424DFF24F526B300583E72 /* FeedViewController.swift in Sources */,
 				31424E0324F526E700583E72 /* MyServicesViewController.swift in Sources */,
+				3130428E26232DFD006D09D9 /* Service+CoreDataProperties copy.swift in Sources */,
 				31086BD124F9546700B3839C /* RatingController.swift in Sources */,
 				31424E0524F526FF00583E72 /* ActivitiesViewController.swift in Sources */,
 				31D8F5A726022AF4007B06D6 /* ProfileEditorViewController.swift in Sources */,
@@ -1417,13 +1409,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3141868825F272C3005E607F /* EChoose.xcdatamodeld */ = {
+		3130427B26232D29006D09D9 /* EChoose.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3141868925F272C3005E607F /* EChoose.xcdatamodel */,
+				3130427C26232D29006D09D9 /* EChoose.xcdatamodel */,
 			);
-			currentVersion = 3141868925F272C3005E607F /* EChoose.xcdatamodel */;
-			path = EChoose.xcdatamodeld;
+			currentVersion = 3130427C26232D29006D09D9 /* EChoose.xcdatamodel */;
+			name = EChoose.xcdatamodeld;
+			path = ../../../../EChoose/EChoose/EChoose/Resourses/EChoose.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

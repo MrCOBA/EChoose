@@ -21,7 +21,7 @@ class ChatMessageCell: UITableViewCell {
     
     static let identifier = "ChatMessageCell"
     
-    var chatMessage: MessageStruct! {
+    var chatMessage: MessageDefault! {
         didSet {
             bubbleBackgroundView.backgroundColor = chatMessage.isIncoming ? UIColor(named: "SecondColor") : UIColor(named: "FirstColorGradient")
             messageLabel.textColor = chatMessage.isIncoming ? .white : .black
@@ -30,7 +30,7 @@ class ChatMessageCell: UITableViewCell {
             messageLabel.text = chatMessage.text
             let formatter: DateFormatter = DateFormatter()
             formatter.dateFormat = "dd MMM, HH:mm a"
-            dateLabel.text = formatter.string(from: chatMessage.time)
+            dateLabel.text = formatter.string(from: chatMessage.date)
             
             if chatMessage.isIncoming {
                 messageLeadingConstraint.isActive = true

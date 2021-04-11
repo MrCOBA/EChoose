@@ -1413,9 +1413,9 @@
                         <outlet property="inputTextField" destination="8zR-lS-i2T" id="Bvs-q9-XtJ"/>
                         <outlet property="messagesTableView" destination="oZo-oK-Vg5" id="oyE-yG-QVd"/>
                         <outlet property="opponentBackgroundView" destination="bSA-QJ-7Bn" id="578-YP-XTc"/>
-                        <outlet property="opponentCityLabel" destination="CeJ-X7-USv" id="Yxi-F8-tOP"/>
                         <outlet property="opponentFullnameLabel" destination="JwF-Ga-AFo" id="DiN-Jn-JCj"/>
                         <outlet property="opponentImageView" destination="6CF-9f-exd" id="tVB-0D-ORT"/>
+                        <outlet property="opponentMetaInfoLabel" destination="CeJ-X7-USv" id="Yxi-F8-tOP"/>
                         <outlet property="sendButton" destination="LME-Nu-f4p" id="OU2-dg-KVv"/>
                     </connections>
                 </viewController>

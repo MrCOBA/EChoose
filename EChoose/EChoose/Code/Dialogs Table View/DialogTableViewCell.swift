@@ -16,7 +16,7 @@ class DialogTableViewCell: UITableViewCell {
     @IBOutlet weak var dialogLastMessageLabel: UILabel!
     
     static let identifier = "DialogTableViewCell"
-    var dialog: DialogStruct!
+    var dialog: DialogDefault?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,22 +26,19 @@ class DialogTableViewCell: UITableViewCell {
     
     func setUI() {
         
-        backgroundCellView.layer.cornerRadius = 10
-        
+        backgroundCellView.layer.cornerRadius = 20
     }
     
-    func setCell(_ dialog: DialogStruct) {
+    func setCell(_ dialog: DialogDefault?) {
         
         self.dialog = dialog
-        opponentImageView.image = dialog.opponentImage
-        opponentFullnameLabel.text = dialog.opponentFullname
-        if dialog.messages.count != 0 {
-            dialogLastMessageLabel.text =
-            dialog.messages[dialog.messages.count - 1].isIncoming ?
-                "Opp: \(dialog.messages[dialog.messages.count - 1].text)" :
-                "You: \(dialog.messages[dialog.messages.count - 1].text)"
+        opponentImageView.image = dialog?.userDefault?.image ?? UIImage(named: "noimage")
+        opponentFullnameLabel.text = "\(dialog?.userDefault?.lastName ?? "") \(dialog?.userDefault?.firstName ?? "")"
+        if let lastMessage = dialog?.lastMessage {
+            dialogLastMessageLabel.text = lastMessage.isIncoming ?
+                "\(dialog?.userDefault?.firstName ?? ""): \(lastMessage.text)" : "You: \(lastMessage.text)"
         } else {
-            dialogLastMessageLabel.text = ""
+            dialogLastMessageLabel.text = "No messages"
         }
         
     }

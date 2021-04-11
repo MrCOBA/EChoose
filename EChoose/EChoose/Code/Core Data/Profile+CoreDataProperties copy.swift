@@ -2,7 +2,7 @@
 //  Profile+CoreDataProperties.swift
 //  
 //
-//  Created by Oparin Oleg on 09.04.2021.
+//  Created by Oparin Oleg on 11.04.2021.
 //
 //
 
@@ -22,8 +22,8 @@ extension Profile {
     @NSManaged public var firstname: String?
     @NSManaged public var id: Int32
     @NSManaged public var image: Data?
-    @NSManaged public var lastname: String?
     @NSManaged public var isMale: Bool
+    @NSManaged public var lastname: String?
     @NSManaged public var dialogs: NSOrderedSet?
     @NSManaged public var locations: NSOrderedSet?
     @NSManaged public var services: NSOrderedSet?
