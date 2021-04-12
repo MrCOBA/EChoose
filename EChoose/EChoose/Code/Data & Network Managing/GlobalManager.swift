@@ -504,6 +504,34 @@ extension GlobalManager {
         return true
     }
     
+    func usernameExists(_ data: Any) -> Bool {
+        
+        guard let json = perform(data: data) as? [String : Any] else {
+            return false
+        }
+        
+        if let _ = json["error"] as? String {
+            
+            postNotification(Notification.Name("UsernameExists"))
+        }
+        
+        return true
+    }
+    
+    func emailExists(_ data: Any) -> Bool {
+        
+        guard let json = perform(data: data) as? [String : Any] else {
+            return false
+        }
+        
+        if let _ = json["error"] as? String {
+            
+            postNotification(Notification.Name("EmailExists"))
+        }
+        
+        return true
+    }
+    
     //Profile parser
     func profileSerializer(_ data: Any) -> Bool {
         
