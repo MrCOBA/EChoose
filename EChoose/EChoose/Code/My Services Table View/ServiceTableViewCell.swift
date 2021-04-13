@@ -12,13 +12,14 @@ import CoreData
 class ServiceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backgroundCellView: UIView!
-    @IBOutlet weak var ratingStackView: UIStackView!
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var workTypeLabel: UILabel!
+    @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var stateIndicator: UIImageView!
     
-    var service: Service!
+    var servicesManager: ServicesManager = ServicesManager.shared
+    var serviceDefault: ServiceDefault?
     static let identifier = "ServiceTableViewCell"
     
     override func awakeFromNib() {
@@ -30,54 +31,52 @@ class ServiceTableViewCell: UITableViewCell {
     private func setUI() {
         
         backgroundCellView.layer.cornerRadius = 20
-        
-        backgroundCellView.layer.shadowColor = UIColor.black.cgColor
-        backgroundCellView.layer.shadowOffset = .zero
-        backgroundCellView.layer.shadowRadius = 5
-        backgroundCellView.layer.shadowOpacity = 0.5
     }
     
-    func setCell(_ service: Service!) {
+    func setCell(_ serviceDefault: ServiceDefault?) {
         
-        self.service = service
-        
-        subjectLabel.text = service.subject
-        workTypeLabel.text = service.type
-        costLabel.text = "\(service.cost)₽"
-        
-        for i in 0...4 {
-            
-            if i < service.hard {
-                (ratingStackView.subviews[i] as! UIButton).setBackgroundImage(UIImage(systemName: "star.fill"), for: .normal)
-            }
-            else {
-                (ratingStackView.subviews[i] as! UIButton).setBackgroundImage(UIImage(systemName: "star"), for: .normal)
-            }
+        guard let serviceDefault = serviceDefault else {
+            return
         }
         
-        if service.isActivated {
+        self.serviceDefault = serviceDefault
+        
+        if let category = servicesManager.categories.first(where: {category in return category.id == serviceDefault.categoryid}),
+           let edLocationType = servicesManager.edLocationTypes.first(where: {edLocationType in return edLocationType == serviceDefault.edLocation}) {
+            
+            subjectLabel.text = category.name
+            workTypeLabel.text = edLocationType
+            costLabel.text = "\(serviceDefault.price)₽"
+            roleLabel.text = serviceDefault.isTutor ? "Tutor" : "Student"
+        }
+        
+        if serviceDefault.isActive {
             
             stateIndicator.image = UIImage(named: "activatedstate")
-            stateIndicator.tintColor = #colorLiteral(red: 0.5009238996, green: 1, blue: 0.4745031706, alpha: 1)
+            stateIndicator.tintColor = UIColor(named: "likeGreen")
         }
         else {
             
             stateIndicator.image = UIImage(named: "unactivatedstate")
-            stateIndicator.tintColor = #colorLiteral(red: 1, green: 0.400758059, blue: 0.3482903581, alpha: 1)
+            stateIndicator.tintColor = UIColor(named: "dislikeColor")
         }
     }
     
     func changeState() {
         
-        if service.isActivated {
+        guard let serviceDefault = serviceDefault else {
+            return
+        }
+        
+        if serviceDefault.isActive {
             
             stateIndicator.image = UIImage(named: "activatedstate")
-            stateIndicator.tintColor = #colorLiteral(red: 0.5009238996, green: 1, blue: 0.4745031706, alpha: 1)
+            stateIndicator.tintColor = UIColor(named: "likeGreen")
         }
         else {
             
             stateIndicator.image = UIImage(named: "unactivatedstate")
-            stateIndicator.tintColor = #colorLiteral(red: 1, green: 0.400758059, blue: 0.3482903581, alpha: 1)
+            stateIndicator.tintColor = UIColor(named: "dislikeColor")
         }
     }
 }

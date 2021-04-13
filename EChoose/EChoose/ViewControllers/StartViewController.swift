@@ -13,12 +13,17 @@ class StartViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var logoImageView: UIImageView!
+    let globalManager = GlobalManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        globalManager.loadData()
         loadIndicator.startAnimating()
         startAnimation()
+        subscribe(forNotification: Notification.Name("loginSuccess"))
+        subscribe(forNotification: Notification.Name("loginUnsuccess"))
+        globalManager.tokenInit()
     }
 
     func setUI() {
@@ -60,21 +65,51 @@ class StartViewController: UIViewController {
         opacityAnimation.repeatCount = .infinity
         
         infoLabel.layer.add(opacityAnimation, forKey: #keyPath(CALayer.opacity))
-        
-        login()
     }
     
-    func login() {
+    func subscribe(forNotification name: Notification.Name) {
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationHandler(_:)), name: name, object: nil)
+    }
+    
+    func unsubscribe(fromNotification name: Notification.Name) {
+        NotificationCenter.default.removeObserver(self, name: name, object: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        DispatchQueue.global(qos: .userInitiated).async {
+        if segue.identifier == "mainScreenSegue" {
+            let destination = segue.destination as! UITabBarController
             
-            sleep(12)
+            destination.selectedIndex = 2
+            destination.navigationController?.setNavigationBarHidden(true, animated: true)
             
-            DispatchQueue.main.async {
-                
-                self.logoImageView.stopAnimating()
-                self.loadIndicator.stopAnimating()
-                self.performSegue(withIdentifier: "startSegue", sender: nil)
+        } else if segue.identifier == "loginScreenSegue" {
+            
+            
+        }
+    }
+    
+    @objc func notificationHandler(_ notification: Notification) {
+        if notification.name.rawValue == "loginSuccess" {
+            
+            DispatchQueue.main.async {[unowned self] in
+                unsubscribe(fromNotification: Notification.Name("loginSuccess"))
+                unsubscribe(fromNotification: Notification.Name("loginUnsuccess"))
+                loadIndicator.isHidden = true
+                loadIndicator.stopAnimating()
+                logoImageView.stopAnimating()
+                globalManager.initRefresh()
+                performSegue(withIdentifier: "mainScreenSegue", sender: nil)
+            }
+        } else if notification.name.rawValue == "loginUnsuccess" {
+            
+            DispatchQueue.main.async {[unowned self] in
+                unsubscribe(fromNotification: Notification.Name("loginSuccess"))
+                unsubscribe(fromNotification: Notification.Name("loginUnsuccess"))
+                loadIndicator.isHidden = true
+                loadIndicator.stopAnimating()
+                logoImageView.stopAnimating()
+                performSegue(withIdentifier: "loginScreenSegue", sender: nil)
             }
         }
     }

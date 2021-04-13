@@ -23,7 +23,7 @@ class BackgroundView: UIView {
             shadowLayer = CAShapeLayer()
           
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 20).cgPath
-            shadowLayer.fillColor = #colorLiteral(red: 0.6349999905, green: 0.8550000191, blue: 0.5920000076, alpha: 1)
+            shadowLayer.fillColor = UIColor(named: "MainColor")?.cgColor
             
             shadowLayer.shadowColor = UIColor.black.cgColor
             shadowLayer.shadowPath = shadowLayer.path

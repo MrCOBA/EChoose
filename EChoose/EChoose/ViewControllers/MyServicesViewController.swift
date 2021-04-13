@@ -9,27 +9,18 @@
 import UIKit
 import CoreData
 
-struct ServiceStruct {
-    
-    var subject: String
-    var typeOfWork: String
-    var isActivated: Bool = true
-    var cost: Int
-    var description: String
-    var hardLevel: Int
-}
-
 class MyServicesViewController: UIViewController {
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var myServicesTableView: UITableView!
+    let loadingVC: LoadingViewController = LoadingViewController()
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {}
     
-    var user: User!
-    var mode: EditorMode! = .none
-    var row: Int = 0
-    var highlitedRow: IndexPath?
-    var context: NSManagedObjectContext!
+    var dataManager: GlobalManager = GlobalManager.shared
+    var servicesManager: ServicesManager = ServicesManager.shared
+    var locationsManager: LocationsManager = LocationsManager.shared
+    var segueData: Any?
+    var profile: Profile?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +29,6 @@ class MyServicesViewController: UIViewController {
         myServicesTableView.dataSource = self
         
         myServicesTableView.register(UINib(nibName: ServiceTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ServiceTableViewCell.identifier)
-        myServicesTableView.register(UINib(nibName: BigServiceTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BigServiceTableViewCell.identifier)
         
         myServicesTableView.rowHeight = UITableView.automaticDimension
         setUI()
@@ -46,13 +36,34 @@ class MyServicesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        highlitedRow = nil
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        context = appDelegate.persistentContainer.viewContext
+        
+        displayContentController(content: loadingVC)
         
         loadData()
-        myServicesTableView.reloadData()
+        
+        servicesManager.loadData(completition: {[unowned self] in
+            servicesManager.loadMetaData(completition: {
+                DispatchQueue.main.async {[unowned self] in
+
+                    hideContentController(content: loadingVC)
+                    myServicesTableView.reloadData()
+                }
+            })
+        })
     }
+    
+    func displayContentController(content: UIViewController) {
+        tabBarController?.addChild(content)
+        tabBarController?.view.addSubview(content.view)
+        content.didMove(toParent: tabBarController)
+    }
+    
+    func hideContentController(content: UIViewController) {
+        content.willMove(toParent: nil)
+        content.view.removeFromSuperview()
+        content.removeFromParent()
+    }
+    
     //MARK: - Setting up UI
     func setUI(){
         
@@ -64,46 +75,41 @@ class MyServicesViewController: UIViewController {
     }
 
     func loadData() {
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         
-        do {
-            try user = context.fetch(fetchRequest).first
-        } catch {
-            print(error.localizedDescription)
+        if let user = dataManager.user, let profile = user.profile {
+            self.profile = profile
         }
-    }
-    
-    func saveData() {
-        
-        do {
-            try context.save()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func deleteService(_ service: Service) {
-        
-        context.delete(service)
-        saveData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destination = segue.destination as! ServiceEditorViewController
-        
-        destination.servicesController = self
-        destination.mode = mode
-        
-        if mode == EditorMode.editService {
-            destination.service = user.services?[row] as? Service
-            destination.row = row
+        if segue.identifier == "serviceEditorSegue" {
+            
+            if let destination = segue.destination as? ServiceEditorViewController,
+               let editorParams = segueData as? (EditorMode, Int) {
+                
+                destination.editorMode = editorParams.0
+                
+                if editorParams.0 == EditorMode.edit {
+                    if let service = profile?.services?[editorParams.1] as? Service {
+                        destination.serviceDefault = servicesManager.defaultCopy(of: service)
+                        destination.index = editorParams.1
+                    }
+                }
+            }
+        } else {
+            
+            if let destination = segue.destination as? ServiceViewController,
+               let serviceDefault = segueData as? ServiceDefault {
+                let subtitle = serviceDefault.isTutor ? "Tutor" : "Student"
+                destination.setViewController("My Service", subtitle, serviceDefault)
+            }
         }
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
         
-        mode = EditorMode.newService
+        segueData = (EditorMode.new, -1)
         performSegue(withIdentifier: "serviceEditorSegue", sender: nil)
     }
     
@@ -117,38 +123,36 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let services = user.services else { return 1 }
-        return services.count
+        if let services = profile?.services {
+            return services.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath == highlitedRow {
-            let cell = myServicesTableView.dequeueReusableCell(withIdentifier: BigServiceTableViewCell.identifier, for: indexPath) as! BigServiceTableViewCell
-            cell.setCell(user.services?[indexPath.row] as? Service)
-            return cell
+        let cell = myServicesTableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier, for: indexPath) as! ServiceTableViewCell
+        
+        cell.backgroundView = UIView()
+        cell.backgroundColor = .clear
+        
+        if let service = profile?.services?[indexPath.row] as? Service {
+            
+            let defaultCopy = servicesManager.defaultCopy(of: service)
+            cell.setCell(defaultCopy)
         }
-        else {
-            let cell = myServicesTableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier, for: indexPath) as! ServiceTableViewCell
-            cell.setCell(user.services?[indexPath.row] as? Service)
-            return cell
-        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath == highlitedRow {
-            highlitedRow = nil
-        } else {
-            highlitedRow = indexPath
+        guard let service = profile?.services?[indexPath.row] as? Service else {
+            return
         }
-        myServicesTableView.reloadData()
-        UIView.transition(
-            with: tableView,
-            duration: 0.7,
-            options: .transitionCrossDissolve,
-            animations: {self.myServicesTableView.reloadData()},
-            completion: nil)
+        let defaultCopy = servicesManager.defaultCopy(of: service)
+        
+        segueData = defaultCopy
+        performSegue(withIdentifier: "popOverService", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -164,80 +168,92 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
     private func activationContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
 
         let action: UIContextualAction!
-        let services = user.services?.mutableCopy() as? NSMutableOrderedSet
-        let service = services![indexPath.row] as! Service
         
+        guard let user = dataManager.user,
+              let profile = user.profile,
+              let services = profile.services,
+              let service = services[indexPath.row] as? Service else {
+            return UIContextualAction()
+        }
         
-        if service.isActivated {
+        if service.isActive {
 
             action = UIContextualAction(
                 style: .normal,
-                title: "Unactivate",
-                handler: {(
+                title: "Deactivate",
+                handler: {[unowned self] (
                     contextualAction: UIContextualAction,
                     swipeButton: UIView,
                     completionHandler: (Bool) -> Void) in
 
-                    service.isActivated = false
-                    self.user.replaceServices(at: indexPath.row, with: service)
-                    self.saveData()
-                    if indexPath != self.highlitedRow {
-                        let cell =  self.myServicesTableView.cellForRow(at: indexPath) as! ServiceTableViewCell
-                        cell.changeState()
-                    } else {
-                        let cell =  self.myServicesTableView.cellForRow(at: indexPath) as! BigServiceTableViewCell
-                        cell.changeState()
-                    }
+                    let defaultCopy = servicesManager.defaultCopy(of: service)
+                    defaultCopy.isActive = false
+                    servicesManager.replaceService(defaultCopy, with: indexPath.row, completition: {
+                        DispatchQueue.main.async {
+                            if let cell = myServicesTableView.cellForRow(at: indexPath) as? ServiceTableViewCell {
+                                cell.serviceDefault = defaultCopy
+                                cell.changeState()
+                            }
+                        }
+                    })
                     completionHandler(true)
                 })
-            action.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.7259845769, blue: 0.3343080493, alpha: 1)
+            action.image = UIImage(named: "visibilityoff")
+            action.backgroundColor = UIColor(named: "ClearColor")
             return action
         }
         else {
             action = UIContextualAction(
                 style: .normal,
                 title: "Activate",
-                handler: {(
+                handler: {[unowned self](
                     contextualAction: UIContextualAction,
                     swipeButton: UIView,
                     completionHandler: (Bool) -> Void) in
 
-                    service.isActivated = true
-                    self.user.replaceServices(at: indexPath.row, with: service)
-                    self.saveData()
-                    if indexPath != self.highlitedRow {
-                        let cell =  self.myServicesTableView.cellForRow(at: indexPath) as! ServiceTableViewCell
-                        cell.changeState()
-                    } else {
-                        let cell =  self.myServicesTableView.cellForRow(at: indexPath) as! BigServiceTableViewCell
-                        cell.changeState()
-                    }
+                    let defaultCopy = servicesManager.defaultCopy(of: service)
+                    defaultCopy.isActive = true
+                    servicesManager.replaceService(defaultCopy, with: indexPath.row, completition: {
+                        DispatchQueue.main.async {
+                            if let cell = myServicesTableView.cellForRow(at: indexPath) as? ServiceTableViewCell {
+                                cell.serviceDefault = defaultCopy
+                                cell.changeState()
+                            }
+                        }
+                    })
                     completionHandler(true)
                 })
-            action.backgroundColor = #colorLiteral(red: 0.3808822285, green: 0.7240369789, blue: 1, alpha: 1)
+            action.image = UIImage(named: "visibility")
+            action.backgroundColor = UIColor(named: "ClearColor")
             return action
         }
     }
 
     private func deleteContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
-
-        let services = user.services?.mutableCopy() as? NSMutableOrderedSet
-        let service = services![indexPath.row] as! Service
         
         let action = UIContextualAction(
             style: .normal,
             title: "Delete",
-            handler: {(
+            handler: {[unowned self](
                 contextualAction: UIContextualAction,
                 swipeButton: UIView,
                 completionHandler: (Bool) -> Void) in
 
-                self.user.removeFromServices(service)
-                self.saveData()
-                self.myServicesTableView.deleteRows(at: [indexPath], with: .fade)
+                guard let id = servicesManager.index2id(indexPath.row) else {
+                    return
+                }
+                
+                servicesManager.deleteService(with: id, completition: {
+                    
+                    DispatchQueue.main.async {
+                        self.myServicesTableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                })
+                
                 completionHandler(true)
             })
-        action.backgroundColor = #colorLiteral(red: 1, green: 0.400758059, blue: 0.3482903581, alpha: 1)
+        action.image = UIImage(named: "bin")
+        action.backgroundColor = UIColor(named: "ClearColor")
         return action
     }
 
@@ -250,13 +266,13 @@ extension MyServicesViewController: UITableViewDelegate, UITableViewDataSource {
                 contextualAction: UIContextualAction,
                 swipeButton: UIView,
                 completionHandler: (Bool) -> Void) in
-
-                self.mode = EditorMode.editService
-                self.row = indexPath.row
+                
+                self.segueData = (EditorMode.edit, indexPath.row)
                 self.performSegue(withIdentifier: "serviceEditorSegue", sender: nil)
                 completionHandler(true)
             })
-        action.backgroundColor = #colorLiteral(red: 0.5009238996, green: 1, blue: 0.4745031706, alpha: 1)
+        action.image = UIImage(named: "edit")
+        action.backgroundColor = UIColor(named: "ClearColor")
         return action
     }
 }

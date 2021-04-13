@@ -3,9 +3,9 @@
     <entity name="Dialog" representedClassName=".Dialog" syncable="YES">
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastMessage" optional="YES" attributeType="Transformable" customClassName="MessageDefault"/>
+        <attribute name="messages" optional="YES" attributeType="Transformable" customClassName="[MessageDefault]"/>
         <attribute name="user1" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="user2" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Message" inverseName="dialog" inverseEntity="Message"/>
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="dialogs" inverseEntity="Profile"/>
     </entity>
     <entity name="Location" representedClassName=".Location" syncable="YES">
@@ -15,12 +15,6 @@
         <attribute name="name" attributeType="String" defaultValueString=""/>
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="locations" inverseEntity="Profile"/>
         <relationship name="services" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Service" inverseName="location" inverseEntity="Service"/>
-    </entity>
-    <entity name="Message" representedClassName=".Message" syncable="YES">
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="isIncoming" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="text" attributeType="String" defaultValueString=""/>
-        <relationship name="dialog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dialog" inverseName="messages" inverseEntity="Dialog"/>
     </entity>
     <entity name="Profile" representedClassName=".Profile" syncable="YES">
         <attribute name="age" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -54,9 +48,8 @@
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="user" inverseEntity="Profile"/>
     </entity>
     <elements>
-        <element name="Dialog" positionX="-770.992919921875" positionY="-377.6357727050781" width="128" height="119"/>
+        <element name="Dialog" positionX="-770.992919921875" positionY="-377.6357727050781" width="128" height="133"/>
         <element name="Location" positionX="-512.4866943359375" positionY="-196.4718017578125" width="128" height="119"/>
-        <element name="Message" positionX="-252.8751220703125" positionY="-408.5839385986328" width="128" height="103"/>
         <element name="Profile" positionX="-579.464111328125" positionY="15.10302734375" width="128" height="209"/>
         <element name="Service" positionX="207.5274047851563" positionY="-0.05041503906255684" width="128" height="193"/>
         <element name="User" positionX="-803.7127685546875" positionY="150.2049560546875" width="128" height="88"/>

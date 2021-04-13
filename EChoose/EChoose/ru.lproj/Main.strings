@@ -1,0 +1,120 @@
+
+/* Class = "UILabel"; text = "Role"; ObjectID = "1x2-39-nd6"; */
+"1x2-39-nd6.text" = "Role";
+
+/* Class = "UINavigationItem"; title = "Bot Editor"; ObjectID = "3Tg-OD-6GE"; */
+"3Tg-OD-6GE.title" = "Bot Editor";
+
+/* Class = "UINavigationItem"; title = "Services"; ObjectID = "7eO-KY-8Ul"; */
+"7eO-KY-8Ul.title" = "Services";
+
+/* Class = "UILabel"; text = "Subject"; ObjectID = "7g5-OA-Eei"; */
+"7g5-OA-Eei.text" = "Subject";
+
+/* Class = "UINavigationItem"; title = "Feed"; ObjectID = "7yb-hV-EIK"; */
+"7yb-hV-EIK.title" = "Feed";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "8B5-uW-h2P"; */
+"8B5-uW-h2P.title" = "Settings";
+
+/* Class = "UITextField"; placeholder = "Input message..."; ObjectID = "8zR-lS-i2T"; */
+"8zR-lS-i2T.placeholder" = "Input message...";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "CeJ-X7-USv"; */
+"CeJ-X7-USv.text" = "City";
+
+/* Class = "UIViewController"; title = "Messages"; ObjectID = "EtK-ZP-nO7"; */
+"EtK-ZP-nO7.title" = "Messages";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "FcY-7v-eBa"; */
+"FcY-7v-eBa.placeholder" = "Username";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "HRF-cr-ISQ"; */
+"HRF-cr-ISQ.normalTitle" = "Login";
+
+/* Class = "UINavigationItem"; title = "Service Editor"; ObjectID = "IW0-6d-zYq"; */
+"IW0-6d-zYq.title" = "Service Editor";
+
+/* Class = "UILabel"; text = "Opponent Fullname"; ObjectID = "JwF-Ga-AFo"; */
+"JwF-Ga-AFo.text" = "Opponent Fullname";
+
+/* Class = "UITabBarItem"; title = "Feed"; ObjectID = "Ls8-IT-XQP"; */
+"Ls8-IT-XQP.title" = "Feed";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "MTy-0a-axW"; */
+"MTy-0a-axW.text" = "Description";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "OhM-43-xfb"; */
+"OhM-43-xfb.title" = "Profile";
+
+/* Class = "UIButton"; normalTitle = "Forgot password?"; ObjectID = "QpF-P3-hAI"; */
+"QpF-P3-hAI.normalTitle" = "Forgot password?";
+
+/* Class = "UILabel"; text = "Cost"; ObjectID = "RaO-5g-9Ds"; */
+"RaO-5g-9Ds.text" = "Cost";
+
+/* Class = "UILabel"; text = "Cost: 1000₽"; ObjectID = "Sm8-ph-ii6"; */
+"Sm8-ph-ii6.text" = "Cost: 1000₽";
+
+/* Class = "UINavigationItem"; title = "Dialogs"; ObjectID = "Sty-To-UcU"; */
+"Sty-To-UcU.title" = "Dialogs";
+
+/* Class = "UIBarButtonItem"; title = "Services"; ObjectID = "U81-Ns-dl8"; */
+"U81-Ns-dl8.title" = "Services";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "UQK-2U-zlX"; */
+"UQK-2U-zlX.title" = "Settings";
+
+/* Class = "UILabel"; text = "Name, Age"; ObjectID = "Ugm-BN-Lmj"; */
+"Ugm-BN-Lmj.text" = "Name, Age";
+
+/* Class = "UINavigationItem"; title = "Registration"; ObjectID = "V8e-Mm-dtV"; */
+"V8e-Mm-dtV.title" = "Registration";
+
+/* Class = "UIBarButtonItem"; title = "Confirm"; ObjectID = "cDt-Oz-GPQ"; */
+"cDt-Oz-GPQ.title" = "Confirm";
+
+/* Class = "UILabel"; text = "Address:"; ObjectID = "eTp-m9-Bfa"; */
+"eTp-m9-Bfa.text" = "Address:";
+
+/* Class = "UILabel"; text = "Fullname, Age"; ObjectID = "ebU-7Q-2JR"; */
+"ebU-7Q-2JR.text" = "Fullname, Age";
+
+/* Class = "UISearchBar"; placeholder = "Search for subjects..."; ObjectID = "iU4-ko-Kdg"; */
+"iU4-ko-Kdg.placeholder" = "Search for subjects...";
+
+/* Class = "UITabBarItem"; title = "Bot Editor"; ObjectID = "ila-Qf-3Ql"; */
+"ila-Qf-3Ql.title" = "Bot Editor";
+
+/* Class = "UINavigationItem"; title = "Profile Editor"; ObjectID = "ja5-HV-AaF"; */
+"ja5-HV-AaF.title" = "Profile Editor";
+
+/* Class = "UIButton"; normalTitle = "Registration"; ObjectID = "kON-LM-rR3"; */
+"kON-LM-rR3.normalTitle" = "Registration";
+
+/* Class = "UITabBarItem"; title = "Messages"; ObjectID = "ke6-LD-xuN"; */
+"ke6-LD-xuN.title" = "Messages";
+
+/* Class = "UILabel"; text = "Type of the work"; ObjectID = "lL8-6Z-hvj"; */
+"lL8-6Z-hvj.text" = "Type of the work";
+
+/* Class = "UILabel"; text = "Loding..."; ObjectID = "nPM-PA-WFx"; */
+"nPM-PA-WFx.text" = "Loding...";
+
+/* Class = "UINavigationItem"; title = "Login"; ObjectID = "nun-HJ-2tO"; */
+"nun-HJ-2tO.title" = "Login";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "nzb-Qh-1bh"; */
+"nzb-Qh-1bh.placeholder" = "Password";
+
+/* Class = "UINavigationItem"; title = "Messages"; ObjectID = "oNU-cA-vKa"; */
+"oNU-cA-vKa.title" = "Messages";
+
+/* Class = "UITabBarItem"; title = "Services"; ObjectID = "ogS-c4-7Kc"; */
+"ogS-c4-7Kc.title" = "Services";
+
+/* Class = "UISearchBar"; placeholder = "Search address..."; ObjectID = "qnG-Qf-z5V"; */
+"qnG-Qf-z5V.placeholder" = "Search address...";
+
+/* Class = "UIBarButtonItem"; title = "Confirm"; ObjectID = "sOg-cJ-fv5"; */
+"sOg-cJ-fv5.title" = "Confirm";

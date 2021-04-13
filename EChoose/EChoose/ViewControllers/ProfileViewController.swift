@@ -13,12 +13,12 @@ class ProfileViewController: UIViewController {
     
     
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userImageView: CustomImageView!
     @IBOutlet weak var fullnameLabel: UILabel!
-    @IBOutlet weak var rolerLabel: UILabel!
     @IBOutlet weak var infoTableView: UITableView!
     
-    var user: User!
+    var globalManager: GlobalManager = GlobalManager.shared
+    let loadingVC = LoadingViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,42 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadData()
+        displayContentController(content: loadingVC)
+        guard let url = URL(string: "\(globalManager.apiURL)/profile/") else {
+            return
+        }
+        
+        globalManager.GET(url: url, data: nil, withSerializer: globalManager.profileSerializer(_:), isAuthorized: true, completition: {
+            
+            DispatchQueue.main.async {[unowned self] in
+                if let firstname = globalManager.user?.profile?.firstname,
+                   let lastname = globalManager.user?.profile?.lastname,
+                   let age = globalManager.user?.profile?.age {
+                    
+                    fullnameLabel.text = "\(firstname) \(lastname), \(age)"
+                }
+                
+                if let imageURL = globalManager.imageURL {
+                    
+                    guard let url = URL(string: "\(globalManager.apiURL)/\(imageURL)/") else {
+                        return
+                    }
+                    
+                    globalManager.downloadImage(from: url, completition: {
+                        DispatchQueue.main.async {
+                            if let image = globalManager.buffer as? UIImage {
+                                userImageView.image = image
+                            }
+                            hideContentController(content: loadingVC)
+                        }
+                    })
+                } else {
+                    DispatchQueue.main.async {
+                        hideContentController(content: loadingVC)
+                    }
+                }
+            }
+        })
         setUI()
     }
     
@@ -41,10 +76,6 @@ class ProfileViewController: UIViewController {
         
         infoTableView.separatorStyle = .none
         infoTableView.layer.cornerRadius = 10
-        
-        userImageView.layer.cornerRadius = userImageView.frame.width / 2
-        userImageView.layer.borderWidth = 3
-        userImageView.layer.borderColor = #colorLiteral(red: 0.6349999905, green: 0.8550000191, blue: 0.5920000076, alpha: 1)
         
         backgroundView.layer.cornerRadius = 5
         backgroundView.layer.borderWidth = 3
@@ -56,28 +87,23 @@ class ProfileViewController: UIViewController {
         
     }
     
-    func loadData() {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        
-        do{
-            try user = context.fetch(fetchRequest).first
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        userImageView.image = UIImage(data: user.image!)
-        fullnameLabel.text = "\(user.fullname!), \(user.age)"
-        rolerLabel.text = "\(user.role!)"
+    func displayContentController(content: UIViewController) {
+        addChild(content)
+        self.view.addSubview(content.view)
+        content.didMove(toParent: self)
+    }
+    
+    func hideContentController(content: UIViewController) {
+        content.willMove(toParent: nil)
+        content.view.removeFromSuperview()
+        content.removeFromParent()
     }
 }
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,39 +111,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
         
-            cell.setCell(UIImage(named: "usernameimage")!, "Username", user.username!)
+            cell.setCell(UIImage(named: "usernameimage")!, "Username", globalManager.user?.username ?? "No Username")
             return cell
-        } else if indexPath.row == 1 {
+        } else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
             
-            cell.setCell(UIImage(named: "cityimage")!, "City", user.city!)
+            cell.setCell(UIImage(named: "emailimage")!, "E-Mail", globalManager.user?.profile?.email ?? "No Email")
             return cell
-        } else if indexPath.row == 2{
-            let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
-            
-            cell.setCell(UIImage(named: "emailimage")!, "E-Mail", user.email!)
-            return cell
-        } else if indexPath.row == 3{
+        } else {
             
             let resizeableCell = tableView.dequeueReusableCell(withIdentifier: ResizeableInfoTableViewCell.identifier, for: indexPath) as! ResizeableInfoTableViewCell
             
-            resizeableCell.setCell(UIImage(named: "descriptionimage")!, "Description", user.descript!)
+            resizeableCell.setCell(UIImage(named: "descriptionimage")!, "Description", globalManager.user?.profile?.descript ?? "No Description")
             return resizeableCell
-        } else {
-            let editCell = tableView.dequeueReusableCell(withIdentifier: EditTableViewCell.identifier, for: indexPath) as! EditTableViewCell
-            
-            editCell.setCell(self)
-            
-            return editCell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if indexPath.row == 3 {
-            return UITableView.automaticDimension
-        } else {
-            return 63
         }
     }
 }

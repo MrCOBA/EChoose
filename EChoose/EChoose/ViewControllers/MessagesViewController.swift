@@ -21,13 +21,17 @@ class MessagesViewController: UIViewController {
     @IBOutlet weak var opponentBackgroundView: UIView!
     @IBOutlet weak var inputMessageBackgroundView: UIView!
     @IBOutlet weak var inputTextField: UITextField!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var opponentImageView: UIImageView!
-    @IBOutlet weak var opponentFullnameLabel: UILabel!
-    @IBOutlet weak var opponentCityLabel: UILabel!
     
-    var dialog: DialogStruct!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var opponentImageView: CustomImageView!
+    @IBOutlet weak var opponentFullnameLabel: UILabel!
+    @IBOutlet weak var opponentMetaInfoLabel: UILabel!
+    
+    var chatController: ChatController = ChatController.shared
+    var dialog: DialogDefault?
+    
     var notificationCenter: NotificationCenter!
     var originCenter: CGPoint!
     var deltaY: CGFloat?
@@ -39,30 +43,41 @@ class MessagesViewController: UIViewController {
         messagesTableView.dataSource = self
         inputTextField.delegate = self
         
-        messagesTableView.register(UINib(nibName: MessageTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: MessageTableViewCell.identifier)
-        
+        messagesTableView.register(ChatMessageCell.self, forCellReuseIdentifier: ChatMessageCell.identifier)
         setUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
         
-        opponentFullnameLabel.text = dialog.opponentFullname
-        opponentImageView.image = dialog.opponentImage
-        opponentCityLabel.text = dialog.opponentCity
+        opponentFullnameLabel.text = "\(dialog?.userDefault?.lastName ?? "") \(dialog?.userDefault?.firstName ?? "")"
+        opponentImageView.image = dialog?.userDefault?.image ?? UIImage(named: "noimage")
+        opponentMetaInfoLabel.text = "\(dialog?.userDefault?.isMale ?? true ? "Male" : "Female"), \(dialog?.userDefault?.age ?? 0) y.o."
+        
+        if let index = chatController.id2index(dialog?.id ?? -1) {
+            subscribe(forNotification: Notification.Name("dataUpdated"))
+            subscribe(forNotification: Notification.Name("newMessages"))
+            chatController.initMessages(from: index)
+        }
+        
+        messagesTableView.refreshControl = UIRefreshControl()
+        messagesTableView.refreshControl?.addTarget(self, action: #selector(refreshControlHandler), for: .valueChanged)
         
         notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardHandler(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardHandler(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        
         super.viewWillDisappear(animated)
+        
+        unsubscribe(fromNotification: Notification.Name("newMessages"))
+        unsubscribe(fromNotification: Notification.Name("dataUpdated"))
+        chatController.deinitCheckMessages()
         notificationCenter.removeObserver(self)
     }
     //MARK: - Setting up UI
-    func setDialog(_ dialog: DialogStruct) {
+    func setDialog(_ dialog: DialogDefault?) {
         
         self.dialog = dialog
     }
@@ -75,42 +90,81 @@ class MessagesViewController: UIViewController {
         messagesTableView.separatorStyle = .none
         messagesTableView.rowHeight = UITableView.automaticDimension
         
-        opponentBackgroundView.backgroundColor = #colorLiteral(red: 0, green: 0.4156862745, blue: 0.2078431373, alpha: 1)
-        opponentBackgroundView.layer.cornerRadius = 10
-        opponentBackgroundView.layer.shadowColor = UIColor.black.cgColor
-        opponentBackgroundView.layer.shadowOpacity = 0.5
-        opponentBackgroundView.layer.shadowOffset = .zero
-        opponentBackgroundView.layer.shadowRadius = 10
+        opponentBackgroundView.layer.cornerRadius = 20
+    }
+    
+    func subscribe(forNotification name: Notification.Name) {
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationHandler(_:)), name: name, object: nil)
+    }
+    
+    func unsubscribe(fromNotification name: Notification.Name) {
+        NotificationCenter.default.removeObserver(self, name: name, object: nil)
+    }
+    
+    func scrollToBottom(){
+        DispatchQueue.main.async {[unowned self] in
+            let indexPath = IndexPath(row: (dialog?.messages.count ?? 0) - 1, section: 0)
+            self.messagesTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
     
     @objc
-    func keyboardDidShow(notification: Notification) {
-        let info:NSDictionary = notification.userInfo! as NSDictionary
-        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        let tableViewY = messagesTableView.frame.origin.y + messagesTableView.frame.height
-        let keyboardY = keyboardSize.origin.y
+    func notificationHandler(_ notification: Notification) {
         
-        deltaY = abs(keyboardY - tableViewY) + 8
-        originCenter = inputMessageBackgroundView.center
+        if notification.name.rawValue == "dataUpdated" {
+            DispatchQueue.main.async {[unowned self] in
+                messagesTableView.refreshControl?.endRefreshing()
+                messagesTableView.reloadData()
+                if let index = chatController.id2index(dialog?.id ?? -1) {
+                    chatController.initCheckMessages(in: index)
+                }
+            }
+        } else if notification.name.rawValue == "newMessages" {
+            
+            DispatchQueue.main.async {[unowned self] in
+                messagesTableView.reloadData()
+            }
+        }
+    }
+    
+    @objc func refreshControlHandler() {
         
-        UIView.animate(withDuration: 0.5, animations: {
-            self.inputMessageBackgroundView.center = CGPoint(x: self.originCenter.x, y: self.originCenter.y - self.deltaY!)
-            self.bottomConstraint.constant = self.bottomConstraint.constant + self.deltaY!
+        if let index = chatController.id2index(dialog?.id ?? -1) {
+            chatController.updateMessages(from: index)
+        }
+    }
+    
+    @objc
+    func keyboardHandler(notification: Notification) {
+        
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let tabBarFrame = tabBarController?.tabBar.frame
+        
+        let deltaHeight = keyboardFrame.height - tabBarFrame!.height
+        
+        let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
+        
+        self.bottomConstraint.constant = isKeyboardShowing ? deltaHeight: 8
+        
+        UIView.animate(withDuration: 0, animations: {[unowned self] in
+            self.view.layoutIfNeeded()
+            self.scrollToBottom()
         })
     }
     
     @IBAction func sendButtonPressed(_ sender: Any) {
         
-        let message = MessageStruct(text: inputTextField.text!, isIncoming: false, time: Date())
-        dialog.messages.append(message)
-        messagesTableView.reloadData()
-        UIView.animate(withDuration: 0.5, animations: {
-            self.inputMessageBackgroundView.center = self.originCenter
-            self.bottomConstraint.constant = 8
-        })
-        inputTextField.resignFirstResponder()
-        inputTextField.text = ""
-        
+        if inputTextField.text! != "" {
+            
+            if let index = chatController.id2index(dialog?.id ?? -1) {
+                chatController.sendMessage(with: inputTextField.text!, to: index)
+                self.scrollToBottom()
+            }
+            
+            inputTextField.resignFirstResponder()
+            inputTextField.text = ""
+        }
     }
     
 }
@@ -118,15 +172,13 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dialog.messages.count
+        return dialog?.messages.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = messagesTableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.identifier, for: indexPath) as! MessageTableViewCell
-        
-        cell.setCell(dialog.messages[indexPath.row])
-        
+        let cell = messagesTableView.dequeueReusableCell(withIdentifier: ChatMessageCell.identifier, for: indexPath) as! ChatMessageCell
+        cell.chatMessage = dialog?.messages[indexPath.row]
         return cell
     }
 }
@@ -134,10 +186,6 @@ extension MessagesViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        UIView.animate(withDuration: 0.5, animations: {
-            self.inputMessageBackgroundView.center = self.originCenter
-            self.bottomConstraint.constant = 8
-        })
         inputTextField.resignFirstResponder()
         return true
     }

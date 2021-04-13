@@ -29,7 +29,6 @@
 		3126C7B42610B5060008D362 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126C7B22610B5060008D362 /* ProfileTableViewCell.swift */; };
 		3126C7B52610B5060008D362 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3126C7B32610B5060008D362 /* ProfileTableViewCell.xib */; };
 		3126C7BA2610B7EC0008D362 /* FullInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126C7B92610B7EC0008D362 /* FullInfoViewController.swift */; };
-		3130427D26232D29006D09D9 /* EChoose.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3130427B26232D29006D09D9 /* EChoose.xcdatamodeld */; };
 		3130428E26232DFD006D09D9 /* Service+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428426232DF8006D09D9 /* Service+CoreDataProperties copy.swift */; };
 		3130428F26232DFD006D09D9 /* Dialog+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428526232DF9006D09D9 /* Dialog+CoreDataProperties copy.swift */; };
 		3130429026232DFD006D09D9 /* Location+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3130428626232DF9006D09D9 /* Location+CoreDataProperties copy.swift */; };
@@ -44,6 +43,7 @@
 		31391BD224FEBE29007C23B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391BD124FEBE29007C23B3 /* ProfileViewController.swift */; };
 		31391C1824FEEE96007C23B3 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31391C1624FEEE96007C23B3 /* InfoTableViewCell.swift */; };
 		31391C1924FEEE96007C23B3 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31391C1724FEEE96007C23B3 /* InfoTableViewCell.xib */; };
+		313DBD2E2625C66F00C3A431 /* EChoose.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 313DBD2C2625C66E00C3A431 /* EChoose.xcdatamodeld */; };
 		31424DE824F4077800583E72 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424DE624F4077800583E72 /* DatePickerTableViewCell.swift */; };
 		31424DE924F4077800583E72 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31424DE724F4077800583E72 /* DatePickerTableViewCell.xib */; };
 		31424DED24F4092A00583E72 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31424DEB24F4092A00583E72 /* TextViewTableViewCell.swift */; };
@@ -170,7 +170,6 @@
 		3126C7B22610B5060008D362 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		3126C7B32610B5060008D362 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		3126C7B92610B7EC0008D362 /* FullInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoViewController.swift; sourceTree = "<group>"; };
-		3130427C26232D29006D09D9 /* EChoose.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EChoose.xcdatamodel; sourceTree = "<group>"; };
 		3130428426232DF8006D09D9 /* Service+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		3130428526232DF9006D09D9 /* Dialog+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dialog+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
 		3130428626232DF9006D09D9 /* Location+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
@@ -185,6 +184,7 @@
 		31391BD124FEBE29007C23B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		31391C1624FEEE96007C23B3 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		31391C1724FEEE96007C23B3 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
+		313DBD2D2625C66E00C3A431 /* EChoose.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EChoose.xcdatamodel; sourceTree = "<group>"; };
 		31424DE624F4077800583E72 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		31424DE724F4077800583E72 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		31424DEB24F4092A00583E72 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -377,7 +377,7 @@
 		3124434824EFF2CB008BDDA5 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				3130427B26232D29006D09D9 /* EChoose.xcdatamodeld */,
+				313DBD2C2625C66E00C3A431 /* EChoose.xcdatamodeld */,
 				311018892518C1C800DD1D14 /* ComicRelief.ttf */,
 				31086BDF24F9C5AB00B3839C /* Subjects.json */,
 				31086BDB24F9C58400B3839C /* Countries&Cities.json */,
@@ -1005,7 +1005,6 @@
 				3158C01425E6C09C008BBAE3 /* ChatMessageCell.swift in Sources */,
 				315C19402510100200F9FEB2 /* GlobalManager.swift in Sources */,
 				3130429326232DFD006D09D9 /* Profile+CoreDataProperties copy.swift in Sources */,
-				3130427D26232D29006D09D9 /* EChoose.xcdatamodeld in Sources */,
 				31C4640A25ED5E2B00894D1C /* MultipleSelectionCell.swift in Sources */,
 				318F00DD25DAA17F0017425A /* CustomTextView.swift in Sources */,
 				31C463FC25ED5D4C00894D1C /* SheetTableViewCell.swift in Sources */,
@@ -1054,6 +1053,7 @@
 				316D28202505FFD500E5A648 /* DoublePickerCell.swift in Sources */,
 				31D7B37825FE5F9500434D88 /* EducationTypeCell.swift in Sources */,
 				31424DFC24F4699D00583E72 /* SectionHeader.swift in Sources */,
+				313DBD2E2625C66F00C3A431 /* EChoose.xcdatamodeld in Sources */,
 				31143C7C26208615002260CD /* ChatController.swift in Sources */,
 				3130429126232DFD006D09D9 /* Location+CoreDataClass copy.swift in Sources */,
 				31424DE824F4077800583E72 /* DatePickerTableViewCell.swift in Sources */,
@@ -1409,14 +1409,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3130427B26232D29006D09D9 /* EChoose.xcdatamodeld */ = {
+		313DBD2C2625C66E00C3A431 /* EChoose.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3130427C26232D29006D09D9 /* EChoose.xcdatamodel */,
+				313DBD2D2625C66E00C3A431 /* EChoose.xcdatamodel */,
 			);
-			currentVersion = 3130427C26232D29006D09D9 /* EChoose.xcdatamodel */;
-			name = EChoose.xcdatamodeld;
-			path = ../../../../EChoose/EChoose/EChoose/Resourses/EChoose.xcdatamodeld;
+			currentVersion = 313DBD2D2625C66E00C3A431 /* EChoose.xcdatamodel */;
+			path = EChoose.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
