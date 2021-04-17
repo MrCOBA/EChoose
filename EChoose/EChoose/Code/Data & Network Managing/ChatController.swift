@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CoreData
 
 class PageDefault {
@@ -116,6 +117,51 @@ class ChatController: SequenceIterator {
         queue = DispatchQueue(label: "COBA.Inc.EChoose.checkMessegesQueue", qos: .userInteractive, attributes: .concurrent)
     }
     
+    func startDialog(with receiverId: Int) {
+        
+        globalManager.deleteAllData("Dialog")
+        dialogs = []
+        usersDefault = []
+        
+        guard let jsonData = globalManager.dialogJSON(with: receiverId) else {
+            return
+        }
+        
+        guard let url = URL(string: "\(globalManager.apiURL)/dialog/") else {
+            return
+        }
+        
+        globalManager.POST(url: url, data: jsonData, withSerializer: dialogSerializer(_:), isAuthorized: true, completition: {[unowned self] in
+            
+            if dialogs.count > 0 {
+                
+                if let url = URL(string: "\(globalManager.apiURL)/profile/\(dialogs[0].user2)/") {
+                    
+                    globalManager.GET(url: url, data: nil, withSerializer: userSerializer(_:), isAuthorized: true, completition: {[unowned self] in
+                        
+                        dialogs[0].userDefault = usersDefault[0]
+                        
+                        guard let url = URL(string: "\(globalManager.apiURL)/\(usersDefault[0].imageURL)/") else {
+                            globalManager.postNotification(Notification.Name("dialogLoaded"))
+                            return
+                        }
+                        
+                        globalManager.downloadImage(from: url, completition: { [unowned self] in
+                            
+                            if let image = globalManager.buffer as? UIImage {
+                                usersDefault[0].image = image
+                            }
+                            
+                            globalManager.postNotification(Notification.Name("dialogLoaded"))
+                        })
+                    })
+                }
+                
+                
+            }
+        })
+    }
+    
     func initDialogs() {
         
         globalManager.deleteAllData("Dialog")
@@ -170,6 +216,7 @@ class ChatController: SequenceIterator {
         
         globalManager.GET(url: url, data: nil, withSerializer: messagePartSerializer(_:), isAuthorized: true, completition: {[unowned self] in
             
+            initCheckMessages(in: dialog)
             globalManager.postNotification(Notification.Name("dataUpdated"))
         })
     }
@@ -288,6 +335,61 @@ class ChatController: SequenceIterator {
     }
 }
 extension ChatController {
+    
+    func dialogSerializer(_ data: Any) -> Bool {
+    
+        guard let json = globalManager.perform(data: data) as? [String : Any] else {
+            return false
+        }
+        
+        guard let context = globalManager.context,
+              let user = globalManager.user,
+              let profile = user.profile else {
+            return false
+        }
+        
+        if let id = json["id"] as? Int,
+           let user1 = json["user1"] as? Int,
+           let user2 = json["user2"] as? Int {
+            
+            let dialogDefault: DialogDefault = DialogDefault(with: id, between: user1, user2)
+            dialogs.append(dialogDefault)
+            
+            if let lastMessage = json["last_message"] as? [String : Any] {
+                
+                if let id = lastMessage["id"] as? Int,
+                   let author = lastMessage["author"] as? Int,
+                   let dialog = lastMessage["dialog"] as? Int,
+                   let text = lastMessage["text"] as? String,
+                   var serverDateStr = lastMessage["datetime"] as? String {
+                    serverDateStr += " GMT+0"
+                    
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd HH:mm z"
+                    
+                    let serverDate = formatter.date(from: serverDateStr)!
+                    
+                    formatter.timeZone = NSTimeZone() as TimeZone
+                    let dateStr = formatter.string(from: serverDate)
+                    let date = formatter.date(from: dateStr)!
+                    
+                    let messageDefault = MessageDefault(with: id, from: dialog, text, author == user2, date)
+                    
+                    dialogDefault.lastMessage = messageDefault
+                }
+            }
+            
+            let dialog = Dialog(context: context)
+            dialog.id = Int32(id)
+            dialog.user1 = Int32(user1)
+            dialog.user2 = Int32(user2)
+            dialog.lastMessage = dialogDefault.lastMessage
+            
+            profile.addToDialogs(dialog)
+        }
+        
+        return true
+    }
     
     func dialogPartSerializer(_ data: Any) -> Bool{
         
@@ -449,6 +551,7 @@ extension ChatController {
             if let dialog = profile.dialogs?[selectedDialog] as? Dialog{
                 
                 dialog.messages?.append(messageDefault)
+                globalManager.saveData()
             }
         }
         
@@ -495,6 +598,7 @@ extension ChatController {
                     if let dialog = profile.dialogs?[selectedDialog] as? Dialog{
                         
                         dialog.messages?.append(messageDefault)
+                        globalManager.saveData()
                     }
                 }
             }

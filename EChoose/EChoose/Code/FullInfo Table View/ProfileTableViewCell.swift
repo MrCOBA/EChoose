@@ -13,8 +13,11 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var profileImageView: CustomImageView!
+    @IBOutlet weak var chatButton: CustomButton!
     
     static let identifier = "ProfileTableViewCell"
+    
+    var delegate: ActionDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,10 +34,16 @@ class ProfileTableViewCell: UITableViewCell {
         backgroundCellView.layer.shadowOpacity = 0.5
     }
     
-    func setCell(_ image: UIImage, _ value: String) {
+    func setCell(_ image: UIImage, _ value: String, _ chatEnabled: Bool = false) {
+        
+        chatButton.isHidden = !chatEnabled
         
         profileImageView.image = image
         valueLabel.text = value
     }
     
+    @IBAction func startDialog(_ sender: Any) {
+        
+        delegate?.actionHandler()
+    }
 }

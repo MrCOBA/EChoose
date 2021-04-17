@@ -10,6 +10,7 @@ import UIKit
 
 class DialogTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var unreadIndicatorView: CustomView!
     @IBOutlet weak var backgroundCellView: UIView!
     @IBOutlet weak var opponentImageView: CustomImageView!
     @IBOutlet weak var opponentFullnameLabel: UILabel!
@@ -29,7 +30,9 @@ class DialogTableViewCell: UITableViewCell {
         backgroundCellView.layer.cornerRadius = 20
     }
     
-    func setCell(_ dialog: DialogDefault?) {
+    func setCell(_ dialog: DialogDefault?, _ unread: Bool = false) {
+        
+        unreadIndicatorView.backgroundColor = unread ? UIColor(named: "dislikeColor") : UIColor(named: "MainColor")
         
         self.dialog = dialog
         opponentImageView.image = dialog?.userDefault?.image ?? UIImage(named: "noimage")

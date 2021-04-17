@@ -12,13 +12,17 @@ class FullInfoViewController: UIViewController {
 
     @IBOutlet weak var fullInfoTableView: UITableView!
     
-    
+    var chatController: ChatController = ChatController.shared
     var servicesManager: ServicesManager = ServicesManager.shared
     var offer: Offer?
     var user: UserDefault?
     
+    var chatEnabled: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        subscribe(forNotification: Notification.Name("dialogLoaded"))
         
         
         fullInfoTableView.delegate = self
@@ -33,10 +37,51 @@ class FullInfoViewController: UIViewController {
         fullInfoTableView.register(UINib(nibName: SectionHeader.identifier, bundle: nil), forCellReuseIdentifier: SectionHeader.identifier)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "openDialogSegue" {
+            
+            if let destination = segue.destination as? MessagesViewController{
+                
+                if let _ = user?.id {
+                    
+                    destination.dialog = chatController.dialogs[0]
+                }
+            }
+            
+        }
+    }
+    
+    func subscribe(forNotification name: Notification.Name) {
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationHandler(_:)), name: name, object: nil)
+    }
+    
+    func unsubscribe(fromNotification name: Notification.Name) {
+        NotificationCenter.default.removeObserver(self, name: name, object: nil)
+    }
+    
+    @objc
+    func notificationHandler(_ notification: Notification) {
+        
+        if notification.name.rawValue == "dialogLoaded" {
+            DispatchQueue.main.async {[unowned self] in
+                performSegue(withIdentifier: "openDialogSegue", sender: nil)
+            }
+        }
+    }
 }
 extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
+        guard let _ = user else {
+            return 0
+        }
+        
+        guard let _ = offer else {
+            return 1
+        }
+        
         return 2
     }
     
@@ -51,30 +96,23 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
+        if indexPath.section == 0,
+           let user = user{
             
             switch indexPath.row {
             
             case 0:
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier, for: indexPath) as! ProfileTableViewCell
                 
-                guard let user = user else {
-                    return cell
-                }
-                
                 let image = user.image ?? UIImage(named: "noimage")!
                 
-                cell.setCell(image, "\(user.lastName) \(user.firstName), \(user.age)")
-                
+                cell.setCell(image, "\(user.lastName) \(user.firstName), \(user.age)", chatEnabled)
+                cell.delegate = self
                 return cell
             
             case 1:
                 
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
-                
-                guard let user = user else {
-                    return cell
-                }
                 
                 cell.setCell(UIImage(named: "genderimage")!, "M/F", user.isMale ? "Male" : "Female")
                 
@@ -84,10 +122,6 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
                 
-                guard let user = user else {
-                    return cell
-                }
-                
                 cell.setCell(UIImage(named: "emailimage")!, "E-Mail", user.email == "" ? "No Email" : user.email)
                 
                 return cell
@@ -95,10 +129,6 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
             case 3:
                 
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: ResizeableInfoTableViewCell.identifier, for: indexPath) as! ResizeableInfoTableViewCell
-                
-                guard let user = user else {
-                    return cell
-                }
                 
                 cell.setCell(UIImage(named: "descriptionimage")!, "Description", user.userDescription == "" ? "No Description" : user.userDescription)
                 
@@ -108,16 +138,12 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             
-        } else {
+        } else if let offer = offer{
             
             switch indexPath.row {
             
             case 0:
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
-                
-                guard let offer = offer else {
-                    return cell
-                }
                 
                 guard let category = servicesManager.categories.first(where: {category in return category.id == offer.categoryid}) else {
                     return cell
@@ -130,10 +156,6 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
             case 1:
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
                 
-                guard let offer = offer else {
-                    return cell
-                }
-                
                 cell.setCell(UIImage(named: "edlocationimage")!, "Ed. Location", offer.edLocation)
                 
                 return cell
@@ -141,20 +163,12 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
             case 2:
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: ResizeableInfoTableViewCell.identifier, for: indexPath) as! ResizeableInfoTableViewCell
                 
-                guard let offer = offer else {
-                    return cell
-                }
-                
                 cell.setCell(UIImage(named: "addressimage")!, "Address", offer.locationDefault?.toString() ?? "No pinned Address")
                 
                 return cell
             
             case 3:
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: ResizeableInfoTableViewCell.identifier, for: indexPath) as! ResizeableInfoTableViewCell
-                
-                guard let offer = offer else {
-                    return cell
-                }
                 
                 var serviceTypesStr = ""
                 
@@ -173,20 +187,12 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: ResizeableInfoTableViewCell.identifier, for: indexPath) as! ResizeableInfoTableViewCell
                 
-                guard let offer = offer else {
-                    return cell
-                }
-                
                 cell.setCell(UIImage(named: "descriptionimage")!, "Description", offer.serviceDescription == "" ? "No Description" : offer.serviceDescription)
                 
                 return cell
                 
             case 5:
                 let cell = fullInfoTableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
-                
-                guard let offer = offer else {
-                    return cell
-                }
                 
                 cell.setCell(UIImage(named: "priceimage")!, "Price", "\(offer.price)₽")
                 
@@ -196,6 +202,7 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -220,5 +227,14 @@ extension FullInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
+    }
+}
+extension FullInfoViewController: ActionDelegate {
+    
+    func actionHandler() {
+        
+        if let id = user?.id {
+            chatController.startDialog(with: id)
+        }
     }
 }

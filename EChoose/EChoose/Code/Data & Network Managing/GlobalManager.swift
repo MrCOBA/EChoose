@@ -943,9 +943,21 @@ extension GlobalManager {
     
     func messageJSON(with text: String) -> Data? {
         
-        let jsonObject: [String : Any] = [
-            "text" : text
-        ]
+        let jsonObject: [String : Any] = ["text" : text]
+        
+        let valid = JSONSerialization.isValidJSONObject(jsonObject)
+        
+        if valid {
+            let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            return jsonData
+        }
+        
+        return nil
+    }
+    
+    func dialogJSON(with recieverId: Int) -> Data? {
+        
+        let jsonObject: [String : Any] = ["receiver_id" : recieverId]
         
         let valid = JSONSerialization.isValidJSONObject(jsonObject)
         

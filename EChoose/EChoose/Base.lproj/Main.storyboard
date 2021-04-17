@@ -476,6 +476,7 @@
                         <outlet property="noActivityLabel" destination="xmf-fb-hu7" id="MlV-93-o5Q"/>
                         <outlet property="noActivityView" destination="agV-u0-y1w" id="cjL-4i-mdY"/>
                         <segue destination="mqM-si-HJ1" kind="presentation" identifier="fullInfoSegue" id="Jkg-LT-QGa"/>
+                        <segue destination="EtK-ZP-nO7" kind="show" identifier="openDialogSegue" id="30O-cT-EGR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9k-8Y-7hw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -507,6 +508,7 @@
                     </view>
                     <connections>
                         <outlet property="fullInfoTableView" destination="3sU-6y-Ebm" id="x4j-nb-C5C"/>
+                        <segue destination="EtK-ZP-nO7" kind="show" identifier="openDialogSegue" id="9LK-FO-TzX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Jd-3K-103" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1417,6 +1419,7 @@
                         <outlet property="opponentImageView" destination="6CF-9f-exd" id="tVB-0D-ORT"/>
                         <outlet property="opponentMetaInfoLabel" destination="CeJ-X7-USv" id="Yxi-F8-tOP"/>
                         <outlet property="sendButton" destination="LME-Nu-f4p" id="OU2-dg-KVv"/>
+                        <segue destination="mqM-si-HJ1" kind="presentation" identifier="fullInfoSegue" id="Aks-Q9-ZVP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryT-f4-H6F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1951,6 +1954,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="TAo-yj-YRJ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                             <color key="textColor" name="MainColor"/>
@@ -2021,8 +2025,9 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="Rac-GP-cY9"/>
+        <segue reference="30O-cT-EGR"/>
         <segue reference="6SE-fe-Cff"/>
-        <segue reference="VA2-6G-IQu"/>
+        <segue reference="Jkg-LT-QGa"/>
         <segue reference="ZOj-sh-GIT"/>
     </inferredMetricsTieBreakers>
     <resources>

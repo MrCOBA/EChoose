@@ -19,6 +19,7 @@ class ActivitiesViewController: UIViewController {
     
     private var transferData: (Offer?, UserDefault?)
     
+    var chatController: ChatController = ChatController.shared
     var activitiesManager: ActivitiesManager = ActivitiesManager.shared
     var globalManager: GlobalManager = GlobalManager.shared
     var offersManager: OffersManager = OffersManager.shared
@@ -38,6 +39,7 @@ class ActivitiesViewController: UIViewController {
         super.viewWillAppear(animated)
         
         subscribe(forNotification: Notification.Name("dataUpdated"))
+        subscribe(forNotification: Notification.Name("dialogLoaded"))
         
         if activitiesControl.selectedSegmentIndex == 0 {
             activitiesManager[.match]?.clear()
@@ -52,6 +54,7 @@ class ActivitiesViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         unsubscribe(fromNotification: Notification.Name("dataUpdated"))
+        unsubscribe(fromNotification: Notification.Name("dialogLoaded"))
     }
     
     //MARK: - Setting up UI
@@ -73,6 +76,15 @@ class ActivitiesViewController: UIViewController {
             
             destination.offer = transferData.0
             destination.user = transferData.1
+            
+            destination.chatEnabled = activitiesControl.selectedSegmentIndex == 0
+        } else if segue.identifier == "openDialogSegue" {
+            
+            guard let destination = segue.destination as? MessagesViewController else {
+                return
+            }
+            
+            destination.dialog = chatController.dialogs[0]
         }
     }
     
@@ -91,6 +103,12 @@ class ActivitiesViewController: UIViewController {
             if notification.name.rawValue == "dataUpdated" {
                 
                 updateTableView()
+                
+            } else if notification.name.rawValue == "dialogLoaded" {
+                
+                DispatchQueue.main.async {[unowned self] in
+                    performSegue(withIdentifier: "openDialogSegue", sender: nil)
+                }
             }
         }
     }
@@ -169,14 +187,16 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
             cell.firstActionButton.setImage(UIImage(named: "dialogimage"), for: .normal)
             cell.secondActionButton.setImage(UIImage(named: "deleteimage"), for: .normal)
             
-            cell.firstAction = {(offer, user) in
+            cell.firstAction = {[unowned self] (offer, user) in
                 
-                
+                if let id = user?.id {
+                    chatController.startDialog(with: id)
+                }
             }
             
-            cell.secondAction = {(offer, user) in
+            cell.secondAction = {[unowned self] (offer, user) in
                 
-                let alertGenerator = AlertGenerator(firstAction: {[unowned self] (action) in
+                let alertGenerator = AlertGenerator(firstAction: {(action) in
                     
                     guard let url = URL(string: "\(globalManager.apiURL)/offers/\(offer?.id ?? -1)/react/") else {
                         return

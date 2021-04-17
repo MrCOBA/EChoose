@@ -51,14 +51,29 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psk-p0-Dbo" customClass="CustomView" customModule="EChoose" customModuleProvider="target">
+                                <rect key="frame" x="280" y="8" width="16" height="16"/>
+                                <color key="backgroundColor" name="MainColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="1FJ-9W-F8R"/>
+                                    <constraint firstAttribute="width" constant="16" id="VUt-nK-52W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="MainColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oMv-R7-pAw" secondAttribute="trailing" constant="8" id="6Fu-fB-CBy"/>
                             <constraint firstItem="u7f-Dt-0w7" firstAttribute="top" secondItem="w7U-lm-dpT" secondAttribute="top" constant="8" id="7Er-Ao-HXG"/>
                             <constraint firstItem="oMv-R7-pAw" firstAttribute="leading" secondItem="hBY-TD-8k4" secondAttribute="trailing" constant="8" id="Gzv-Vm-bdl"/>
+                            <constraint firstItem="psk-p0-Dbo" firstAttribute="top" secondItem="w7U-lm-dpT" secondAttribute="top" constant="8" id="IhO-jG-mZK"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="u7f-Dt-0w7" secondAttribute="trailing" constant="8" id="Zek-VY-hEh"/>
                             <constraint firstItem="oMv-R7-pAw" firstAttribute="top" secondItem="u7f-Dt-0w7" secondAttribute="bottom" constant="8" id="dip-nF-A17"/>
+                            <constraint firstAttribute="trailing" secondItem="psk-p0-Dbo" secondAttribute="trailing" constant="8" id="eoh-pe-A7C"/>
                             <constraint firstAttribute="bottom" secondItem="hBY-TD-8k4" secondAttribute="bottom" constant="8" id="pcM-3e-8wf"/>
                             <constraint firstItem="u7f-Dt-0w7" firstAttribute="leading" secondItem="hBY-TD-8k4" secondAttribute="trailing" constant="8" id="wYf-08-mPX"/>
                             <constraint firstItem="hBY-TD-8k4" firstAttribute="leading" secondItem="w7U-lm-dpT" secondAttribute="leading" constant="8" id="wnR-Rx-g13"/>
@@ -80,8 +95,9 @@
                 <outlet property="dialogLastMessageLabel" destination="oMv-R7-pAw" id="tqh-dc-veW"/>
                 <outlet property="opponentFullnameLabel" destination="u7f-Dt-0w7" id="ZyN-rt-Nlr"/>
                 <outlet property="opponentImageView" destination="hBY-TD-8k4" id="0zP-P9-AFE"/>
+                <outlet property="unreadIndicatorView" destination="psk-p0-Dbo" id="Gc5-On-Rac"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="135.9375"/>
+            <point key="canvasLocation" x="138" y="126"/>
         </tableViewCell>
     </objects>
     <designables>
@@ -95,7 +111,7 @@
             <color red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainColor">
-            <color red="0.68048805553267744" green="0.90639767660955828" blue="0.67127037358165365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.67843137254901964" green="0.90588235294117647" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondColorGradient">
             <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

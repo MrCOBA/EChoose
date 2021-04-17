@@ -43,6 +43,9 @@ class MessagesViewController: UIViewController {
         messagesTableView.dataSource = self
         inputTextField.delegate = self
         
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
+        opponentBackgroundView.addGestureRecognizer(recognizer)
+        
         messagesTableView.register(ChatMessageCell.self, forCellReuseIdentifier: ChatMessageCell.identifier)
         setUI()
     }
@@ -103,9 +106,30 @@ class MessagesViewController: UIViewController {
     
     func scrollToBottom(){
         DispatchQueue.main.async {[unowned self] in
-            let indexPath = IndexPath(row: (dialog?.messages.count ?? 0) - 1, section: 0)
-            self.messagesTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            if dialog?.messages.count ?? 0 > 0 {
+                let indexPath = IndexPath(row: (dialog?.messages.count ?? 0) - 1, section: 0)
+                self.messagesTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "fullInfoSegue" {
+            
+            if let destination = segue.destination as? FullInfoViewController {
+                
+                destination.user = dialog?.userDefault
+                destination.chatEnabled = false
+            }
+            
+        }
+    }
+    
+    @objc
+    func tapHandler(_ recognizer: UIGestureRecognizer) {
+        
+        performSegue(withIdentifier: "fullInfoSegue", sender: nil)
     }
     
     @objc
@@ -115,9 +139,6 @@ class MessagesViewController: UIViewController {
             DispatchQueue.main.async {[unowned self] in
                 messagesTableView.refreshControl?.endRefreshing()
                 messagesTableView.reloadData()
-                if let index = chatController.id2index(dialog?.id ?? -1) {
-                    chatController.initCheckMessages(in: index)
-                }
             }
         } else if notification.name.rawValue == "newMessages" {
             
@@ -127,7 +148,8 @@ class MessagesViewController: UIViewController {
         }
     }
     
-    @objc func refreshControlHandler() {
+    @objc
+    func refreshControlHandler() {
         
         if let index = chatController.id2index(dialog?.id ?? -1) {
             chatController.updateMessages(from: index)

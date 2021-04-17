@@ -33,8 +33,12 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
-        cardInformationView.addGestureRecognizer(recognizer)
+        let fullInfoRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
+        cardInformationView.addGestureRecognizer(fullInfoRecognizer)
+        
+        let archiveRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapHandler(_:)))
+        archiveRecognizer.numberOfTapsRequired = 2
+        cardView.addGestureRecognizer(archiveRecognizer)
         
         divisor = (view.frame.width / 2) / 0.61
         setUI()
@@ -158,6 +162,7 @@ class FeedViewController: UIViewController {
                 
                 destination.offer = offer
                 destination.user = user
+                destination.chatEnabled = false
             }
         }
         
@@ -222,6 +227,33 @@ class FeedViewController: UIViewController {
         }
     }
     
+    @objc
+    func doubleTapHandler(_ recognizer: UITapGestureRecognizer) {
+        
+        likedislikeImageView.image = UIImage(named: "archivedImage")
+        likedislikeImageView.tintColor = UIColor(named: "MainColor")
+        
+        UIView.animate(withDuration: 1.5, animations: {[unowned self] in
+            blurView.alpha = 0.8
+            likedislikeImageView.alpha = 1
+            
+        }, completion: {[unowned self] _ in
+            
+            UIView.animate(withDuration: 1.5, animations: {
+
+                cardView.center = CGPoint(x: cardView.center.x, y: cardView.center.y + 1000)
+                
+                cardView.alpha = 0
+            }, completion: {_ in
+                
+                archive()
+            })
+        })
+        
+        
+        
+    }
+    
     func like() {
         
         guard let url = URL(string: "\(globalManager.apiURL)/offers/\(offer?.id ?? -1)/react/") else {
@@ -253,6 +285,29 @@ class FeedViewController: UIViewController {
         }
         
         if let jsonData = globalManager.reactJSON(from: offersManager.offersQueue.filter, status: "Dislike") {
+            
+            globalManager.POST(url: url, data: jsonData, withSerializer: nil, isAuthorized: true, completition: {[unowned self] in
+                
+                offer = nil
+                user = nil
+                resetCard()
+                displayOffer()
+            })
+            
+        } else {
+            
+            resetCard()
+        }
+    }
+    
+    func archive() {
+        
+        guard let url = URL(string: "\(globalManager.apiURL)/offers/\(offer?.id ?? -1)/react/") else {
+            resetCard()
+            return
+        }
+        
+        if let jsonData = globalManager.reactJSON(from: offersManager.offersQueue.filter, status: "Archive") {
             
             globalManager.POST(url: url, data: jsonData, withSerializer: nil, isAuthorized: true, completition: {[unowned self] in
                 

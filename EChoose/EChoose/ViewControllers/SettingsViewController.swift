@@ -61,6 +61,7 @@ class SettingsViewController: UIViewController {
         globalManager.deleteAllData("Profile")
         globalManager.deleteAllData("Service")
         globalManager.deleteAllData("Location")
+        globalManager.deleteAllData("Dialog")
         globalManager.deinitRefresh()
         performSegue(withIdentifier: "loginScreenSegue", sender: self)
     }

@@ -20,7 +20,6 @@ class DialogsViewController: UIViewController {
     
     @IBOutlet weak var dialogsTableView: UITableView!
     
-    var dialogs: [DialogStruct] = [DialogStruct(messages: [MessageStruct(text: "Hello, Oleg.", isIncoming: true, time: Date()), MessageStruct(text: "Hello, Sergey Mihailovich!", isIncoming: false, time: Date())], opponentFullname: "Avdoshin Sergey", opponentCity: "Moscow", opponentImage: UIImage(named: "noimage")!)]
     private var selectedDialog: Int = 0
     var chatController: ChatController = ChatController.shared
     
@@ -49,9 +48,12 @@ class DialogsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destination = segue.destination as! MessagesViewController
-        
-        destination.setDialog(chatController.dialogs[selectedDialog])
+        if let destination = segue.destination as? MessagesViewController {
+            
+            if selectedDialog < chatController.dialogs.count {
+                destination.setDialog(chatController.dialogs[selectedDialog])
+            }
+        }
     }
     
     func subscribe(forNotification name: Notification.Name) {
