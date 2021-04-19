@@ -135,7 +135,7 @@ extension ServiceEditorViewController: UITableViewDelegate, UITableViewDataSourc
                     let cell = serviceEditorTableView.dequeueReusableCell(withIdentifier: SheetTableViewCell.identifier, for: indexPath) as! SheetTableViewCell
                     
                     cell.serviceDefault = serviceDefault
-                    cell.setCell("Work Type", servicesManager.serviceTypes.map {serviceType in serviceType.name })
+                    cell.setCell("Service Type", servicesManager.serviceTypes.map {serviceType in serviceType.name })
                     
                     return cell
                 }
@@ -158,7 +158,7 @@ extension ServiceEditorViewController: UITableViewDelegate, UITableViewDataSourc
                         
                          let locationDefault = locationsManager.locationsDefault[index]
                         
-                        cell.setCell("Location Point", locationDefault)
+                        cell.setCell("Address", locationDefault)
                         cell.delegate = self
                         return cell
                     }
@@ -251,29 +251,68 @@ extension ServiceEditorViewController: SegueDelegate, GestureDelegate {
 extension ServiceEditorViewController: ActionDelegate {
     
     func actionHandler() {
-        if editorMode == .new {
-            guard let serviceDefault = serviceDefault else{
-                return
-            }
-            servicesManager.addService(serviceDefault, completition: {
+        
+        if let serviceDefault = serviceDefault {
+            
+            if serviceDefault.addressid < 0 && serviceDefault.edLocation != "Remotely" {
                 
-                DispatchQueue.main.async {[unowned self] in
-                    navigationController?.popViewController(animated: true)
+                let generator = AlertGenerator(firstAction: {[unowned self] alert in
+                    
+                    DispatchQueue.main.async {
+                        
+                        serviceEditorTableView.scrollToRow(at: IndexPath(row: 1, section: 1), at: .top, animated: true)
+                    }
+                })
+                
+                let alert = generator.getAlert()
+                
+                if let controller = alert[.notChoseAddress] {
+                    
+                    present(controller, animated: true, completion: nil)
                 }
                 
-            })
-        } else {
-            guard let serviceDefault = serviceDefault else{
-                return
+            } else if serviceDefault.types.count == 0 {
+                
+                let generator = AlertGenerator(firstAction: {[unowned self] alert in
+                    
+                    DispatchQueue.main.async {
+                        
+                        serviceEditorTableView.scrollToRow(at: IndexPath(row: 1, section: 0), at: .top, animated: true)
+                    }
+                })
+                
+                let alert = generator.getAlert()
+                
+                if let controller = alert[.notChoseServiceType] {
+                    
+                    present(controller, animated: true, completion: nil)
+                }
+                
+            } else {
+                
+                if editorMode == .new {
+                    servicesManager.addService(serviceDefault, completition: {
+                        
+                        DispatchQueue.main.async {[unowned self] in
+                            navigationController?.popViewController(animated: true)
+                        }
+                        
+                    })
+                    
+                } else {
+                    servicesManager.replaceService(serviceDefault, with: index, completition: {
+                        
+                        DispatchQueue.main.async {[unowned self] in
+                            navigationController?.popViewController(animated: true)
+                        }
+                        
+                    })
+                    
+                }
+                
             }
             
-            servicesManager.replaceService(serviceDefault, with: index, completition: {
-                
-                DispatchQueue.main.async {[unowned self] in
-                    navigationController?.popViewController(animated: true)
-                }
-                
-            })
         }
+        
     }
 }

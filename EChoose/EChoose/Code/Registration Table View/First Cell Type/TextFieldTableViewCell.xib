@@ -22,7 +22,7 @@
                         <rect key="frame" x="16" y="39" width="288" height="34"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert"/>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jk0-rf-5Fd">
                         <rect key="frame" x="16" y="10" width="288" height="23"/>
@@ -67,7 +67,7 @@
     </objects>
     <resources>
         <namedColor name="MainColor">
-            <color red="0.63499999046325684" green="0.85500001907348633" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.67843137254901964" green="0.90588235294117647" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondColorGradient">
             <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

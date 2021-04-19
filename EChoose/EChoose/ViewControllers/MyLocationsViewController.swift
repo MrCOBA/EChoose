@@ -105,14 +105,27 @@ extension MyLocationsViewController: UITableViewDelegate, UITableViewDataSource 
                 swipeButton: UIView,
                 completionHandler: (Bool) -> Void) in
 
-                guard let id = locationsManaher.index2id(indexPath.row - 1) else {
-                    return
-                }
-                locationsManaher.deleteLocation(with: id, completition: {
-                    DispatchQueue.main.async {
-                        myLocationsTableView.deleteRows(at: [indexPath], with: .fade)
+                let generator = AlertGenerator(firstAction: { action in
+                    guard let id = locationsManaher.index2id(indexPath.row - 1) else {
+                        return
                     }
+                    locationsManaher.deleteLocation(with: id, completition: {
+                        DispatchQueue.main.async {
+                            myLocationsTableView.deleteRows(at: [indexPath], with: .fade)
+                        }
+                    })
                 })
+                
+                let alert = generator.getAlert()
+                
+                if let controller = alert[.willDeleteServices] {
+                    
+                    DispatchQueue.main.async {
+                        
+                        present(controller, animated: true, completion: nil)
+                    }
+                }
+                
                 completionHandler(true)
             })
         action.backgroundColor = #colorLiteral(red: 1, green: 0.400758059, blue: 0.3482903581, alpha: 1)

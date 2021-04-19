@@ -44,7 +44,7 @@
                             <constraint firstAttribute="height" constant="44" id="Ldf-sW-wW9"/>
                         </constraints>
                         <color key="barTintColor" name="MainColor"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                 <real key="value" value="0.0"/>
@@ -89,7 +89,7 @@
     </designables>
     <resources>
         <namedColor name="MainColor">
-            <color red="0.68048805553267744" green="0.90639767660955828" blue="0.67127037358165365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.67843137254901964" green="0.90588235294117647" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondColorGradient">
             <color red="0.0" green="0.41568627450980394" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

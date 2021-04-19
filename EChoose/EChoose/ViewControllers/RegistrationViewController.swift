@@ -201,6 +201,7 @@ class RegistrationViewController:UIViewController{
         if !passwordPred.evaluate(with: data["password"]) {
             if let controller = alert[.incorrectPasswordFormat] {
                 
+                hideContentController(content: loadingVC)
                 present(controller, animated: true, completion: nil)
                 return false
             }
@@ -212,6 +213,7 @@ class RegistrationViewController:UIViewController{
         if !emailPred.evaluate(with: data["email"]) {
             if let controller = alert[.incorrectEmailFormat] {
                 
+                hideContentController(content: loadingVC)
                 present(controller, animated: true, completion: nil)
                 return false
             }

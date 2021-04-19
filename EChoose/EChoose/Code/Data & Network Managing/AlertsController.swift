@@ -51,8 +51,8 @@ enum AlertType {
     case incorrectPasswordFormat
     
     //Service Form
-    case notChoosedAddress
-    case notChoosedServiceType
+    case notChoseAddress
+    case notChoseServiceType
     
     //Address Form
     case willDeleteServices
@@ -83,9 +83,9 @@ extension AlertType: RawRepresentable {
             return ("Password and Repeated password not matches!", "Enter similar passwords...")
         case .incorrectEmailFormat:
             return ("Something going wrong!", "Check your e-mail format!")
-        case .notChoosedAddress:
+        case .notChoseAddress:
             return ("Address for study was not choosed!", "Please select address of studying or choose remote education type!")
-        case .notChoosedServiceType:
+        case .notChoseServiceType:
             return ("Service type was not choosed!", "Please select at least one service type!")
         case .willDeleteServices:
             return ("Warning!", "All services with this address will be deleted! Are you sure?")
@@ -115,10 +115,10 @@ extension AlertType: RawRepresentable {
             self = .notSimilarPasswords
         case ("Something going wrong!", "Check your e-mail format!"):
             self = .incorrectEmailFormat
-        case ("Address for study was not choosed!", "Please select address of studying or choose remote education type!"):
-            self = .notChoosedAddress
-        case ("Service type was not choosed!", "Please select at least one service type!"):
-            self = .notChoosedServiceType
+        case ("Address for study was not chose!", "Please select address of studying or choose remote education type!"):
+            self = .notChoseAddress
+        case ("Service type was not chose!", "Please select at least one service type!"):
+            self = .notChoseServiceType
         case ("Warning!", "All services with this address will be deleted! Are you sure?"):
             self = .willDeleteServices
         case ("What do you want?", "Dislike or archive offer?"):
@@ -165,8 +165,8 @@ class InformationAlert: Alert {
 
 class WarningAlert: Alert {
     
-    final private var availableTypes: [AlertType] = [.notChoosedAddress,
-                                                     .notChoosedServiceType,
+    final private var availableTypes: [AlertType] = [.notChoseAddress,
+                                                     .notChoseServiceType,
                                                      .willDeleteServices]
     
     private var controller: UIAlertController?
