@@ -78,15 +78,15 @@ extension AlertType: RawRepresentable {
         case .existsUsername:
             return ("This username already exists!", "Try another username...")
         case .existsEmail:
-            return ("This email is already taken!", "Try another email...")
+            return ("This email has already taken!", "Try another email...")
         case .notSimilarPasswords:
-            return ("Password and Repeated password not matches!", "Enter similar passwords...")
+            return ("Password and rep. password not matches!", "Enter similar passwords...")
         case .incorrectEmailFormat:
             return ("Something going wrong!", "Check your e-mail format!")
         case .notChoseAddress:
-            return ("Address for study was not choosed!", "Please select address of studying or choose remote education type!")
+            return ("Address for study was not chose!", "Please select address of studying or choose remote education type!")
         case .notChoseServiceType:
-            return ("Service type was not choosed!", "Please select at least one service type!")
+            return ("Service type was not chose!", "Please select at least one service type!")
         case .willDeleteServices:
             return ("Warning!", "All services with this address will be deleted! Are you sure?")
         case .matchActions:
@@ -109,9 +109,9 @@ extension AlertType: RawRepresentable {
             self = .incorrectPasswordFormat
         case ("This username already exists!", "Try another username..."):
             self = .existsUsername
-        case ("This email is already taken!", "Try another email..."):
+        case ("This email has already taken!", "Try another email..."):
             self = .existsEmail
-        case ("Password and Repeated password not matches!", "Enter similar passwords..."):
+        case ("Password and rep. password not matches!", "Enter similar passwords..."):
             self = .notSimilarPasswords
         case ("Something going wrong!", "Check your e-mail format!"):
             self = .incorrectEmailFormat
@@ -144,7 +144,8 @@ class InformationAlert: Alert {
                                                      .existsEmail,
                                                      .notSimilarPasswords,
                                                      .incorrectEmailFormat,
-                                                     .incorrectUsernameFormat]
+                                                     .incorrectUsernameFormat,
+                                                     .incorrectPasswordFormat]
     
     private var controller: UIAlertController?
     

@@ -190,6 +190,7 @@ class RegistrationViewController:UIViewController{
         if !usernamePred.evaluate(with: data["username"]) {
             if let controller = alert[.incorrectUsernameFormat] {
                 
+                hideContentController(content: loadingVC)
                 present(controller, animated: true, completion: nil)
                 return false
             }

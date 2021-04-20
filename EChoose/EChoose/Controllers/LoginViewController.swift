@@ -92,7 +92,9 @@ class LoginViewController: UIViewController {
                 hideContentController(content: loadingVC)
                 let alertGenerator = AlertGenerator()
                 
-                if let controller = alertGenerator.getAlert()[AlertType.incorrecLoginData] {
+                let alert = alertGenerator.getAlert()
+                
+                if let controller = alert[.incorrecLoginData]{
                     present(controller, animated: true, completion: nil)
                 }
             }
@@ -119,7 +121,9 @@ class LoginViewController: UIViewController {
                 
                 let alertGenerator = AlertGenerator()
                 
-                if let controller = alertGenerator.getAlert()[AlertType.incorrecLoginData] {
+                let alert = alertGenerator.getAlert()
+                
+                if let controller = alert[.incorrecLoginData]{
                     present(controller, animated: true, completion: nil)
                 }
             }
